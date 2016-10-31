@@ -1,0 +1,244 @@
+/*
+Theme Name: Letramento Informacional
+Description: Portal do Curso de Especialização de Letramento Informacional
+Version: 1.0
+Author: CIAR UFG
+Author URI: http://ciar.ufg.br/
+*/
+
+@charset "utf-8";
+
+
+@import url('css/bootstrap.css');
+@import url('css/jquery.bxslider.css');
+@import url('css/barra-brasil.css');
+@import url('http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,300italic,700');
+@import url('http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,300,600,700');
+
+
+
+@font-face {
+    font-family: 'amertype_md_btmedium';
+    src: url('fonts/american_typewriter_medium_bt-webfont.eot');
+    src: url('fonts/american_typewriter_medium_bt-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/american_typewriter_medium_bt-webfont.woff') format('woff'),
+         url('fonts/american_typewriter_medium_bt-webfont.ttf') format('truetype'),
+         url('fonts/american_typewriter_medium_bt-webfont.svg#amertype_md_btmedium') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+/*pagina inicial*/
+body {background: url('images/bg-dizeres-marca_left.png') no-repeat left bottom fixed, url('images/bg-dizeres-marca_right.png') no-repeat right bottom fixed; font-family: 'Open Sans', sans-serif;}
+
+a {color: #00aab0}
+a:hover {color: #00aab0}
+
+/*word-hidden*/
+.word-hidden {text-indent: -999em; letter-spacing: -999em; overflow:hidden;}
+
+/*hx*/
+h1, h2, h3, h4, h5, h6 {font-family: 'amertype_md_btmedium', sans-serif; margin: 0; padding: 0;}
+
+h2 {border-bottom: 1px solid #eee; padding: 0 0 10px 0; margin: 0 0 10px 0}
+h2 a {font-family: 'Open Sans', sans-serif; font-weight: normal;}
+
+h2 span {font-size: 20px}
+
+/*topo*/
+.topo {background: #240038; border-bottom: 5px solid #754590; position: fixed; width: 100%; height: 132px; z-index: 1000;}
+.topo section {width: 1000px; height: 132px; margin: 0 auto; position: relative; display: block;}
+
+a.logo {width: 201px; height: 100px; background: url('images/logo-curso.png') no-repeat left center; display: block; position: absolute; top: 0; left: 0}
+
+nav {position: absolute; top: 0; right:0;}
+nav ul {margin: 0; padding: 0; list-style: none;}
+nav ul li {margin: 0; padding: 0; list-style: none; float: left; background: #240038; border-bottom: 5px solid #754590; transition: all 0.5s ease; -webkit-transition: all 0.5s ease; -moz-transition: all 0.5s ease; -o-transition: all 0.5s ease;}
+nav ul li:hover, nav ul li.active {background: #ed1162; border-color: #fc3880}
+nav ul li.active a {color: #fff}
+
+nav ul li a{color: #fff; font: normal normal 17px 'amertype_md_btmedium', sans-serif; padding: 35px 20px 0 20px; height: 65px; letter-spacing: .04em; display: block;}
+nav ul li a:hover {color: #fff}
+nav ul li a, nav ul li a:hover {text-decoration: none;}
+
+nav ul li a span.sublink {opacity: 0; font: normal normal 11px 'Open Sans', sans-serif; padding: 0; display: block; letter-spacing: 0} 
+nav ul li a:hover span.sublink, nav ul li.active a span.sublink {opacity: 1.0;} 
+
+/*area util site*/
+.area-util-site {width: 1000px; margin: 0 auto}
+
+/*sessao de divisao*/
+.sessao-site {padding:160px 0; margin:0px; min-height:1000px; width:1000px; float:left;}
+.sessao-site section {width: 1000px; margin: 0 auto}
+
+.divider-blue {/*background: #009FE3;*/ width: 100%; height: 400px; display: block; float: left; clear: both;}
+
+
+/*colunas*/
+.col-maior {width: 700px;  position: relative; display: block; float: left;}
+.col-menor {width: 260px; position: relative; display: block; float: right;}
+
+/*sessao HOME*/
+.imagem-destaque {width: 700px; height: 400px; float: left; clear: both; position: relative; overflow: hidden;}
+.imagem-destaque img {width: 700px; height: 400px; position: absolute; top: 0; left: 0;}
+.imagem-destaque .descricao {position: absolute; top: 400px; left: 0; width: 680px; background: rgba(0,0,0,0.5); height: 40px; padding: 20px 10px; color: #FFF; text-shadow: 1px 1px 1px #000; transition: all 0.5s ease; -webkit-transition: all 0.5s ease; -moz-transition: all 0.5s ease; -o-transition: all 0.5s ease;}
+.imagem-destaque .descricao a {color: #fff; text-decoration: underline;}
+.imagem-destaque:hover .descricao{top: 290px;}
+
+.noticia-destaque {width: 260px; float: left; clear: both; margin: 15px 0 0 0; font-size: 0.9em; padding: 20px 0 0 0; border-top: 1px solid #eee}
+.noticia-destaque .imagem {max-width: 260px; max-height: 195px; overflow: hidden; margin: 0 0 8px 0}
+.noticia-destaque .imagem img {max-width: 260px; max-height: 195px; display: block; margin: 0 auto; text-align: center}
+.col-menor .noticia-destaque:first-child {margin: 0; padding: 0; border: 0}
+.noticia-destaque a {text-decoration: none;}
+.noticia-destaque a h3 {font-size: 1.6em; line-height: 26px; margin: 0; color: #00aab0;}
+.noticia-destaque a p span {text-decoration: underline;}
+.noticia-destaque a p {margin: 7px 0 0 0; color: #000; text-align: justify;}
+.noticia-destaque a:hover p {text-decoration: underline;}
+
+/*sessao NOTICIA*/
+.busca-categoria-noticias {float: right; position: relative; display: block;}
+.busca-categoria-noticias select, .busca-categoria-noticias input {width: 166px;}
+.busca-categoria-noticias select option {font-size: 0.9em}
+
+.palavras-chave ul {margin: 10px 0; padding: 0; list-style: none; float: left; clear: both;}
+.palavras-chave ul li {float: left; width: 49%; margin: 0; padding: 0;}
+
+.outras-noticias {display: auto}
+
+.apresentacao-noticia {width: 700px; float: left; clear: both; position: relative; display: block; overflow: hidden;}
+.apresentacao-noticia img {max-width: 700px}
+.apresentacao-noticia header h3 {font-weight: normal;}
+
+.ultima-noticia {width: 260px; margin: 15px 0 0 0; font-size: 0.9em; padding: 20px 0 0 0; border-top: 1px solid #eee; display: block;}
+.ultima-noticia a {text-decoration: none;}
+.ultima-noticia a h3 {font-size: 1.6em; line-height: 26px; margin: 0; color: #00aab0;}
+.ultima-noticia a p span {text-decoration: underline;}
+.ultima-noticia a p {margin: 7px 0 0 0; color: #000; text-align: justify;}
+.ultima-noticia a:hover p {text-decoration: underline;}
+
+.apresentacao-noticia .conteudo-noticia {margin: 20px 0; width: 700px; float: left; clear: both; position: relative; display: block; text-align: justify;}
+.apresentacao-noticia .conteudo-noticia .imagem-destacada {max-width: 700px; max-height: 200px; margin: 0 0 20px 0; padding: 0; overflow: hidden; float: left; margin: 0 20px 0 0; position: relative;}
+.apresentacao-noticia .conteudo-noticia .imagem-destacada img {max-width: 700px; height: auto; margin: 0 auto; text-align: center;}
+
+/*slide sobre o curso*/
+.slide .conteudo-sobre-o-curso {width: 1000px; margin: 0 auto}
+.slide .conteudo-sobre-o-curso .texto-sobre-o-curso {width: 480px; float: left; display: block; height: auto; text-align: justify;}
+.slide .conteudo-sobre-o-curso .texto-sobre-o-curso p a.btn {display: none;}
+.slide .conteudo-sobre-o-curso .imagem-ou-ilustracao {width: 500px; height: auto; position: relative; display: block; float: right; overflow: hidden;}
+.slide .conteudo-sobre-o-curso .imagem-ou-ilustracao img {margin: 0 auto; display: block; text-align: center; max-width: 500px; max-height: auto;}
+
+	/*setinhas do slider*/
+	.bx-wrapper .bx-controls-direction a {position: absolute; top: 50%; margin-top: -16px; outline: 0; width: 17px; height: 33px; text-indent: -9999px; z-index: 9999;}
+	.bx-wrapper .bx-prev {left: -30px; background: url('images/arrows.png') no-repeat 0 0;}
+	.bx-wrapper .bx-prev:hover {background-position: 0 -33px;}
+	.bx-wrapper .bx-next {right: -30px; background: url('images/arrows.png') no-repeat -17px 0;}
+	.bx-wrapper .bx-next:hover {background-position: -17px -33px;}
+
+/*pagina de equipe*/
+.wrap-membro {width: 33%; min-height: 220px; position: relative; display: block; float: left; margin: 0; padding: 0; position: relative;}
+.wrap-membro .foto {width: 140px; height: 140px; /*height: auto;*/ overflow: hidden; float: left; margin: 0 15px 0 0; border: 1px solid #ccc;}
+.wrap-membro .foto .img {border: 3px solid #fff; width: 134px; height: 134px; overflow: hidden;}
+.wrap-membro .foto .img img {width: 134px; height: auto}
+.wrap-membro p {font-size: 0.85em; padding-right: 5px}
+.wrap-membro p span {padding: 5px 0 0 0;}
+.wrap-membro p span a {color: #000; background: #f2f2f2 url('images/ico-lattes.png') no-repeat 4px center; padding: 3px 5px 3px 19px; font-size: 0.85em; text-transform: uppercase;}
+
+.restante-membros-equipe {-moz-column-count: 2;
+-webkit-column-count: 2;
+-webkit-column-count: 2;
+-moz-column-width: 49%;}
+
+/*pagina de contato*/
+.label-conteudo-formulario {text-align: right; padding-top: 5px}
+
+/*rodape*/
+.rodape {background: #240038; border-top: 5px solid #754590; /*position: fixed; bottom: 0;*/ position: relative; clear: both; width: 100%; height: 65px; z-index: 1000}
+.rodape section {width: 1000px; height: 65px; margin: 0 auto; position: relative; display: block;}
+
+.logos-apoio {/*background: url('images/sprite.png') no-repeat -10px -77px; */width: 890px; height: 40px; position: absolute; top: 10px; left: 0;}
+
+
+
+/* WordPress Core ------------------------------------------------------------------------ */
+.alignnone {
+    margin: 5px 20px 20px 0;
+}
+
+.aligncenter,
+div.aligncenter {
+    display: block;
+    margin: 5px auto 5px auto;
+}
+
+.alignright {
+    float:right;
+    margin: 5px 0 20px 20px;
+}
+
+.alignleft {
+    float: left;
+    margin: 5px 20px 20px 0;
+}
+
+.aligncenter {
+    display: block;
+    margin: 5px auto 5px auto;
+}
+
+a img.alignright {
+    float: right;
+    margin: 5px 0 20px 20px;
+}
+
+a img.alignnone {
+    margin: 5px 20px 20px 0;
+}
+
+a img.alignleft {
+    float: left;
+    margin: 5px 20px 20px 0;
+}
+
+a img.aligncenter {
+    display: block;
+    margin-left: auto;
+    margin-right: auto
+}
+
+.wp-caption {
+    background: #fff;
+    border: 1px solid #f0f0f0;
+    max-width: 96%; /* Image does not overflow the content area */
+    padding: 5px 3px 10px;
+    text-align: center;
+}
+
+.wp-caption.alignnone {
+    margin: 5px 20px 20px 0;
+}
+
+.wp-caption.alignleft {
+    margin: 5px 20px 20px 0;
+}
+
+.wp-caption.alignright {
+    margin: 5px 0 20px 20px;
+}
+
+.wp-caption img {
+    border: 0 none;
+    height: auto;
+    margin: 0;
+    max-width: 98.5%;
+    padding: 0;
+    width: auto;
+}
+
+.wp-caption p.wp-caption-text {
+    font-size: 11px;
+    line-height: 17px;
+    margin: 0;
+    padding: 0 4px 5px;
+}
