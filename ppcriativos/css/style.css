@@ -2,6 +2,7 @@
    v2.0 | 20110126
    License: none (public domain)
 */
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:400,700|Raleway:200,400,600");
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -450,12 +451,7 @@ div#equipe {
       width: calc(33.333% - 60px);
       margin: 30px;
       min-height: 150px;
-      position: relative;
-      -webkit-transform: translateZ(10px);
-      -moz-transform: translateZ(10px);
-      -ms-transform: translateZ(10px);
-      -o-transform: translateZ(10px);
-      transform: translateZ(10px); }
+      position: relative; }
       div#equipe div.cont-equipes > div > div {
         position: absolute; }
         div#equipe div.cont-equipes > div > div h3 {

@@ -2,6 +2,29 @@
 	<div class="container">
 		<h2>Conheça a equipe</h2>
 		<div class="cont-equipes">
+
+			<?php 
+			$args = array( 
+				'post_type' => 'equipe', 
+				'offset'=> 0, 
+				'numberposts' => 100, 
+				'order' => DESC
+				); 
+			$postslist = get_posts( $args ); 
+			foreach ( $postslist as $post ) : 
+			setup_postdata( $post ); ?>
+
+		          	<div id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+						<div>
+							<h3><?php the_title(); ?></h3>
+							<p><?php the_field('ultima_titulacao'); ?></p>
+						</div>
+					</div>
+					
+			<?php endforeach; wp_reset_postdata(); ?>
+
+
+			<?php /* ?>
 			<div>
 				<div>
 					<h3>Adair Marques</h3>
@@ -68,6 +91,7 @@
 					<p>Doutorando pela EAESP-FGV com período sanduíche na Universidade de Cornell, EUA</p>
 				</div>
 			</div>
+			<?php */ ?>
 			
 		</div>
 	</div>
