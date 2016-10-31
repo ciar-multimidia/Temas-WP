@@ -1,0 +1,52 @@
+@import 'bourbon/bourbon';
+@import 'reset';
+
+body {
+	background: #f0f0f0;
+	font-family: 'Lucida Sans Unicode';
+	line-height: 1.2em;
+}
+
+.container {
+	max-width: 98%;
+	width: 1000px;
+	padding: 0;
+	margin: 20px auto;
+	background: #fff;
+}
+
+.topo {
+	width: 100%;
+	background: #444;
+
+	nav ul {
+		text-align: center;
+
+		li {
+			display: inline-block;
+			padding: 10px 15px;
+			border-left: 1px solid #000;
+
+			&:nth-of-type(1) {border:0} 
+
+			a {
+				color: #FFF;
+				text-decoration: none;
+				text-transform: uppercase;
+				font-size: 0.7em;
+			}
+		}
+	}
+}
+
+article {
+	padding: 30px;
+
+	h1 {
+		font-size: 1.6em;
+		font-weight: bold;
+		margin: 0 0 20px;
+	}
+
+	p {margin: 20px 0;}
+}
