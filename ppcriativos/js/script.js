@@ -86,7 +86,7 @@ jQuery(document).ready(function() {
 		var qtdeX = 50+(equipeMargemPerspec*(Math.round( (xcursor/jQuery(this).width()*2-1)*100)/100) ) ;
 		var qtdeY = 50+(equipeMargemPerspec*(Math.round( (ycursor/jQuery(this).height()*2-1)*100)/100) );
 
-		console.log(qtdeX, qtdeY);
+		// console.log(qtdeX, qtdeY);
 		divsEquipe.each(function(index, el) {
 			wrapEquipe.css('perspective-origin', qtdeX+'% '+qtdeY+'%');
 		});

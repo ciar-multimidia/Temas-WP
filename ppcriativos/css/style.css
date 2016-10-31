@@ -57,7 +57,8 @@ body {
   color: #f68e2f;
   font-family: "Open Sans", Arial, sans-serif;
   font-size: 14px;
-  line-height: 1.618; }
+  line-height: 1.618;
+  position: relative; }
 
 div.posrel {
   position: relative;
@@ -430,12 +431,13 @@ div#sobre {
 
 div#equipe {
   width: 100%;
-  display: block; }
+  display: block;
+  padding-bottom: 200px; }
   div#equipe h2 {
     font-size: 3.6em;
     font-weight: 600;
     text-align: center;
-    margin-bottom: 40px; }
+    margin-bottom: 100px; }
   div#equipe div.cont-equipes {
     display: flex;
     align-items: flex-start;
@@ -451,6 +453,11 @@ div#equipe {
       width: calc(33.333% - 60px);
       margin: 30px;
       min-height: 150px;
+      -webkit-transform: translateZ(10px);
+      -moz-transform: translateZ(10px);
+      -ms-transform: translateZ(10px);
+      -o-transform: translateZ(10px);
+      transform: translateZ(10px);
       position: relative; }
       div#equipe div.cont-equipes > div > div {
         position: absolute; }

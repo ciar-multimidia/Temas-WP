@@ -23,6 +23,7 @@ body{
 	font-family: $fonte-corpo;
 	font-size: 14px;
 	line-height: 1.618;
+	position: relative;
 	
 }
 
@@ -354,11 +355,12 @@ div#sobre{
 div#equipe{
 	width: 100%;
 	display: block;
+	padding-bottom: 200px;
 	h2{
 		font-size: 3.6em;
 		font-weight: 600;
 		text-align: center;
-		margin-bottom: 40px;
+		margin-bottom: 100px;
 	}
 	div.cont-equipes{
 		display: flex;
@@ -372,6 +374,7 @@ div#equipe{
 			width: calc(33.333% - 60px);
 			margin: 30px;
 			min-height: 150px;
+			@include transform(translateZ(10px) );
 			position: relative;
 			& > div{
 				position: absolute;
