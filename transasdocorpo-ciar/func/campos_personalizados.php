@@ -1,81 +1,47 @@
-<?php if(function_exists("register_field_group")) {
+<?php
+
+// if(function_exists("register_field_group"))
+// {
+// 	register_field_group(array (
+// 		'id' => 'acf_evento_data_hora',
+// 		'title' => 'Dados evento',
+// 		'fields' => array (
+// 			array (
+// 				'key' => 'field_evento_data_hora',
+// 				'label' => 'Data e hora do evento',
+// 				'name' => 'evento_data_hora',
+// 				'type' => 'date_time_picker',
+// 				'required' => 1,
+// 				'show_date' => 'true',
+// 				'date_format' => 'm/d/y',
+// 				'time_format' => 'h:mm tt',
+// 				'show_week_number' => 'false',
+// 				'picker' => 'select',
+// 				'save_as_timestamp' => 'true',
+// 				'get_as_timestamp' => 'true',
+// 			),
+// 		),
+// 		'location' => array (
+// 			array (
+// 				array (
+// 					'param' => 'post_type',
+// 					'operator' => '==',
+// 					'value' => 'eventos',
+// 					'order_no' => 0,
+// 					'group_no' => 0,
+// 				),
+// 			),
+// 		),
+// 		'options' => array (
+// 			'position' => 'normal',
+// 			'layout' => 'default',
+// 			'hide_on_screen' => array (
+// 			),
+// 		),
+// 		'menu_order' => 1,
+// 	));
+// }
 
 
-// ========================================//
-// EVENTOS
-// ========================================// 
-	register_field_group(array (
-		'id' => 'evento_data_inicio',
-		'title' => __('Data de início'),
-		'fields' => array (
-			array (
-				'key' => 'group_1',
-				// 'label' => __('Label'),
-				// 'instructions' => __('Descrição'),
-				// 'prepend' => '',
-				'name' => 'evento_data_inicio',
-				'type' => 'text',
-				// 'save_format' => 'url',
-				// 'preview_size' => 'medium',
-				// 'library' => 'all',
-			),
-		),
-		'location' => array (
-			array (
-				array (
-					'param' => 'post_type',
-					'operator' => '==',
-					'value' => 'eventos', //post type
-					'order_no' => 0,
-					'group_no' => 0,				
-				),
-			),
-		),
-		'options' => array (
-			'position' => 'normal',
-			'layout' => 'default',
-			'hide_on_screen' => array (
-			),
-		),
-		'menu_order' => 0,
-	));
 
-	// register_field_group(array (
-	// 	'id' => 'afc_desc_SEO',
-	// 	'title' => __('Descrição para SEO'),
-	// 	'fields' => array (
-	// 		array (
-	// 			'key' => 'group_1',
-	// 			'name' => 'post_descseo',
-	// 			'type' => 'text',
-	// 			'default_value' => '',
-	// 			'placeholder' => 'Digite a descrição aqui',
-	// 			'instructions' => __('Máximo 150 caracteres'),
-	// 			'prepend' => '',
-	// 			'append' => '',
-	// 			'formatting' => 'html',
-	// 			'maxlength' => '',
-	// 		),
-	// 	),
-	// 	'location' => array (
-	// 		array (
-	// 			array (
-	// 				'param' => 'post_type',
-	// 				'operator' => '==',
-	// 				'value' => 'post',
-	// 				'order_no' => 0,
-	// 				'group_no' => 0,
-	// 			),
-	// 		),
-	// 	),
-	// 	'options' => array (
-	// 		'position' => 'normal',
-	// 		'layout' => 'default',
-	// 		'hide_on_screen' => array (
-	// 		),
-	// 	),
-	// 	'menu_order' => 0,
-	// ));
-
-}
 ?>

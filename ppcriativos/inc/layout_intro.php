@@ -1,10 +1,10 @@
 <div id="intro">
 	<nav class="menu">
 		<ul>
-			<li><a href="">Notícias</a></li>
-			<li><a href="">Sobre o curso</a></li>
-			<li><a href="">Equipe</a></li>
-			<li><a href="">Contato</a></li>
+			<li><a href="#noticias">Notícias</a></li>
+			<li><a href="#curso">Sobre o curso</a></li>
+			<li><a href="#equipe">Equipe</a></li>
+			<li><a href="#contato">Contato</a></li>
 			<li class="especial"><div><a href="">Acesse o Moodle</a></div></li>
 		</ul>
 	</nav>

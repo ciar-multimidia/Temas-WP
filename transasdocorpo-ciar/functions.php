@@ -26,6 +26,7 @@ require_once(get_template_directory().'/func/post_type_oferecemos_filmes.php' );
 require_once(get_template_directory().'/func/opcoes_layout.php' );
 require_once(get_template_directory().'/func/scripts.php' );
 require_once(get_template_directory().'/func/paginacao.php' );
+// require_once(get_template_directory().'/func/campos_personalizados.php' );
 
 
 
@@ -34,17 +35,16 @@ require_once(get_template_directory().'/func/paginacao.php' );
 // ========================================// 
 function remove_menus(){
   // remove_menu_page( 'index.php' );                  //Dashboard
-  remove_menu_page( 'jetpack' );                    //Jetpack* 
   remove_menu_page( 'edit.php' );                   //Posts
   remove_menu_page( 'upload.php' );                 //Media
   // remove_menu_page( 'edit.php?post_type=page' );    //Pages
   remove_menu_page( 'edit-comments.php' );          //Comments
   // remove_menu_page( 'themes.php' );                 //Appearance
-  remove_menu_page( 'plugins.php' );                //Plugins
+  // remove_menu_page( 'plugins.php' );                //Plugins
   remove_menu_page( 'users.php' );                  //Users
   remove_menu_page( 'tools.php' );                  //Tools
-  remove_menu_page( 'options-general.php' );        //Settings
-  remove_menu_page( 'edit.php?post_type=acf' );  // Advance custom fields 
+  // remove_menu_page( 'options-general.php' );        //Settings
+  // remove_menu_page( 'edit.php?post_type=acf' );  // Advance custom fields 
   remove_menu_page( 'wpcf7' );   // Contact Form 7 
 
 
