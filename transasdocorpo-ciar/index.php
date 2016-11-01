@@ -9,7 +9,25 @@
 
 				<hr>
 
-				<?php get_calendar(); ?>
+				
+<?php 
+$page = get_query_var('paged');
+$page = (!empty($page) ? $page : 1);
+$args = array(
+	'post_type'			=> 'eventos',
+	'order'				=> 'DESC',
+	'posts_per_page'    => 6,
+	'orderby'			=> 'meta_value_num',
+	'meta_key'			=> 'data_e_hora_evento',
+	'meta_type'			=> 'DATETIME',
+	'paged'				=> $page
+	); 
+query_posts( $args ); ?>
+
+<?php while ( have_posts() ) : the_post(); ?>
+				<p><span><?php the_field('data_e_hora_evento'); ?></span> - <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>	
+<?php endwhile; ?>
+
 			</article>
 
 

@@ -5,7 +5,6 @@
 </article>
 
 <?php 
-$today = date('Ymd');
 $page = get_query_var('paged');
 $page = (!empty($page) ? $page : 1);
 $args = array(

@@ -13,6 +13,9 @@ function load_scripts(){
 		wp_enqueue_script('jquery');
 		wp_enqueue_script('jquery-ui-core');
 
+		wp_register_script( 'moment', get_template_directory_uri() . '/js/moment.js');
+		wp_enqueue_script( 'moment' ); 
+
 } 
 add_action( 'wp_footer', 'load_scripts', 1 );
 
