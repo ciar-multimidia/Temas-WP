@@ -82,12 +82,28 @@ div#intro{
 				padding: 0.3vw 0.6vw;
 				font-size: calc(7px + 0.7vw);
 				font-family: $fonte-titulo;
+				a{
+					color: $laranja;
+					@include transition(color 0.1s linear);
+				}
+				&:hover{
+					a{
+						color: $laranja-claro;
+					}
+				}
 				&.especial{
 					background-color: $laranja;
+					@include transition(background-color 0.1s linear);
 					@include transform(skew(-15deg));
 					div{
-						color: $roxo;
 						@include transform(skew(15deg));
+						a{
+						color: $roxo;
+
+						}
+					}
+					&:hover{
+						background-color: $laranja-claro;
 					}
 				}
 			}
@@ -109,11 +125,9 @@ div#intro{
 			img{
 				position: absolute;
 				height: auto;
-				opacity: 0;
+				opacity: 1;
 				@include transition(opacity 0.6s linear);
-				&.visivel{
-					opacity: 1;
-				}
+				
 				
 				&:nth-child(1){ width: 4%; 		z-index: 1; left: 81%;	top: 93%;  }
 				&:nth-child(2){ width: 15%; 	z-index: 0; left: 07%;	top: 10%;  }
@@ -165,31 +179,7 @@ div#intro{
 			height: auto;
 			// @include perspective-origin(50% 50%);
 
-			path{
-				@include transform(translateX(-30px));	
-				opacity: 0;
-				@include transition(opacity 0.2s ease-out, transform 0.4s ease-out);
-				&.visivel{
-					opacity: 1;
-					@include transform(translateX(0px));	
-				
-				}
-			}
-
-			polygon{
-				opacity: 0;
-				@include transform(rotateY(90deg));
-				@include transition(opacity 0.2s linear, transform 1.4s ease-out);
-				&.visivel{
-					opacity: 1;
-					@include transform(rotateY(0deg));
-
-				}
-			}
 			path, polygon{
-				// @include perspective-origin(50% 50%);
-				@include transform-origin(50% 50%);
-
 				fill: $laranja;
 			}
 		}
@@ -214,11 +204,16 @@ div#noticias{
 			margin-top: 20px;
 			a.maisnoticias{
 				background-color: $laranja;
+				@include transition(background-color 0.1s linear);
 				color: $roxo;
 				padding: 10px;
 				display: inline-block;
 				font-family: $fonte-titulo;
 				font-size: 1.4em;
+				&:hover{
+					cursor: pointer;
+					background-color: $laranja-claro;
+				}
 
 				
 				
@@ -231,6 +226,7 @@ div#noticias{
 			justify-content: flex-start;
 			flex-wrap: wrap;
 			margin-left: -10px;
+
 
 
 			div.noticia{
@@ -265,6 +261,21 @@ div#noticias{
 					text-align: right;
 					&:hover{
 						cursor: pointer;
+					}
+				}
+
+				&:nth-child(n+4){
+					display: none;
+					opacity: 0;
+					@include transform(scale(0.8));
+					@include transition(all 0.2s ease-out);
+					@include transition-property(transform, opacity);
+					&.db{
+						display: block;
+					}
+					&.visivel{
+						opacity: 1;
+						@include transform(scale(1));
 					}
 				}
 			}
@@ -367,24 +378,25 @@ div#equipe{
 		align-items: flex-start;
 		flex-wrap: wrap;
 		justify-content: flex-start;
-		@include perspective(60px);
+		@include perspective(600px);
 		@include perspective-origin(50% 50%);
-		&>div{
 
+		&>div{
 			width: calc(33.333% - 60px);
 			margin: 30px;
 			min-height: 150px;
-			@include transform(translateZ(10px) );
+			
 			position: relative;
 			& > div{
 				position: absolute;
 				h3{
-				font-size: 2em;
-				color: $laranja-claro;
-				line-height: 1;
+					font-size: 2em;
+					color: $laranja-claro;
+					line-height: 1;
+					@include transition(color 0.1s linear);
 				}
 				p{
-
+					@include transition(color 0.1s linear);
 				}
 			}
 
@@ -410,7 +422,30 @@ div#equipe{
 					right: 0;
 					left: auto;
 				}
-			
+
+			&:nth-child(n+13) > div{
+					text-align: left;
+					right: auto;
+					left: 0;
+				}
+
+			&:nth-child(n+16) > div{
+					text-align: right;
+					right: 0;
+					left: auto;
+				}
+			&:hover{
+				cursor: pointer;
+				& > div{
+					h3{
+						color: white;
+					}
+					p{
+						color: white;
+					}
+				}
+
+			}
 			
 		}
 	}

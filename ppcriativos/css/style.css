@@ -105,20 +105,33 @@ div#intro {
       padding: 0.3vw 0.6vw;
       font-size: calc(7px + 0.7vw);
       font-family: "Raleway", Verdana, sans-serif; }
+      div#intro nav.menu ul li a {
+        color: #f68e2f;
+        -webkit-transition: color 0.1s linear;
+        -moz-transition: color 0.1s linear;
+        transition: color 0.1s linear; }
+      div#intro nav.menu ul li:hover a {
+        color: #ffd185; }
       div#intro nav.menu ul li.especial {
         background-color: #f68e2f;
+        -webkit-transition: background-color 0.1s linear;
+        -moz-transition: background-color 0.1s linear;
+        transition: background-color 0.1s linear;
         -webkit-transform: skew(-15deg);
         -moz-transform: skew(-15deg);
         -ms-transform: skew(-15deg);
         -o-transform: skew(-15deg);
         transform: skew(-15deg); }
         div#intro nav.menu ul li.especial div {
-          color: #31003e;
           -webkit-transform: skew(15deg);
           -moz-transform: skew(15deg);
           -ms-transform: skew(15deg);
           -o-transform: skew(15deg);
           transform: skew(15deg); }
+          div#intro nav.menu ul li.especial div a {
+            color: #31003e; }
+        div#intro nav.menu ul li.especial:hover {
+          background-color: #ffd185; }
   div#intro div.grafismointro {
     position: absolute;
     right: 0;
@@ -140,12 +153,10 @@ div#intro {
       div#intro div.grafismointro div.posrel img {
         position: absolute;
         height: auto;
-        opacity: 0;
+        opacity: 1;
         -webkit-transition: opacity 0.6s linear;
         -moz-transition: opacity 0.6s linear;
         transition: opacity 0.6s linear; }
-        div#intro div.grafismointro div.posrel img.visivel {
-          opacity: 1; }
         div#intro div.grafismointro div.posrel img:nth-child(1) {
           width: 4%;
           z-index: 1;
@@ -281,46 +292,7 @@ div#intro {
     div#intro div#logointro svg {
       width: 100%;
       height: auto; }
-      div#intro div#logointro svg path {
-        -webkit-transform: translateX(-30px);
-        -moz-transform: translateX(-30px);
-        -ms-transform: translateX(-30px);
-        -o-transform: translateX(-30px);
-        transform: translateX(-30px);
-        opacity: 0;
-        -webkit-transition: opacity 0.2s ease-out, -webkit-transform 0.4s ease-out;
-        -moz-transition: opacity 0.2s ease-out, -moz-transform 0.4s ease-out;
-        transition: opacity 0.2s ease-out, transform 0.4s ease-out; }
-        div#intro div#logointro svg path.visivel {
-          opacity: 1;
-          -webkit-transform: translateX(0px);
-          -moz-transform: translateX(0px);
-          -ms-transform: translateX(0px);
-          -o-transform: translateX(0px);
-          transform: translateX(0px); }
-      div#intro div#logointro svg polygon {
-        opacity: 0;
-        -webkit-transform: rotateY(90deg);
-        -moz-transform: rotateY(90deg);
-        -ms-transform: rotateY(90deg);
-        -o-transform: rotateY(90deg);
-        transform: rotateY(90deg);
-        -webkit-transition: opacity 0.2s linear, -webkit-transform 1.4s ease-out;
-        -moz-transition: opacity 0.2s linear, -moz-transform 1.4s ease-out;
-        transition: opacity 0.2s linear, transform 1.4s ease-out; }
-        div#intro div#logointro svg polygon.visivel {
-          opacity: 1;
-          -webkit-transform: rotateY(0deg);
-          -moz-transform: rotateY(0deg);
-          -ms-transform: rotateY(0deg);
-          -o-transform: rotateY(0deg);
-          transform: rotateY(0deg); }
       div#intro div#logointro svg path, div#intro div#logointro svg polygon {
-        -webkit-transform-origin: 50% 50%;
-        -moz-transform-origin: 50% 50%;
-        -ms-transform-origin: 50% 50%;
-        -o-transform-origin: 50% 50%;
-        transform-origin: 50% 50%;
         fill: #f68e2f; }
 
 div#noticias {
@@ -338,11 +310,17 @@ div#noticias {
     margin-top: 20px; }
     div#noticias > div div.cont-maisnoticias a.maisnoticias {
       background-color: #f68e2f;
+      -webkit-transition: background-color 0.1s linear;
+      -moz-transition: background-color 0.1s linear;
+      transition: background-color 0.1s linear;
       color: #31003e;
       padding: 10px;
       display: inline-block;
       font-family: "Raleway", Verdana, sans-serif;
       font-size: 1.4em; }
+      div#noticias > div div.cont-maisnoticias a.maisnoticias:hover {
+        cursor: pointer;
+        background-color: #ffd185; }
   div#noticias > div div.ultimasnoticias {
     display: flex;
     justify-content: flex-start;
@@ -374,6 +352,29 @@ div#noticias {
         text-align: right; }
         div#noticias > div div.ultimasnoticias div.noticia a.saibamais:hover {
           cursor: pointer; }
+      div#noticias > div div.ultimasnoticias div.noticia:nth-child(n+4) {
+        display: none;
+        opacity: 0;
+        -webkit-transform: scale(0.8);
+        -moz-transform: scale(0.8);
+        -ms-transform: scale(0.8);
+        -o-transform: scale(0.8);
+        transform: scale(0.8);
+        -webkit-transition: all 0.2s ease-out;
+        -moz-transition: all 0.2s ease-out;
+        transition: all 0.2s ease-out;
+        -webkit-transition-property: -webkit-transform, opacity;
+        -moz-transition-property: -moz-transform, opacity;
+        transition-property: transform, opacity; }
+        div#noticias > div div.ultimasnoticias div.noticia:nth-child(n+4).db {
+          display: block; }
+        div#noticias > div div.ultimasnoticias div.noticia:nth-child(n+4).visivel {
+          opacity: 1;
+          -webkit-transform: scale(1);
+          -moz-transform: scale(1);
+          -ms-transform: scale(1);
+          -o-transform: scale(1);
+          transform: scale(1); }
 
 div#sobre {
   width: 100%;
@@ -443,9 +444,9 @@ div#equipe {
     align-items: flex-start;
     flex-wrap: wrap;
     justify-content: flex-start;
-    -webkit-perspective: 60px;
-    -moz-perspective: 60px;
-    perspective: 60px;
+    -webkit-perspective: 600px;
+    -moz-perspective: 600px;
+    perspective: 600px;
     -webkit-perspective-origin: 50% 50%;
     -moz-perspective-origin: 50% 50%;
     perspective-origin: 50% 50%; }
@@ -453,18 +454,20 @@ div#equipe {
       width: calc(33.333% - 60px);
       margin: 30px;
       min-height: 150px;
-      -webkit-transform: translateZ(10px);
-      -moz-transform: translateZ(10px);
-      -ms-transform: translateZ(10px);
-      -o-transform: translateZ(10px);
-      transform: translateZ(10px);
       position: relative; }
       div#equipe div.cont-equipes > div > div {
         position: absolute; }
         div#equipe div.cont-equipes > div > div h3 {
           font-size: 2em;
           color: #ffd185;
-          line-height: 1; }
+          line-height: 1;
+          -webkit-transition: color 0.1s linear;
+          -moz-transition: color 0.1s linear;
+          transition: color 0.1s linear; }
+        div#equipe div.cont-equipes > div > div p {
+          -webkit-transition: color 0.1s linear;
+          -moz-transition: color 0.1s linear;
+          transition: color 0.1s linear; }
       div#equipe div.cont-equipes > div:nth-child(3n+2) > div {
         bottom: 0; }
       div#equipe div.cont-equipes > div:nth-child(n+4) > div {
@@ -479,5 +482,19 @@ div#equipe {
         text-align: right;
         right: 0;
         left: auto; }
+      div#equipe div.cont-equipes > div:nth-child(n+13) > div {
+        text-align: left;
+        right: auto;
+        left: 0; }
+      div#equipe div.cont-equipes > div:nth-child(n+16) > div {
+        text-align: right;
+        right: 0;
+        left: auto; }
+      div#equipe div.cont-equipes > div:hover {
+        cursor: pointer; }
+        div#equipe div.cont-equipes > div:hover > div h3 {
+          color: white; }
+        div#equipe div.cont-equipes > div:hover > div p {
+          color: white; }
 
 /*# sourceMappingURL=style.css.map */
