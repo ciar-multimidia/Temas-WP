@@ -23,7 +23,7 @@ require_once(get_template_directory().'/func/post_type_oferecemos_filmes.php' );
 // ========================================//
 // OUTRAS FUNCOES
 // ========================================// 
-require_once(get_template_directory().'/func/opcoes_layout.php' );
+// require_once(get_template_directory().'/func/opcoes_layout.php' );
 require_once(get_template_directory().'/func/scripts.php' );
 require_once(get_template_directory().'/func/paginacao.php' );
 // require_once(get_template_directory().'/func/campos_personalizados.php' );

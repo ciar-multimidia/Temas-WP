@@ -9,7 +9,7 @@ function reg_opcoes_tema_init() {
 } 
 
 function reg_opcoes_tema_add_page() {
-    add_theme_page( __( 'Página inicial' ), __( 'Página inicial' ), 'edit_theme_options', 'theme_options', 'reg_opcoes_tema_do_page' );
+    add_theme_page( __( 'Página inicial' ), __( 'Página inicial' ), 'edit_theme_options', 'opcoes_layout', 'reg_opcoes_tema_do_page' );
 }
 
 function reg_opcoes_tema_do_page() {
