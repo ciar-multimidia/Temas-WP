@@ -1,5 +1,6 @@
 jQuery(document).ready(function() {
-	var contIntro = jQuery('div#intro'),
+	var todoCorpo = jQuery('html, body'),
+		contIntro = jQuery('div#intro'),
 		contGrafismo = contIntro.find('div.grafismointro'),
 		grafismos = contGrafismo.find('div.posrel > img'),
 		logo_intro = jQuery('div#logointro'),
@@ -16,7 +17,13 @@ jQuery(document).ready(function() {
 		intervaloSomado = 0,
 		contNoticias = jQuery('div#noticias'),
 		conjNoticias = contNoticias.find('div.ultimasnoticias > div.noticia'),
-		btMaisNoticias = contNoticias.find('.cont-maisnoticias > a.maisnoticias');
+		btMaisNoticias = contNoticias.find('.cont-maisnoticias > a.maisnoticias'),
+		contModais = jQuery('#modais'),
+		conjModais = contModais.find('.modais'),
+		modaisDarken = contModais.find('.darken-overlay'),
+		modaisBtFechar = contModais.find('.fechar-modal'),
+		modaisNoticias = contModais.find('.modais.m-noticias'),
+		modaisEquipe = contModais.find('.modais.m-equipe');
 
 
 	// atualizando os valores de width e height do container dos grafismos
@@ -87,6 +94,53 @@ jQuery(document).ready(function() {
 
 			intNotSomado += intervaloNoticias;
 		});
+	});
+
+	function revelarModal(tipo, modal){
+		todoCorpo.addClass('block-scroll');
+		contModais.addClass('db');
+		if (tipo == 'equipe') {
+			modaisEquipe.addClass('db');
+		} else if(tipo == 'noticias'){
+			modaisNoticias.addClass('db');
+		}
+		jQuery(modal).addClass('db');
+		setTimeout(function(){
+			modaisDarken.addClass('visivel');
+			jQuery(modal).addClass('visivel');
+		},20);
+	}
+
+	function esconderModal(){
+		todoCorpo.removeClass('block-scroll');
+		modaisDarken.removeClass('visivel');
+		conjModais.children('div').removeClass('visivel');
+		setTimeout(function(){
+			conjModais.removeClass('db');
+			contModais.removeClass('db');
+			conjModais.children('div').removeClass('db');
+
+		}, 250);
+	}
+
+	divsEquipe.on('click', function(event) {
+		var modalRevelar = jQuery(this).attr('data-modal-alvo');
+		revelarModal('equipe', modalRevelar);
+	});
+
+	conjNoticias.find('a.saibamais').on('click', function(event) {
+		var modalRevelar = jQuery(this).parent().attr('data-modal-alvo');
+		revelarModal('noticias', modalRevelar);
+	});
+
+	modaisBtFechar.on('click', function(event) {
+		esconderModal();
+		/* Act on the event */
+	});
+
+	modaisDarken.on('click', function(event) {
+		esconderModal();
+		/* Act on the event */
 	});
 
 });

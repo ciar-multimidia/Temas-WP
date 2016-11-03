@@ -17,6 +17,12 @@ $fonte-titulo: 'Raleway', Verdana, sans-serif;
 $fonte-corpo: 'Open Sans', Arial, sans-serif;
 
 
+html, body{
+	&.block-scroll{
+		overflow: hidden;
+	}
+}
+
 body{
 	background-color: $roxo;
 	color: $laranja;
@@ -451,6 +457,126 @@ div#equipe{
 	}
 }
 
+div#modais{
+	display: none;
+	width: 100%;
+	height: 100vh;
+	position: fixed;
+	top: 0;
+	left: 0;
+	&.db{
+		display: block;
+	}
+	div.darken-overlay{
+		position: absolute;
+		left: 0;
+		top: 0;
+		width: 100%;
+		height: 100%;
+		opacity: 0;
+		z-index: -1000;
+		background-color: transparentize($roxo-escuro, 0.1);
+
+		@include transition(opacity 0.2s linear);
+		&.visivel{
+			opacity: 1;
+		}
+	}
+
+	div.fechar-modal{
+		position: absolute;
+		top: 0;
+		right: 0;
+		z-index: 1;
+		margin: 5px 5px;
+		width: 60px;
+		height: 60px;
+		div > div{
+			position: absolute;
+			width: 100%;
+			height: 3px;
+			top: 50%;
+			left: 0;
+			background-color: $laranja-claro;
+			&:nth-child(1){
+				@include  transform(translateY(-50%) rotate(45deg));
+			}
+			&:nth-child(2){
+				@include  transform(translateY(-50%) rotate(-45deg));
+			}
+		}
+		&:hover{
+			cursor: pointer;
+		}
+	}
+
+	div.modais{
+		z-index: 3;
+		width: 100%;
+		height: 100%;
+		overflow-y: scroll;
+		display: none;
+		&.db{
+			display: block;
+		}
+		&>div{
+			display: none;
+			opacity: 0;
+			margin: 100px auto 150px;
+			@include transition(all 0.2s ease-out);
+			@include transition-property(transform, opacity);
+			@include transform(scale(0.9));
+			&.db{
+				display: block;
+			}
+			&.visivel{
+				opacity: 1;
+				@include transform(scale(1));
+			}
+		}
+		&.m-noticias{
+			& > div{
+				width: 600px;
+				background-color: $branco-roxo;
+				padding: 30px 24px 42px;
+				h4{
+					font-size: 1em;
+					color: rgba(0,0,0,0.6);
+				}
+				h3{
+					font-size: 1.5em;
+					color: $roxo;
+					font-weight: 600;
+					line-height: 1.2;
+					margin-bottom: 20px;
+				}
+				p{
+					color: black;
+				}
+			}
+		}
+
+		&.m-equipe{
+			& > div{
+				width: 600px;
+				background-color: $roxo;
+				padding: 30px 24px 42px;
+				color: $laranja;
+				h3{
+					font-size: 2.5em;
+					line-height: 1;
+					color: $laranja-claro;
+					margin-bottom: 30px;
+				}
+				p{
+					color: $laranja;
+				}
+
+			}
+		}
+	}
+}
+
 
 // video responsivo
 .video {
@@ -469,7 +595,6 @@ div#equipe{
     height: 100%;
 }
 
-<iframe src="//www.youtube.com/embed/jP-FOhkVxAI?rel=0" allowfullscreen="" frameborder="0"></iframe>
 
 
 

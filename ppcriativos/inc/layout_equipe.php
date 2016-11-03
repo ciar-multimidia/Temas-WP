@@ -14,7 +14,7 @@
 			foreach ( $postslist as $post ) : 
 			setup_postdata( $post ); ?>
 
-		          	<div id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+		          	<div data-modal-alvo="#membro-<?php the_ID(); ?>" <?php post_class(); ?>>
 						<div>
 							<h3><?php the_title(); ?></h3>
 							<p><?php the_field('ultima_titulacao'); ?></p>
