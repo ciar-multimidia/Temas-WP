@@ -24,8 +24,6 @@ function post_type_institucional() {
       'publicly_queryable' => true,
       'show_ui' => true,
       'show_in_menu' => true,
-      'has_archive' => 'institucional',
-      // 'menu_icon' => get_bloginfo('template_directory') . '/img/post-type_star.png',  // Icon Path
       'menu_icon' => 'dashicons-admin-site',
       'rewrite' => array(
        'slug' => 'institucional',
@@ -33,7 +31,7 @@ function post_type_institucional() {
       ),
       'capability_type' => 'page',
       'has_archive' => true,
-      'hierarchical' => false,
+      'hierarchical' => true,
       'menu_position' => 5,
       'register_meta_box_cb' => 'institucional_meta_box',  
       'supports' => array('title', 'editor', 'thumbnail', 'custom-fields', 'revisions' )

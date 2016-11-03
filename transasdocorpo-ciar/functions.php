@@ -50,7 +50,6 @@ function remove_menus(){
 
   $customize_url = add_query_arg( 'return', urlencode( wp_unslash( $_SERVER['REQUEST_URI'] ) ), 'customize.php' );
   remove_submenu_page('themes.php',$customize_url);
-  // remove_submenu_page('themes.php','themes.php'); 
   remove_submenu_page('themes.php','customize.php'); 
   remove_submenu_page('themes.php','nav-menus.php'); 
   remove_submenu_page('themes.php','theme-editor.php'); 
