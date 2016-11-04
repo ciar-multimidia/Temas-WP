@@ -4,12 +4,13 @@
 
 			<article>
 				<h1><a href="<?php the_permalink(); ?>"><?php the_title(''); ?></a></h1>
-				<?php the_content('saiba mais...'); ?>
+				<?php the_excerpt(); ?>
 			</article>
 
 <?php endwhile; ?>
 <?php paginacao(); ?>
 <?php else : ?>
 <?php endif; ?>	
+
 
 <?php get_footer(); ?>
