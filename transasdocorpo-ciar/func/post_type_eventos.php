@@ -44,15 +44,15 @@ function post_type_eventos() {
 // ========================================//
 // ADICIONA COLUNAS NO PAINEL
 // ========================================// 
-function adiciona_coluna_painel($column) {
+function adiciona_coluna_painel_eventos($column) {
     unset($column['date']);
     return array_merge($column,
           array('data_e_hora_evento' => 'Data evento'));  
 }
 
-add_filter('manage_eventos_posts_columns', 'adiciona_coluna_painel'); // manage_POST-TYPE
+add_filter('manage_eventos_posts_columns', 'adiciona_coluna_painel_eventos'); // manage_POST-TYPE
 
-function adiciona_coluna_painel_valores($column_name) {
+function adiciona_coluna_painel_eventos_valores($column_name) {
     if ($column_name == 'data_e_hora_evento') {
 
       $timestamp = get_field('data_e_hora_evento');
@@ -62,6 +62,6 @@ function adiciona_coluna_painel_valores($column_name) {
     }
 }
 
-add_action('manage_posts_custom_column', 'adiciona_coluna_painel_valores', 10, 2);
+add_action('manage_posts_custom_column', 'adiciona_coluna_painel_eventos_valores', 10, 2);
 
 ?>

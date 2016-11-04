@@ -41,4 +41,27 @@ function post_type_galeria() {
   );
 }
 
+// ========================================//
+// ADICIONA COLUNAS NO PAINEL
+// ========================================// 
+function adiciona_coluna_painel_galeria($column) {
+    unset($column['date']);
+    return array_merge($column,
+          array('fotogaleria' => 'Imagem ilustrativa'));  
+}
+
+add_filter('manage_galeria_posts_columns', 'adiciona_coluna_painel_galeria'); // manage_POST-TYPE
+
+function adiciona_coluna_painel_galeria_valores($column_name) {
+    if ($column_name == 'fotogaleria') {
+      $post_thumbnail_id = get_post_thumbnail_id( $post_id );
+      if ( $post_thumbnail_id ) {
+        $post_thumbnail_img = wp_get_attachment_image_src( $post_thumbnail_id, 'thumbnail' );
+        echo '<img src="' . $post_thumbnail_img[0] . '" />';
+      }
+    }
+}
+
+add_action('manage_posts_custom_column', 'adiciona_coluna_painel_galeria_valores', 10, 2);
+
 ?>

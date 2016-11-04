@@ -123,6 +123,9 @@ function replace_admin_menu_icons_css() {
        #wpcontent, #wpfooter {margin-left: 190px;}
        #adminmenu .wp-not-current-submenu .wp-submenu, .folded #adminmenu .wp-has-current-submenu .wp-submenu {min-width: 190px;}
        #adminmenu .wp-submenu {left: 190px;}
+
+       /*customizando colunas */
+       .manage-column.column-fotogaleria {width: 150px}
     </style>
     <?php
 }
