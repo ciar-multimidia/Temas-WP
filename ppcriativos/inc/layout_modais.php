@@ -1,9 +1,9 @@
 <div id="modais">
 
-<div class="posrel">
+<div class="posrel flexbox">
 	<div class="darken-overlay"></div>
 	<div class="fechar-modal">
-		<div class="posrel">
+		<div class="posrel ">
 			<div></div>
 			<div></div>
 		</div>
@@ -31,9 +31,14 @@
 			foreach ($postslist as $post) : setup_postdata($post); 
 		?>
 			<div id="membro-<?php the_ID(); ?>">
-				<h3><?php the_title(); ?></h3>
+				<div class="nome-e-lattes">
+					<h3><?php the_title(); ?></h3>
+					<?php if ( get_field('link_lattes') ) { ?>
+					<div><a href="<?php the_field('link_lattes'); ?>" target="blank"><?php get_template_part('img/logo-lattes'); ?>Curriculum Lattes</a></div>
+					<?php } ?>
+
+				</div>
 				<p><?php the_content(); ?></p>
-				<a href="<?php the_field('link_lattes') ?>" target="blank">Curriculum Lattes</a>
 				<span> <?php the_field('video_apresentacao')?> </span>
 			</div>
 

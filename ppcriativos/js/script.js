@@ -107,6 +107,7 @@ jQuery(document).ready(function() {
 		jQuery(modal).addClass('db');
 		setTimeout(function(){
 			modaisDarken.addClass('visivel');
+			modaisBtFechar.addClass('visivel');
 			jQuery(modal).addClass('visivel');
 		},20);
 	}
@@ -114,6 +115,7 @@ jQuery(document).ready(function() {
 	function esconderModal(){
 		todoCorpo.removeClass('block-scroll');
 		modaisDarken.removeClass('visivel');
+		modaisBtFechar.removeClass('visivel');	
 		conjModais.children('div').removeClass('visivel');
 		setTimeout(function(){
 			conjModais.removeClass('db');
@@ -140,7 +142,10 @@ jQuery(document).ready(function() {
 
 	modaisDarken.on('click', function(event) {
 		esconderModal();
+		console.log('clicou no fundo');
 		/* Act on the event */
 	});
+
+
 
 });
