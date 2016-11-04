@@ -25,7 +25,6 @@ function post_type_eventos() {
       'show_ui' => true,
       'show_in_menu' => true,
       'has_archive' => 'eventos',
-      // 'menu_icon' => get_bloginfo('template_directory') . '/img/post-type_star.png',  // Icon Path
       'menu_icon' => 'dashicons-calendar-alt',
       'rewrite' => array(
        'slug' => 'eventos',
@@ -40,5 +39,29 @@ function post_type_eventos() {
       )
   );
 }
+
+
+// ========================================//
+// ADICIONA COLUNAS NO PAINEL
+// ========================================// 
+function adiciona_coluna_painel($column) {
+    unset($column['date']);
+    return array_merge($column,
+          array('data_e_hora_evento' => 'Data evento'));  
+}
+
+add_filter('manage_eventos_posts_columns', 'adiciona_coluna_painel'); // manage_POST-TYPE
+
+function adiciona_coluna_painel_valores($column_name) {
+    if ($column_name == 'data_e_hora_evento') {
+
+      $timestamp = get_field('data_e_hora_evento');
+      echo date_i18n("d/m/Y - H:i", $timestamp);
+
+      // echo get_field('data_e_hora_evento');
+    }
+}
+
+add_action('manage_posts_custom_column', 'adiciona_coluna_painel_valores', 10, 2);
 
 ?>

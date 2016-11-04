@@ -138,14 +138,6 @@ add_theme_support( 'post-thumbnails' );
 
 
 // ========================================//
-// MENU DINAMICO
-// ========================================//
-register_nav_menus( array(
-  'menu-topo' => __( 'Menu no topo', '' ),
-));
-
-
-// ========================================//
 // SEGURANCA
 // ========================================//
 function remove_wp_versao () {

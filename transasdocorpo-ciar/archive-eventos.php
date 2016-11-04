@@ -20,7 +20,8 @@ query_posts( $args ); ?>
 
 <?php while ( have_posts() ) : the_post(); ?>
 			<article>
-				<h1><a href="<?php the_permalink(); ?>"><?php the_field('data_e_hora_evento'); ?> - <?php the_title(); ?></a></h1>
+				<h1><a href="<?php the_permalink(); ?>"><?php $timestamp = get_field('data_e_hora_evento');
+      echo date_i18n("d/m/Y", $timestamp); ?> - <?php the_title(); ?></a></h1>
 				<?php the_excerpt(); ?>
 			</article>		
 <?php endwhile; paginacao(); ?>
