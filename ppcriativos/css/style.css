@@ -2,7 +2,7 @@
    v2.0 | 20110126
    License: none (public domain)
 */
-@import url("https://fonts.googleapis.com/css?family=Open+Sans:400,700|Raleway:200,400,600");
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:400,400i,600,600i|Raleway:200,400,600");
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -52,6 +52,14 @@ html {
 *, *:before, *:after {
   box-sizing: inherit; }
 
+div#modais div.flexbox div.modais > div:before, div#modais div.flexbox div.modais > div:after {
+  content: " ";
+  /* 1 */
+  display: table;
+  /* 2 */ }
+div#modais div.flexbox div.modais > div:after {
+  clear: both; }
+
 html.block-scroll, body.block-scroll {
   overflow: hidden; }
 
@@ -89,6 +97,23 @@ h1, h2, h3, h4 {
 h5, h6, p {
   font-family: "Open Sans", Arial, sans-serif; }
 
+b, strong {
+  font-weight: bold; }
+
+i, em {
+  font-style: italic; }
+
+ol {
+  list-style-type: decimal; }
+
+ul {
+  list-style-type: disc; }
+
+ul, ol {
+  padding-left: 40px; }
+  ul li, ol li {
+    display: list-item; }
+
 a {
   text-decoration: none;
   color: inherit; }
@@ -102,39 +127,41 @@ div#intro {
   overflow: hidden; }
   div#intro nav.menu {
     padding: 20px; }
-    div#intro nav.menu ul li {
-      display: inline-block;
-      margin: 0 0.4vw;
-      padding: 0.3vw 0.6vw;
-      font-size: calc(7px + 0.7vw);
-      font-family: "Raleway", Verdana, sans-serif; }
-      div#intro nav.menu ul li a {
-        color: #f68e2f;
-        -webkit-transition: color 0.1s linear;
-        -moz-transition: color 0.1s linear;
-        transition: color 0.1s linear; }
-      div#intro nav.menu ul li:hover a {
-        color: #ffd185; }
-      div#intro nav.menu ul li.especial {
-        background-color: #f68e2f;
-        -webkit-transition: background-color 0.1s linear;
-        -moz-transition: background-color 0.1s linear;
-        transition: background-color 0.1s linear;
-        -webkit-transform: skew(-15deg);
-        -moz-transform: skew(-15deg);
-        -ms-transform: skew(-15deg);
-        -o-transform: skew(-15deg);
-        transform: skew(-15deg); }
-        div#intro nav.menu ul li.especial div {
-          -webkit-transform: skew(15deg);
-          -moz-transform: skew(15deg);
-          -ms-transform: skew(15deg);
-          -o-transform: skew(15deg);
-          transform: skew(15deg); }
-          div#intro nav.menu ul li.especial div a {
-            color: #31003e; }
-        div#intro nav.menu ul li.especial:hover {
-          background-color: #ffd185; }
+    div#intro nav.menu ul {
+      padding: 0; }
+      div#intro nav.menu ul li {
+        display: inline-block;
+        margin: 0 0.4vw;
+        padding: 0.3vw 0.6vw;
+        font-size: calc(7px + 0.7vw);
+        font-family: "Raleway", Verdana, sans-serif; }
+        div#intro nav.menu ul li a {
+          color: #f68e2f;
+          -webkit-transition: color 0.1s linear;
+          -moz-transition: color 0.1s linear;
+          transition: color 0.1s linear; }
+        div#intro nav.menu ul li:hover a {
+          color: #ffd185; }
+        div#intro nav.menu ul li.especial {
+          background-color: #f68e2f;
+          -webkit-transition: background-color 0.1s linear;
+          -moz-transition: background-color 0.1s linear;
+          transition: background-color 0.1s linear;
+          -webkit-transform: skew(-15deg);
+          -moz-transform: skew(-15deg);
+          -ms-transform: skew(-15deg);
+          -o-transform: skew(-15deg);
+          transform: skew(-15deg); }
+          div#intro nav.menu ul li.especial div {
+            -webkit-transform: skew(15deg);
+            -moz-transform: skew(15deg);
+            -ms-transform: skew(15deg);
+            -o-transform: skew(15deg);
+            transform: skew(15deg); }
+            div#intro nav.menu ul li.especial div a {
+              color: #31003e; }
+          div#intro nav.menu ul li.especial:hover {
+            background-color: #ffd185; }
   div#intro div.grafismointro {
     position: absolute;
     right: 0;
@@ -398,14 +425,17 @@ div#sobre {
       font-weight: 200; }
       div#sobre div.texto p + p {
         margin-top: 12px; }
-    div#sobre div.texto ul li {
-      padding-left: 20px;
-      margin-top: 15px;
-      position: relative; }
-      div#sobre div.texto ul li:before {
-        content: '\2937';
-        position: absolute;
-        left: 0; }
+    div#sobre div.texto ul {
+      list-style-type: none;
+      padding: 0; }
+      div#sobre div.texto ul li {
+        padding-left: 20px;
+        margin-top: 15px;
+        position: relative; }
+        div#sobre div.texto ul li:before {
+          content: '\2937';
+          position: absolute;
+          left: 0; }
   div#sobre div.bloco1 {
     width: 50%; }
   div#sobre div.bloco2 {
@@ -608,8 +638,27 @@ div#modais {
             font-weight: 600;
             line-height: 1.2;
             margin-bottom: 20px; }
-          div#modais div.flexbox div.modais.m-noticias > div p {
+          div#modais div.flexbox div.modais.m-noticias > div p, div#modais div.flexbox div.modais.m-noticias > div ol, div#modais div.flexbox div.modais.m-noticias > div ul, div#modais div.flexbox div.modais.m-noticias > div li {
             color: black; }
+          div#modais div.flexbox div.modais.m-noticias > div p {
+            margin-bottom: 15px; }
+          div#modais div.flexbox div.modais.m-noticias > div a {
+            color: #31003e;
+            font-weight: bold; }
+            div#modais div.flexbox div.modais.m-noticias > div a:hover {
+              cursor: pointer;
+              text-decoration: underline; }
+          div#modais div.flexbox div.modais.m-noticias > div ol, div#modais div.flexbox div.modais.m-noticias > div ul {
+            margin: 15px 0; }
+          div#modais div.flexbox div.modais.m-noticias > div blockquote {
+            padding-left: 30px;
+            font-size: 0.9em;
+            line-height: 1.3; }
+          div#modais div.flexbox div.modais.m-noticias > div img {
+            display: block;
+            width: calc( 100% - 40px );
+            margin: 15px auto;
+            height: auto; }
       div#modais div.flexbox div.modais.m-equipe {
         width: 960px; }
         div#modais div.flexbox div.modais.m-equipe > div {
@@ -644,21 +693,19 @@ div#modais {
                   vertical-align: middle; }
                   div#modais div.flexbox div.modais.m-equipe > div div.nome-e-lattes div a svg path {
                     fill: #f68e2f; }
+          div#modais div.flexbox div.modais.m-equipe > div iframe.video_youtube {
+            position: relative;
+            overflow: hidden;
+            width: 450px;
+            height: 260px;
+            display: inline-block;
+            vertical-align: top;
+            margin-right: 15px;
+            float: left; }
           div#modais div.flexbox div.modais.m-equipe > div p {
-            color: #f68e2f; }
-
-.video {
-  padding-bottom: 54.86%;
-  padding-top: 30px;
-  position: relative;
-  overflow: hidden;
-  width: 100%; }
-
-.video iframe, .video object, .video embed {
-  position: absolute;
-  top: 0;
-  left: 0;
-  padding-bottom: 2.5%;
-  height: 100%; }
+            color: #f68e2f;
+            vertical-align: top; }
+          div#modais div.flexbox div.modais.m-equipe > div span.link_video_youtube {
+            display: none; }
 
 /*# sourceMappingURL=style.css.map */

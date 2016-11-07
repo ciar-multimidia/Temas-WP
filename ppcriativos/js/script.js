@@ -99,8 +99,25 @@ jQuery(document).ready(function() {
 	function revelarModal(tipo, modal){
 		todoCorpo.addClass('block-scroll');
 		contModais.addClass('db');
-		if (tipo == 'equipe') {
+		if (tipo == 'equipe') {			
 			modaisEquipe.addClass('db');
+			var iframe_yt = jQuery(modal).find('iframe.video_youtube');
+			if (iframe_yt.length > 0) {
+				if (iframe_yt.attr('src') == false) {
+					var regexYt = /^.*(?:(?:youtu\.be\/|v\/|vi\/|u\/\w\/|embed\/)|(?:(?:watch)?\?v(?:i)?=|\&v(?:i)?=))([^#\&\?]*).*/; //http://stackoverflow.com/questions/3452546/javascript-regex-how-to-get-youtube-video-id-from-url/
+					var linkYoutube = jQuery(modal).find('span.link_video_youtube').text();
+					var linkMatch = linkYoutube.match(regexYt);
+					var urlYoutubeEmbed = 'http://www.youtube.com/embed/';
+					if (linkMatch && linkMatch[1].length == 11) {
+						iframe_yt.attr('src', urlYoutubeEmbed+linkMatch[1]);
+					} else {
+						iframe_yt.remove();
+						console.warn('A URL para o vídeo do youtube desse membro está incorreto.');
+
+					}
+
+				}
+			}
 		} else if(tipo == 'noticias'){
 			modaisNoticias.addClass('db');
 		}
@@ -142,7 +159,6 @@ jQuery(document).ready(function() {
 
 	modaisDarken.on('click', function(event) {
 		esconderModal();
-		console.log('clicou no fundo');
 		/* Act on the event */
 	});
 

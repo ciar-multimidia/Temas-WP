@@ -1,7 +1,7 @@
 // importacoes
 @import 'reset';
 @import 'bourbon/bourbon';
-@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700|Raleway:200,400,600');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,400i,600,600i|Raleway:200,400,600');
 
 
 // cores
@@ -62,6 +62,29 @@ h5,h6,p{
 	font-family: $fonte-corpo;
 }
 
+b, strong{
+	font-weight: bold;
+}
+
+i,em{
+	font-style: italic;
+}
+
+ol{
+	list-style-type: decimal;
+}
+
+ul{
+	list-style-type: disc;
+}
+
+ul,ol{
+	padding-left: 40px;
+	li{
+		display: list-item;
+	}
+}
+
 a{
 	text-decoration: none;
 	color: inherit;
@@ -82,6 +105,7 @@ div#intro{
 	nav.menu{
 		padding: 20px;
 		ul{
+			padding: 0;
 			li{
 				display: inline-block;
 				margin: 0 0.4vw;
@@ -315,6 +339,8 @@ div#sobre{
 		}
 
 		ul{
+			list-style-type: none;
+			padding: 0;
 			li{
 				padding-left: 20px;
 				margin-top: 15px;
@@ -464,6 +490,7 @@ div#modais{
 	position: fixed;
 	top: 0;
 	left: 0;
+
 	&.db{
 		display: block;
 	}
@@ -531,6 +558,7 @@ div#modais{
 				display: block;
 			}
 			&>div{
+				@extend %clearfix;
 				width: 100%;
 				display: none;
 				opacity: 0;
@@ -561,8 +589,37 @@ div#modais{
 						line-height: 1.2;
 						margin-bottom: 20px;
 					}
-					p{
+					p, ol, ul, li{
 						color: black;
+					}
+					p{
+						margin-bottom: 15px;
+					}
+
+					a{
+						color: $roxo;
+						font-weight: bold;
+						&:hover{
+							cursor: pointer;
+							text-decoration: underline;
+						}
+					}
+
+					ol,ul{
+						margin: 15px 0;
+					}
+
+					blockquote{
+						padding-left: 30px;
+						font-size: 0.9em;
+						line-height: 1.3;
+					}
+
+					img{
+						display: block;
+						width: calc( 100% - 40px );
+						margin: 15px auto;
+						height: auto;
 					}
 				}
 			}
@@ -615,9 +672,24 @@ div#modais{
 						}
 						
 					}
+					iframe.video_youtube{
+						position: relative;
+						overflow: hidden;
+						width: 450px;
+						height: 260px;
+						display: inline-block;
+						vertical-align: top;
+						margin-right: 15px;
+						float: left;
+					}
 					
 					p{
 						color: $laranja;
+						// display: inline;
+						vertical-align: top;
+					}
+					span.link_video_youtube{
+						display: none;
 					}
 
 				}
@@ -628,22 +700,6 @@ div#modais{
 }
 
 
-// video responsivo
-.video {
-    padding-bottom: 54.86%;
-    padding-top: 30px;
-    position: relative;
-    overflow: hidden;
-    width: 100%;
-}
-
-.video iframe, .video object, .video embed {
-    position: absolute;
-    top: 0;
-    left: 0;
-    padding-bottom: 2.5%;
-    height: 100%;
-}
 
 
 

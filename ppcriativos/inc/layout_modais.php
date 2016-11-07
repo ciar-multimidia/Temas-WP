@@ -38,8 +38,12 @@
 					<?php } ?>
 
 				</div>
+
+				<?php if ( get_field('video_apresentacao') ) { ?>
+					<iframe class='video_youtube' src=""></iframe>
+					<span class="link_video_youtube"><?php the_field('video_apresentacao')?></span>
+				<?php } ?>
 				<p><?php the_content(); ?></p>
-				<span> <?php the_field('video_apresentacao')?> </span>
 			</div>
 
 		<?php endforeach; wp_reset_postdata(); ?>
