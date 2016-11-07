@@ -7,7 +7,10 @@
 require_once(get_template_directory().'/func/post_type_noticias.php' );
 require_once(get_template_directory().'/func/post_type_artigos.php' );
 require_once(get_template_directory().'/func/post_type_eventos.php' );
+
 require_once(get_template_directory().'/func/post_type_institucional.php' );
+require_once(get_template_directory().'/func/post_type_institucional_equipe.php' );
+
 require_once(get_template_directory().'/func/post_type_videos.php' );
 require_once(get_template_directory().'/func/post_type_galeria.php' );
 require_once(get_template_directory().'/func/post_type_duvidas.php' );
@@ -23,11 +26,12 @@ require_once(get_template_directory().'/func/post_type_oferecemos_filmes.php' );
 // ========================================//
 // OUTRAS FUNCOES
 // ========================================// 
-// require_once(get_template_directory().'/func/opcoes_layout.php' );
+require_once(get_template_directory().'/func/opcoes_layout.php' );
 require_once(get_template_directory().'/func/scripts.php' );
 require_once(get_template_directory().'/func/paginacao.php' );
-// require_once(get_template_directory().'/func/campos_personalizados.php' );
+require_once(get_template_directory().'/func/shortcodes.php' );
 
+// require_once(get_template_directory().'/func/campos_personalizados.php' );
 
 
 // ========================================//
@@ -55,6 +59,7 @@ function remove_menus(){
   remove_submenu_page('themes.php','theme-editor.php'); 
 
 
+  // adicionar submenus a: oferecemos
   add_submenu_page( 'edit.php?post_type=oferecemos', 'Produções', 'Produções',
     'manage_options', 'edit.php?post_type=producoes');
   add_submenu_page( 'edit.php?post_type=oferecemos', 'Pesquisas', 'Pesquisas',
@@ -65,6 +70,10 @@ function remove_menus(){
     'manage_options', 'edit.php?post_type=informativos');
   add_submenu_page( 'edit.php?post_type=oferecemos', 'Filmes', 'Filmes',
     'manage_options', 'edit.php?post_type=filmes');
+
+  // adicionar submenu a: institucional
+  add_submenu_page( 'edit.php?post_type=institucional', 'Equipe', 'Equipe',
+    'manage_options', 'edit.php?post_type=equipe');
 }
 add_action( 'admin_menu', 'remove_menus', 999 );
 
