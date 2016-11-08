@@ -2,11 +2,14 @@
 
 add_action('admin_init', 'add_opcoes_layout_init');
 add_action('admin_menu', 'add_opcoes_layout_add_page'); 
+
 function add_opcoes_layout_init() {
     register_setting('add_opcoes', 'add_opcoes_layout'); 
 } 
 function add_opcoes_layout_add_page() {
-    add_theme_page( __( 'Opções do tema' ), __( 'Opções do tema' ), 'edit_theme_options', 'opcoes_layout', 'add_opcoes_layout_do_page' );
+    // add_theme_page( __( 'Opções do tema' ), __( 'Opções do tema' ), 'edit_theme_options', 'opcoes_layout', 'add_opcoes_layout_do_page' );
+    add_submenu_page( 'options-general.php', 'Opções do tema', 'Opções do tema',
+    'edit_theme_options', 'opcoes_layout', 'add_opcoes_layout_do_page');
 }
 function add_opcoes_layout_do_page() {
     global $select_options;
@@ -23,7 +26,7 @@ function add_opcoes_layout_do_page() {
         <link rel="stylesheet" href="<?php bloginfo('template_url'); ?>/func/css/painel.css" TYPE="text/css" MEDIA="screen">
         <h1>Opções do tema</h1>
     
-    <?php if ( false !== $_REQUEST['settings-updated'] ) : echo '<p>&nbsp;</p><div id="message" class="updated"><p><strong>Pronto!</strong> Tudo salvo.</p></div>'; endif; ?> 
+    <?php //if ( false !== $_REQUEST['settings-updated'] ) : echo '<p>&nbsp;</p><div id="message" class="updated"><p><strong>Pronto!</strong> Tudo salvo.</p></div>'; endif; ?> 
 
     <div class="section painel">
     

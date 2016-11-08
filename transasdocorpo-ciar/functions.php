@@ -43,7 +43,7 @@ function remove_menus(){
   remove_menu_page( 'upload.php' );                 //Media
   // remove_menu_page( 'edit.php?post_type=page' );    //Pages
   remove_menu_page( 'edit-comments.php' );          //Comments
-  // remove_menu_page( 'themes.php' );                 //Appearance
+  remove_menu_page( 'themes.php' );                 //Appearance
   // remove_menu_page( 'plugins.php' );                //Plugins
   remove_menu_page( 'users.php' );                  //Users
   remove_menu_page( 'tools.php' );                  //Tools
@@ -82,15 +82,15 @@ add_action( 'admin_menu', 'remove_menus', 999 );
 // ========================================//
 // EDITAR NOMES MENU LATERAL
 // ========================================//
-function edit_admin_menus() {
-    global $menu;
-    global $submenu;
+// function edit_admin_menus() {
+//     global $menu;
+//     global $submenu;
     
-    $menu[60][0] = 'Layout'; 
-    $submenu['themes.php'][5][0] = 'Escolher tema';
+//     $menu[60][0] = 'Layout'; 
+//     $submenu['themes.php'][5][0] = 'Escolher tema';
      
-}
-add_action( 'admin_menu', 'edit_admin_menus', 999 );
+// }
+// add_action( 'admin_menu', 'edit_admin_menus', 999 );
 
 
 
@@ -125,7 +125,7 @@ function replace_admin_menu_icons_css() {
     <style>
        #adminmenu .dashicons-admin-comments:before {content: "\f125";}
        #adminmenu .dashicons-admin-post:before {content: "\f227";}
-       #adminmenu .dashicons-admin-appearance:before {content: "\f116";}
+       /*#adminmenu .dashicons-admin-appearance:before {content: "\f116";}*/
        #adminmenu #toplevel_page_jetpack {display: none !important;}
 
        #adminmenu, #adminmenu .wp-submenu, #adminmenuback, #adminmenuwrap {width: 190px;}
