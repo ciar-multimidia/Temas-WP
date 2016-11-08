@@ -1,4 +1,6 @@
 jQuery(document).ready(function() {
+
+	// variaveis
 	var todoCorpo = jQuery('html, body'),
 		contIntro = jQuery('div#intro'),
 		contGrafismo = contIntro.find('div.grafismointro'),
@@ -23,7 +25,8 @@ jQuery(document).ready(function() {
 		modaisDarken = contModais.find('.darken-overlay'),
 		modaisBtFechar = contModais.find('.fechar-modal'),
 		modaisNoticias = contModais.find('.modais.m-noticias'),
-		modaisEquipe = contModais.find('.modais.m-equipe');
+		modaisEquipe = contModais.find('.modais.m-equipe'),
+		modalAberto = false;
 
 
 	// atualizando os valores de width e height do container dos grafismos
@@ -32,7 +35,7 @@ jQuery(document).ready(function() {
 		heightCont = contGrafismo.height();
 	});
 	
-
+	// Animação ao mover o cursor sobre o intro
 	contIntro.on('mousemove', function(event) {
 		var qtdeMov = (event.pageX+event.pageY)/(widthCont+heightCont);
 
@@ -58,6 +61,8 @@ jQuery(document).ready(function() {
 
 		});	
 	});
+	// Animação ao mover o cursor sobre a parte da equipe
+
 	contEquipe.on('mousemove', function(event) {
 		var xcursor = event.pageX;
 		var ycursor = event.pageY - jQuery(this).offset().top;
@@ -80,6 +85,9 @@ jQuery(document).ready(function() {
 		});
 	});
 
+
+	// Evento que revela o restante das notícias
+
 	btMaisNoticias.on('click', function(event) {
 		jQuery(this).remove();
 		var intervaloNoticias = 60,
@@ -95,6 +103,9 @@ jQuery(document).ready(function() {
 			intNotSomado += intervaloNoticias;
 		});
 	});
+
+	// Método que revela o modal
+
 
 	function revelarModal(tipo, modal){
 		todoCorpo.addClass('block-scroll');
@@ -127,7 +138,10 @@ jQuery(document).ready(function() {
 			modaisBtFechar.addClass('visivel');
 			jQuery(modal).addClass('visivel');
 		},20);
+		modalAberto = true;
 	}
+
+	// Método que esconde o modal
 
 	function esconderModal(){
 		todoCorpo.removeClass('block-scroll');
@@ -140,7 +154,10 @@ jQuery(document).ready(function() {
 			conjModais.children('div').removeClass('db');
 
 		}, 250);
+		modalAberto = false;
 	}
+
+	// Os 2 prox eventos: revelar modal com o devido conteudo relacionado ao clique
 
 	divsEquipe.on('click', function(event) {
 		var modalRevelar = jQuery(this).attr('data-modal-alvo');
@@ -152,15 +169,68 @@ jQuery(document).ready(function() {
 		revelarModal('noticias', modalRevelar);
 	});
 
+	// Os 3 prox eventos: fechar modal ao clicar no X, no fundo, ou ao pressionar ESC.
+
+
 	modaisBtFechar.on('click', function(event) {
 		esconderModal();
-		/* Act on the event */
 	});
 
 	modaisDarken.on('click', function(event) {
 		esconderModal();
-		/* Act on the event */
 	});
+
+	jQuery(document).on('keyup', function(e) {
+		var evento = e;
+		var tecla = event.keyCode || evento.which;
+		if (tecla == 27) {
+			if (modalAberto == true) {
+				evento.preventDefault();
+				esconderModal();
+			}
+		}
+		
+	});
+
+	// Eventos ao rolar a página
+	var scrollTopAtual = jQuery(window).scrollTop();
+	var menuGlobal = jQuery('#menu-site');
+	jQuery(window).on('scroll', function(event) {
+		var novoScrollTop = jQuery(this).scrollTop();
+		if (novoScrollTop >= heightCont) {
+			menuGlobal.addClass('fixo');
+			if (novoScrollTop < scrollTopAtual) {
+				menuGlobal.addClass('revela transition');
+			} else{
+				menuGlobal.removeClass('revela');
+			}		
+		} else{
+			menuGlobal.removeClass('revela');
+			if (novoScrollTop <= heightCont/2) {
+				menuGlobal.removeClass('transition fixo');
+
+			}
+		}
+		scrollTopAtual = novoScrollTop;
+
+	});
+
+	// Eventos ao clicar nos botões do menu global
+	menuGlobal.children('ul').children('li').children('a').not('.especial').on('click', function(event) {
+		event.preventDefault();
+		var destino = jQuery(this).attr('href');
+		var elDestino = jQuery(destino);
+		var destinoTop = elDestino.offset().top;
+		if (destinoTop < jQuery(window).scrollTop()) {
+			destinoTop -= menuGlobal.outerHeight();
+		}
+		console.log(destino, destinoTop, menuGlobal.outerHeight());
+
+		jQuery('html, body').animate({
+			scrollTop: destinoTop},
+			700);
+	});
+
 
 
 

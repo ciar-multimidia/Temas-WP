@@ -91,6 +91,69 @@ a{
 }
 
 
+nav#menu-site{
+	position: absolute;
+	top: 0;
+	left: 0;
+	padding: 15px;
+	z-index: 2;
+	ul{
+		padding: 0;
+		position: relative;
+		li{
+			display: inline-block;
+			margin: 0 0.4vw;
+			padding: 0.3vw 0.6vw;
+			font-size: calc(7px + 0.7vw);
+			font-family: $fonte-titulo;
+			a{
+				color: $laranja;
+				@include transition(color 0.1s linear);
+			}
+			&:hover{
+				a{
+					cursor: pointer;
+					color: $laranja-claro;
+				}
+			}
+			&.especial{
+				background-color: $laranja;
+				@include transition(background-color 0.1s linear);
+				@include transform(skew(-15deg));
+				div{
+					@include transform(skew(15deg));
+					a{
+					color: $roxo;
+
+					}
+				}
+				&:hover{
+					background-color: $laranja-claro;
+				}
+			}
+		}
+	}
+
+	&.fixo{
+		width: 100%;
+		position: fixed;
+		background-color: $roxo-escuro;
+		display: flex;
+		justify-content: center;
+		@include transform(translateY(-100%));
+		&.transition{
+			@include transition(transform 0.2s ease-out);		
+		}
+		&.revela{
+			@include transform(translateY(0%));
+		}
+		ul{
+
+		}
+	}
+}
+
+
 
 
 
@@ -102,43 +165,7 @@ div#intro{
 	position: relative;
 	overflow: hidden;
 
-	nav.menu{
-		padding: 20px;
-		ul{
-			padding: 0;
-			li{
-				display: inline-block;
-				margin: 0 0.4vw;
-				padding: 0.3vw 0.6vw;
-				font-size: calc(7px + 0.7vw);
-				font-family: $fonte-titulo;
-				a{
-					color: $laranja;
-					@include transition(color 0.1s linear);
-				}
-				&:hover{
-					a{
-						color: $laranja-claro;
-					}
-				}
-				&.especial{
-					background-color: $laranja;
-					@include transition(background-color 0.1s linear);
-					@include transform(skew(-15deg));
-					div{
-						@include transform(skew(15deg));
-						a{
-						color: $roxo;
-
-						}
-					}
-					&:hover{
-						background-color: $laranja-claro;
-					}
-				}
-			}
-		}
-	}
+	
 	div.grafismointro{
 		position: absolute;
 		right: 0;
@@ -198,11 +225,8 @@ div#intro{
 			font-family: $fonte-titulo;
 			font-weight: 200;
 			font-size: 1.3vw;
-			opacity: 0;
-			@include transition(opacity 0.2s linear);
-			&.visivel{
-				opacity: 1;
-			}
+			opacity: 1;
+			
 		}
 		svg{
 			width: 100%;
@@ -490,6 +514,7 @@ div#modais{
 	position: fixed;
 	top: 0;
 	left: 0;
+	z-index: 3;
 
 	&.db{
 		display: block;

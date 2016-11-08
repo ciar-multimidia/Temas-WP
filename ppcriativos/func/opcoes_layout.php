@@ -6,7 +6,9 @@ function add_opcoes_layout_init() {
     register_setting('add_opcoes', 'add_opcoes_layout'); 
 } 
 function add_opcoes_layout_add_page() {
-    add_theme_page( __( 'Opções do tema' ), __( 'Opções do tema' ), 'edit_theme_options', 'opcoes_layout', 'add_opcoes_layout_do_page' );
+    // add_theme_page( __( 'Configurações do site' ), __( 'Configurações do site' ), 'edit_theme_options', 'opcoes_layout', 'add_opcoes_layout_do_page' );
+
+    add_submenu_page( 'options-general.php', 'Moodle', 'Moodle', 'edit_theme_options', 'link_moodle', 'add_opcoes_layout_do_page' );
 }
 function add_opcoes_layout_do_page() {
     global $select_options;
@@ -22,9 +24,9 @@ function add_opcoes_layout_do_page() {
     <div class="painel-opcoes-tema">
 
         <link rel="stylesheet" href="<?php bloginfo('template_url'); ?>/func/css/painel.css" TYPE="text/css" MEDIA="screen">
-        <h1>Opções do tema</h1>
+        <h1>Moodle</h1>
     
-    <?php if ( false !== $_REQUEST['settings-updated'] ) : echo '<p>&nbsp;</p><div id="message" class="updated"><p><strong>Pronto!</strong> Tudo salvo.</p></div>'; endif; ?> 
+    <?php // if ( false !== $_REQUEST['settings-updated'] ) : echo '<p>&nbsp;</p><div id="message" class="updated"><p><strong>Pronto!</strong> Tudo salvo.</p></div>'; endif; ?> 
 
     <div class="section painel">
     
@@ -33,18 +35,20 @@ function add_opcoes_layout_do_page() {
                 <?php $options = get_option('add_opcoes_layout'); ?> 
 
                         <table class="form-table">
-                            <tr class="titulo"><td colspan="2"><h3 class="show-inside-tabber">Opção</h3></td></tr>
                             <tr>
-                                <th>Desktop <br> <small>(728x90)</small></th>
+                                <th>URL do Moodle do curso</th>
                                 <td>
-                                    <textarea name="add_opcoes_layout[nomeOpcao]" id="add_opcoes_layout[nomeOpcao]" cols="50" rows="8"><?php if (!empty($options['nomeOpcao'])) { echo esc_textarea( $options['nomeOpcao'] ); } ?></textarea><br>
-                                    <input type="text" name="add_opcoes_layout[nomeOpcao2]" id="add_opcoes_layout[nomeOpcao2]" value="<?php if (!empty($options['nomeOpcao2'])) { esc_attr_e( $options['nomeOpcao2'] ); } ?>" /> <br>
-                                    <small>Adicione aqui o seu texto.</small>
+                                    <?php /*<textarea name="add_opcoes_layout[nomeOpcao]" id="add_opcoes_layout[nomeOpcao]" cols="50" rows="8"><?php if (!empty($options['nomeOpcao'])) { echo esc_textarea( $options['nomeOpcao'] ); } ?></textarea><br>*/ ?>
+                                    <input type="text" name="add_opcoes_layout[url_moodle]" id="add_opcoes_layout[url_moodle]" value="<?php if (!empty($options['url_moodle'])) { esc_attr_e( $options['url_moodle'] ); } ?>" /> <br>
+                                    <small>A URL deve estar completa, devendo começar com 'http' ou 'https'. Ex:<br>
+                                    https://google.com<br>
+                                    http://www.ufg.br</small>
+                                    
                                 </td>
                             </tr>
                             <tr><td colspan="2"><hr></td></tr>
                             <tr>
-                                <td><input type="submit" value="Salvar anúncio" class="button button-primary button-large" /></td>
+                                <td><input type="submit" value="Salvar" class="button button-primary button-large" /></td>
                                 <td></td>
                             </tr>                    
                         </table>
