@@ -1,71 +1,59 @@
 <?php 
 
-add_action('admin_init', 'reg_opcoes_tema_init');
-add_action('admin_menu', 'reg_opcoes_tema_add_page'); 
-
-
-function reg_opcoes_tema_init() {
-    register_setting('opcoes_tema', 'reg_opcoes_tema'); 
+add_action('admin_init', 'add_opcoes_layout_init');
+add_action('admin_menu', 'add_opcoes_layout_add_page'); 
+function add_opcoes_layout_init() {
+    register_setting('add_opcoes', 'add_opcoes_layout'); 
 } 
-
-function reg_opcoes_tema_add_page() {
-    add_theme_page( __( 'Página inicial' ), __( 'Página inicial' ), 'edit_theme_options', 'opcoes_layout', 'reg_opcoes_tema_do_page' );
+function add_opcoes_layout_add_page() {
+    add_theme_page( __( 'Opções do tema' ), __( 'Opções do tema' ), 'edit_theme_options', 'opcoes_layout', 'add_opcoes_layout_do_page' );
 }
-
-function reg_opcoes_tema_do_page() {
+function add_opcoes_layout_do_page() {
     global $select_options;
     if ( ! isset( $_REQUEST['settings-updated'] ) ) $_REQUEST['settings-updated'] = false; 
 
     // ========================================//
     // INICIO INTERFACE OPCOES 
-    // ========================================// 
+    // ========================================//     
     ?>
     
+
+    <div class="painel-opcoes-tema">
+
         <link rel="stylesheet" href="<?php bloginfo('template_url'); ?>/func/css/painel.css" TYPE="text/css" MEDIA="screen">
+        <h1>Opções do tema</h1>
+    
+    <?php if ( false !== $_REQUEST['settings-updated'] ) : echo '<p>&nbsp;</p><div id="message" class="updated"><p><strong>Pronto!</strong> Tudo salvo.</p></div>'; endif; ?> 
 
-        <div class="wrap painel-opcoes-tema">
+    <div class="section painel">
+    
+                <form method="post" class="formulario-opcoes" action="options.php">
+                <?php settings_fields('add_opcoes'); ?>  
+                <?php $options = get_option('add_opcoes_layout'); ?> 
 
-        <h1>Pagina inicial</h1>
-        
-        <?php if ( false !== $_REQUEST['settings-updated'] ) : echo '<p>&nbsp;</p><div id="message" class="updated"><p><strong>Pronto!</strong> Tudo salvo.</p></div>'; endif; ?> 
-
-        <div class="section painel">
-        
-        <form method="post" class="formulario-opcoes" action="options.php">
-        <?php settings_fields('opcoes_tema'); ?>  
-        <?php $options = get_option('reg_opcoes_tema'); ?> 
-
-
-                    <table class="form-table">
+                        <table class="form-table">
                             <tr class="titulo"><td colspan="2"><h3 class="show-inside-tabber">Opção</h3></td></tr>
                             <tr>
-                                <th>Inserir opção</th>
+                                <th>Desktop <br> <small>(728x90)</small></th>
                                 <td>
-                                    <input type="text" name="reg_opcoes_tema[nomeOpcao]" id="reg_opcoes_tema[nomeOpcao]" value="<?php if (!empty($options['nomeOpcao'])) { esc_attr_e( $options['nomeOpcao'] ); } ?>" /><br>
-                                    <?php /* ?><textarea name="afc_opcoes_ads_tema[nomeOpcao]" id="afc_opcoes_ads_tema[nomeOpcao]" cols="50" rows="8"><?php if (!empty($options['nomeOpcao'])) { echo esc_textarea( $options['nomeOpcao'] ); } ?></textarea><?php */ ?>
-                                    <small>Descrição</small>
+                                    <textarea name="add_opcoes_layout[nomeOpcao]" id="add_opcoes_layout[nomeOpcao]" cols="50" rows="8"><?php if (!empty($options['nomeOpcao'])) { echo esc_textarea( $options['nomeOpcao'] ); } ?></textarea><br>
+                                    <input type="text" name="add_opcoes_layout[nomeOpcao2]" id="add_opcoes_layout[nomeOpcao2]" value="<?php if (!empty($options['nomeOpcao2'])) { esc_attr_e( $options['nomeOpcao2'] ); } ?>" /> <br>
+                                    <small>Adicione aqui o seu texto.</small>
                                 </td>
                             </tr>
-                    </table>
+                            <tr><td colspan="2"><hr></td></tr>
+                            <tr>
+                                <td><input type="submit" value="Salvar anúncio" class="button button-primary button-large" /></td>
+                                <td></td>
+                            </tr>                    
+                        </table>
 
-                    <input type="submit" value="Salvar opções" class="button button-primary button-large" />
+                </form>  
 
-
-        </div>
+    </div>
  
-    <?php } 
+<?php } 
     // ========================================//
-    // FIM INTERFACE OPCOES 
+    // INICIO INTERFACE OPCOES 
     // ========================================// 
-
 ?>
-
-
-
-<?php/* $options = get_option( 'opcoes_tema' ); ?> 
-<?php if ($options['nomeOpcao']) { ?>
-        <?php echo $options['nomeOpcao'] ?>     
-<?php } */?>
-
-
-

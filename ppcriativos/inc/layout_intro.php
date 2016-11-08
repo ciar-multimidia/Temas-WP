@@ -1,3 +1,4 @@
+<?php $options = get_option( 'add_opcoes_layout' ); ?> 
 <div id="intro">
 	<nav class="menu">
 		<ul>
@@ -5,7 +6,9 @@
 			<li><a href="#sobre">Sobre o curso</a></li>
 			<li><a href="#equipe">Equipe</a></li>
 			<li><a href="#contato">Contato</a></li>
-			<li class="especial"><div><a href="" target="blank">Acesse o Moodle</a></div></li>
+			<?php if ($options['nomeOpcao']) { ?>
+				<li class="especial"><div><a href="<?php echo $options['nomeOpcao'] ?>" target="blank">Acesse o Moodle</a></div></li>
+			<?php } ?>
 		</ul>
 	</nav>
 	<div class="grafismointro">
