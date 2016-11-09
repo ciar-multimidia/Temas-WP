@@ -1,8 +1,8 @@
 <div id="noticias">
 	<div class="container">
 	<h2>Últimas notícias</h2>
+		<p class="sem-noticias">Ainda não há nenhuma notícia aqui!</p>
 		<div class="ultimasnoticias">
-
 			<?php 
 			$args = array( 'post_type' => 'noticias', 'offset'=> 0, 'numberposts' => 99999, 'order' => DESC); 
 			$postslist = get_posts( $args );

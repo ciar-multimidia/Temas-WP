@@ -374,6 +374,14 @@ div#noticias {
       div#noticias > div div.cont-maisnoticias a.maisnoticias:hover {
         cursor: pointer;
         background-color: #ffd185; }
+  div#noticias > div p.sem-noticias {
+    width: 100%;
+    display: none;
+    text-align: center;
+    padding: 50px 0;
+    color: #ffd185; }
+    div#noticias > div p.sem-noticias.db {
+      display: block; }
   div#noticias > div div.ultimasnoticias {
     display: flex;
     justify-content: flex-start;
@@ -649,10 +657,10 @@ div#modais {
           -o-transform: scale(1);
           transform: scale(1); }
       div#modais div.flexbox div.modais.m-noticias {
-        width: 600px; }
+        width: 720px; }
         div#modais div.flexbox div.modais.m-noticias > div {
           background-color: #fbf3fe;
-          padding: 30px 24px 42px; }
+          padding: 30px 60px 42px; }
           div#modais div.flexbox div.modais.m-noticias > div h4 {
             font-size: 1em;
             color: rgba(0, 0, 0, 0.6); }
@@ -731,5 +739,48 @@ div#modais {
             vertical-align: top; }
           div#modais div.flexbox div.modais.m-equipe > div span.link_video_youtube {
             display: none; }
+
+footer#contato {
+  width: 100%;
+  display: block;
+  background-color: #1a0023; }
+  footer#contato > div.flexbox {
+    padding: 100px 0;
+    display: flex;
+    justify-content: space-between; }
+    footer#contato > div.flexbox div {
+      margin-right: 30px; }
+      footer#contato > div.flexbox div h3 {
+        font-size: 2em;
+        text-align: center; }
+      footer#contato > div.flexbox div p {
+        color: #ffd185;
+        text-align: center; }
+      footer#contato > div.flexbox div svg path, footer#contato > div.flexbox div svg polygon {
+        fill: #f68e2f; }
+      footer#contato > div.flexbox div:last-child {
+        margin-right: 0; }
+    footer#contato > div.flexbox div.logo svg {
+      height: 150px;
+      width: auto; }
+    footer#contato > div.flexbox div.realizacao > div.flexbox {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      max-width: none; }
+      footer#contato > div.flexbox div.realizacao > div.flexbox a {
+        margin-right: 35px; }
+        footer#contato > div.flexbox div.realizacao > div.flexbox a:nth-child(1) {
+          width: 60px; }
+        footer#contato > div.flexbox div.realizacao > div.flexbox a:nth-child(2) {
+          width: 240px; }
+        footer#contato > div.flexbox div.realizacao > div.flexbox a:last-child {
+          margin-right: 0; }
+        footer#contato > div.flexbox div.realizacao > div.flexbox a svg {
+          width: 100%;
+          height: auto; }
+          footer#contato > div.flexbox div.realizacao > div.flexbox a svg path, footer#contato > div.flexbox div.realizacao > div.flexbox a svg polygon {
+            fill: #ffd185; }
 
 /*# sourceMappingURL=style.css.map */

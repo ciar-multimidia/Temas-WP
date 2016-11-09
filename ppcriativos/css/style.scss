@@ -273,6 +273,16 @@ div#noticias{
 				
 			}
 		}
+		p.sem-noticias{
+			width: 100%;
+			display: none;
+			text-align: center;
+			padding: 50px 0;
+			color: $laranja-claro;
+			&.db{
+				display: block;
+			}
+		}
 		
 
 		div.ultimasnoticias{
@@ -599,10 +609,10 @@ div#modais{
 				}
 			}
 			&.m-noticias{
-				width: 600px;
+				width: 720px;
 				& > div{
 					background-color: $branco-roxo;
-					padding: 30px 24px 42px;
+					padding: 30px 60px 42px;
 					h4{
 						font-size: 1em;
 						color: rgba(0,0,0,0.6);
@@ -722,6 +732,83 @@ div#modais{
 		}
 	}
 	
+}
+
+footer#contato{
+	width: 100%;
+	display: block;
+	background-color: $roxo-escuro;
+	& > div.flexbox{
+		padding: 100px 0;
+		display: flex;
+		justify-content: space-between;
+		div{
+			margin-right: 30px;
+			h3{
+				font-size: 2em;
+				text-align: center;
+			}
+			p{
+				color: $laranja-claro;
+				text-align: center;
+				
+			}
+
+			svg{
+				path, polygon{
+					fill: $laranja;
+				}
+			}
+			&:last-child{
+				margin-right: 0;
+			}
+		}
+		div.logo{
+
+			svg{
+				height: 150px;
+				width: auto;
+			}
+		}
+
+		div.info-contatos{
+			
+		}
+
+		div.realizacao{
+			
+			& > div.flexbox{
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				width: 100%;
+				max-width: none;
+				a{
+			
+					margin-right: 35px;
+					&:nth-child(1){
+						width: 60px;
+					}
+					&:nth-child(2){
+						width: 240px;
+					}
+					&:last-child{
+						margin-right: 0;
+					}
+					svg{
+						width: 100%;
+						height: auto;
+						path,polygon{
+							fill: $laranja-claro;
+						}
+
+					}
+				}
+			}
+			
+			
+		}
+	}
 }
 
 

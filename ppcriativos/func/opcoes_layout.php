@@ -8,7 +8,7 @@ function add_opcoes_layout_init() {
 function add_opcoes_layout_add_page() {
     // add_theme_page( __( 'Configurações do site' ), __( 'Configurações do site' ), 'edit_theme_options', 'opcoes_layout', 'add_opcoes_layout_do_page' );
 
-    add_submenu_page( 'options-general.php', 'Moodle', 'Moodle', 'edit_theme_options', 'link_moodle', 'add_opcoes_layout_do_page' );
+    add_submenu_page( 'options-general.php', 'Informações do site', 'Informações do site', 'edit_theme_options', 'info_site', 'add_opcoes_layout_do_page' );
 }
 function add_opcoes_layout_do_page() {
     global $select_options;
@@ -24,7 +24,7 @@ function add_opcoes_layout_do_page() {
     <div class="painel-opcoes-tema">
 
         <link rel="stylesheet" href="<?php bloginfo('template_url'); ?>/func/css/painel.css" TYPE="text/css" MEDIA="screen">
-        <h1>Moodle</h1>
+        <h1>Informações do site</h1>
     
     <?php // if ( false !== $_REQUEST['settings-updated'] ) : echo '<p>&nbsp;</p><div id="message" class="updated"><p><strong>Pronto!</strong> Tudo salvo.</p></div>'; endif; ?> 
 
@@ -46,6 +46,28 @@ function add_opcoes_layout_do_page() {
                                     
                                 </td>
                             </tr>
+
+                            <tr>
+                                <th>Telefone para contato</th>
+                                <td>
+                                    <?php /*<textarea name="add_opcoes_layout[nomeOpcao]" id="add_opcoes_layout[nomeOpcao]" cols="50" rows="8"><?php if (!empty($options['nomeOpcao'])) { echo esc_textarea( $options['nomeOpcao'] ); } ?></textarea><br>*/ ?>
+                                    <input type="text" name="add_opcoes_layout[tel_contato]" id="add_opcoes_layout[tel_contato]" value="<?php if (!empty($options['tel_contato'])) { esc_attr_e( $options['tel_contato'] ); } ?>" />
+                                    
+                                    
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <th>E-mail para contato</th>
+                                <td>
+                                    <?php /*<textarea name="add_opcoes_layout[nomeOpcao]" id="add_opcoes_layout[nomeOpcao]" cols="50" rows="8"><?php if (!empty($options['nomeOpcao'])) { echo esc_textarea( $options['nomeOpcao'] ); } ?></textarea><br>*/ ?>
+                                    <input type="text" name="add_opcoes_layout[email_contato]" id="add_opcoes_layout[email_contato]" value="<?php if (!empty($options['email_contato'])) { esc_attr_e( $options['email_contato'] ); } ?>" /> <br>
+                                    
+                                    
+                                </td>
+                            </tr>
+
+                            
                             <tr><td colspan="2"><hr></td></tr>
                             <tr>
                                 <td><input type="submit" value="Salvar" class="button button-primary button-large" /></td>
