@@ -391,6 +391,9 @@ div#sobre{
 
 	div.bloco1{
 		width: 50%;
+		@media screen and (min-width: 1024px) {
+			width: 72%;
+		}
 	}
 
 	div.bloco2{

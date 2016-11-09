@@ -469,6 +469,9 @@ div#sobre {
           left: 0; }
   div#sobre div.bloco1 {
     width: 50%; }
+    @media screen and (min-width: 1024px) {
+      div#sobre div.bloco1 {
+        width: 72%; } }
   div#sobre div.bloco2 {
     width: 60%;
     margin-left: auto; }
