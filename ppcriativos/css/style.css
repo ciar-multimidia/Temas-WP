@@ -468,10 +468,10 @@ div#sobre {
           position: absolute;
           left: 0; }
   div#sobre div.bloco1 {
-    width: 50%; }
-    @media screen and (min-width: 1024px) {
+    width: 72%; }
+    @media screen and (min-width: 1600px) {
       div#sobre div.bloco1 {
-        width: 72%; } }
+        width: 50%; } }
   div#sobre div.bloco2 {
     width: 60%;
     margin-left: auto; }
