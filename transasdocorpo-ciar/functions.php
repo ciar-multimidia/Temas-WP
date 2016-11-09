@@ -37,7 +37,7 @@ require_once(get_template_directory().'/func/shortcodes.php' );
 // ========================================//
 // REMOVER E ADICIONAR ITENS MENU LATERAL
 // ========================================// 
-function remove_menus(){
+function manipula_menus(){
   // remove_menu_page( 'index.php' );                  //Dashboard
   remove_menu_page( 'edit.php' );                   //Posts
   remove_menu_page( 'upload.php' );                 //Media
@@ -48,7 +48,7 @@ function remove_menus(){
   remove_menu_page( 'users.php' );                  //Users
   remove_menu_page( 'tools.php' );                  //Tools
   // remove_menu_page( 'options-general.php' );        //Settings
-  // remove_menu_page( 'edit.php?post_type=acf' );  // Advance custom fields 
+  remove_menu_page( 'edit.php?post_type=acf' );  // Advance custom fields 
   remove_menu_page( 'wpcf7' );   // Contact Form 7 
 
 
@@ -57,6 +57,9 @@ function remove_menus(){
   remove_submenu_page('themes.php','customize.php'); 
   remove_submenu_page('themes.php','nav-menus.php'); 
   remove_submenu_page('themes.php','theme-editor.php'); 
+
+
+  remove_submenu_page('options-general.php','rs-advanced-search'); 
 
 
   // adicionar submenus a: oferecemos
@@ -75,7 +78,7 @@ function remove_menus(){
   add_submenu_page( 'edit.php?post_type=institucional', 'Equipe', 'Equipe',
     'manage_options', 'edit.php?post_type=equipe');
 }
-add_action( 'admin_menu', 'remove_menus', 999 );
+add_action( 'admin_menu', 'manipula_menus', 999 );
 
 
 
@@ -147,6 +150,13 @@ add_action( 'admin_head', 'replace_admin_menu_icons_css' );
 // THUMB
 // ========================================//
 add_theme_support( 'post-thumbnails' ); 
+
+
+
+// ========================================//
+// HABILITAR LINKS
+// ========================================//
+add_filter( 'pre_option_link_manager_enabled', '__return_true' );
 
 
 // ========================================//
