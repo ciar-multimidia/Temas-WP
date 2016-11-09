@@ -609,10 +609,10 @@ div#modais{
 				}
 			}
 			&.m-noticias{
-				width: 720px;
+				width: 800px;
 				& > div{
 					background-color: $branco-roxo;
-					padding: 30px 60px 42px;
+					padding: 60px 100px 80px;
 					h4{
 						font-size: 1em;
 						color: rgba(0,0,0,0.6);
@@ -739,7 +739,7 @@ footer#contato{
 	display: block;
 	background-color: $roxo-escuro;
 	& > div.flexbox{
-		padding: 100px 0;
+		padding: 70px 0;
 		display: flex;
 		justify-content: space-between;
 		div{
@@ -787,10 +787,10 @@ footer#contato{
 			
 					margin-right: 35px;
 					&:nth-child(1){
-						width: 60px;
+						width: 70px;
 					}
 					&:nth-child(2){
-						width: 240px;
+						width: 230px;
 					}
 					&:last-child{
 						margin-right: 0;

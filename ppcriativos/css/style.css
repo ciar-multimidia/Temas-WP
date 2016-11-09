@@ -657,10 +657,10 @@ div#modais {
           -o-transform: scale(1);
           transform: scale(1); }
       div#modais div.flexbox div.modais.m-noticias {
-        width: 720px; }
+        width: 800px; }
         div#modais div.flexbox div.modais.m-noticias > div {
           background-color: #fbf3fe;
-          padding: 30px 60px 42px; }
+          padding: 60px 100px 80px; }
           div#modais div.flexbox div.modais.m-noticias > div h4 {
             font-size: 1em;
             color: rgba(0, 0, 0, 0.6); }
@@ -745,7 +745,7 @@ footer#contato {
   display: block;
   background-color: #1a0023; }
   footer#contato > div.flexbox {
-    padding: 100px 0;
+    padding: 70px 0;
     display: flex;
     justify-content: space-between; }
     footer#contato > div.flexbox div {
@@ -772,9 +772,9 @@ footer#contato {
       footer#contato > div.flexbox div.realizacao > div.flexbox a {
         margin-right: 35px; }
         footer#contato > div.flexbox div.realizacao > div.flexbox a:nth-child(1) {
-          width: 60px; }
+          width: 70px; }
         footer#contato > div.flexbox div.realizacao > div.flexbox a:nth-child(2) {
-          width: 240px; }
+          width: 230px; }
         footer#contato > div.flexbox div.realizacao > div.flexbox a:last-child {
           margin-right: 0; }
         footer#contato > div.flexbox div.realizacao > div.flexbox a svg {
