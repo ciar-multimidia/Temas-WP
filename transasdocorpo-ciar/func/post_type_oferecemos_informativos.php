@@ -32,7 +32,7 @@ function post_type_informativos() {
       'has_archive' => true,
       'hierarchical' => false,
       'register_meta_box_cb' => 'informativos_meta_box',  
-      'supports' => array('title', 'editor', 'thumbnail', 'custom-fields', 'revisions' )
+      'supports' => array('title', 'editor')
       )
   );
 }

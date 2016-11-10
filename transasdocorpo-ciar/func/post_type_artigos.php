@@ -36,7 +36,7 @@ function post_type_artigos() {
       'hierarchical' => false,
       'menu_position' => 5,
       'register_meta_box_cb' => 'artigos_meta_box',  
-      'supports' => array('title', 'editor', 'thumbnail', 'custom-fields', 'revisions' )
+      'supports' => array('title', 'editor')
       )
   );
 }

@@ -35,7 +35,7 @@ function post_type_eventos() {
       'hierarchical' => false,
       'menu_position' => 5,
       'register_meta_box_cb' => 'eventos_meta_box',  
-      'supports' => array('title', 'editor', 'thumbnail', 'revisions' )
+      'supports' => array('title', 'editor')
       )
   );
 }

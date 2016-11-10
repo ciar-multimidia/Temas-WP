@@ -35,7 +35,7 @@ function post_type_noticias() {
       'hierarchical' => false,
       'menu_position' => 5,
       'register_meta_box_cb' => 'noticias_meta_box',  
-      'supports' => array('title', 'editor', 'thumbnail', 'custom-fields', 'revisions' )
+      'supports' => array('title', 'editor', 'thumbnail' )
       )
   );
 }

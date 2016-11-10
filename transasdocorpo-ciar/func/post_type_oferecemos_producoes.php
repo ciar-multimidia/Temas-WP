@@ -32,7 +32,7 @@ function post_type_producoes() {
       'has_archive' => true,
       'hierarchical' => false,
       'register_meta_box_cb' => 'producoes_meta_box',  
-      'supports' => array('title', 'editor', 'thumbnail', 'custom-fields', 'revisions' )
+      'supports' => array('title', 'editor')
       )
   );
 }

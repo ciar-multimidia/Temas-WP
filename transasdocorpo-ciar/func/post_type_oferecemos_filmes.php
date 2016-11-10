@@ -32,7 +32,7 @@ function post_type_filmes() {
       'has_archive' => true,
       'hierarchical' => false,
       'register_meta_box_cb' => 'filmes_meta_box',  
-      'supports' => array('title', 'editor', 'thumbnail', 'custom-fields', 'revisions' )
+      'supports' => array('title', 'editor')
       )
   );
 }

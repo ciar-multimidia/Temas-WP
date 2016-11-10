@@ -36,7 +36,7 @@ function post_type_galeria() {
       'hierarchical' => false,
       'menu_position' => 5,
       'register_meta_box_cb' => 'galeria_meta_box',  
-      'supports' => array('title', 'editor', 'thumbnail', 'custom-fields', 'revisions' )
+      'supports' => array('title', 'editor', 'thumbnail')
       )
   );
 }

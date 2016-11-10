@@ -32,7 +32,7 @@ function post_type_equipe() {
       'has_archive' => true,
       'hierarchical' => true,
       'register_meta_box_cb' => 'equipe_meta_box',  
-      'supports' => array('title', 'editor', 'thumbnail', 'custom-fields', 'revisions' )
+      'supports' => array('title', 'editor')
       )
   );
 }
