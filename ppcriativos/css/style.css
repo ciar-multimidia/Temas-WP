@@ -786,4 +786,44 @@ footer#contato {
           footer#contato > div.flexbox div.realizacao > div.flexbox a svg path, footer#contato > div.flexbox div.realizacao > div.flexbox a svg polygon {
             fill: #ffd185; }
 
+@media (max-width: 980px) {
+  div#noticias > div div.ultimasnoticias div.noticia {
+    width: calc(50% - 20px); } }
+@media (max-width: 640px) {
+  div#noticias > div div.ultimasnoticias div.noticia,
+  div#sobre div.bloco1,
+  div#sobre div.bloco2 {
+    width: 100%; }
+
+  div#equipe div.cont-equipes {
+    justify-content: space-between; }
+    div#equipe div.cont-equipes > div {
+      width: calc(50% - 60px);
+      min-height: 100px;
+      margin: 20px 15px; }
+
+  footer#contato > div.flexbox {
+    flex-wrap: wrap;
+    justify-content: center; }
+    footer#contato > div.flexbox div {
+      text-align: center;
+      margin: 20px 30px; } }
+@media (max-width: 472px) {
+  div#sobre .info-pontual .pontuais {
+    flex-direction: column; }
+    div#sobre .info-pontual .pontuais > div {
+      width: 100%;
+      margin: 20px 0; }
+
+  div#equipe div.cont-equipes > div {
+    width: 100%; }
+
+  footer#contato > div.flexbox div {
+    text-align: center;
+    margin: 20px 0; }
+  footer#contato > div.flexbox div.realizacao > div.flexbox {
+    flex-direction: column; }
+    footer#contato > div.flexbox div.realizacao > div.flexbox a {
+      margin: 0; } }
+
 /*# sourceMappingURL=style.css.map */

@@ -140,6 +140,12 @@ add_theme_support( 'post-thumbnails' );
 
 
 // ========================================//
+// DESABILITAR BARRA ADMIN
+// ========================================//
+show_admin_bar(false);
+
+
+// ========================================//
 // SEGURANCA
 // ========================================//
 function remove_wp_versao () {
