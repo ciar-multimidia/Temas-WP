@@ -184,4 +184,38 @@ if ( ! isset( $content_width ) ) {
     $content_width = 940;
 }
 
+
+
+
+// ========================================//
+// MENSAGEM SUPORTE
+// ========================================//
+add_action('wp_dashboard_setup', 'dashboard_custom_painel');
+function dashboard_custom_painel() {
+  global $wp_meta_boxes;
+  wp_add_dashboard_widget('custom_help_widget', 'Suporte', 'dashboard_custom_painel_texto');
+}
+
+function dashboard_custom_painel_texto() {
+  echo '
+    Ciar - UFG
+  ';
+}
+
+// Remove dashboard widgets
+function remove_dashboard_meta() {
+  // if ( ! current_user_can( 'manage_options' ) ) {
+    remove_meta_box( 'dashboard_incoming_links', 'dashboard', 'normal' );
+    remove_meta_box( 'dashboard_plugins', 'dashboard', 'normal' );
+    remove_meta_box( 'dashboard_primary', 'dashboard', 'normal' );
+    remove_meta_box( 'dashboard_secondary', 'dashboard', 'normal' );
+    remove_meta_box( 'dashboard_quick_press', 'dashboard', 'side' );
+    remove_meta_box( 'dashboard_recent_drafts', 'dashboard', 'side' );
+    remove_meta_box( 'dashboard_recent_comments', 'dashboard', 'normal' );
+    // remove_meta_box( 'dashboard_right_now', 'dashboard', 'normal' );
+    remove_meta_box( 'dashboard_activity', 'dashboard', 'normal');
+  // }
+}
+add_action( 'admin_init', 'remove_dashboard_meta' ); 
+
 ?>
