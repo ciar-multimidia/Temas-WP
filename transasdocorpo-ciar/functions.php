@@ -197,11 +197,24 @@ add_filter( 'use_default_gallery_style', '__return_false' );
 add_filter('post_gallery','customFormatGallery',10,2);
 function customFormatGallery($string,$attr){
     $output = "<div class=\"galeria\">";
-    $posts = get_posts(array('include' => $attr['ids'],'post_type' => 'attachment'));
+    $posts = get_posts(array(
+            'include' => $attr['ids'],
+            'post_type' => 'attachment',
+            'order' => ASC,
+            'alt' => get_post_meta( $imagePost->ID, '_wp_attachment_image_alt', true ),
+            'caption' => $imagePost->post_excerpt,
+            'description' => $imagePost->post_content,
+            'href' => get_permalink( $imagePost->ID )           
+
+    ));
+    $legenda = get_the_title($imagePost->ID);
 
     foreach($posts as $imagePost){
-        $output .= "<a href='".wp_get_attachment_image_src($imagePost->ID, 'large')[0]."' rel='galeria'><img src='".wp_get_attachment_image_src($imagePost->ID)[0]."'></a>";
+        $output .= "
+        <a href='".wp_get_attachment_image_src($imagePost->ID, 'large')[0]."' rel='galeria' title='".$imagePost->post_excerpt."'><img src='".wp_get_attachment_image_src($imagePost->ID)[0]."'></a>
+        ";
     }
+
 
     $output .= "</div>";
     return $output;
