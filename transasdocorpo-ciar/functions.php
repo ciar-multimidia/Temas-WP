@@ -188,124 +188,23 @@ if ( ! isset( $content_width ) ) {
 // ========================================//
 // GALERIA WP
 // ========================================//
-// add_filter( 'gallery_style', 'my_gallery_style', 99 );
-// function my_gallery_style() {
-//   return "<div class='galeria-foto'></div>";
-// }
-// add_filter( 'use_default_gallery_style', '__return_false' );
-
-// add_filter('post_gallery','customFormatGallery',10,2);
-// function customFormatGallery($string,$attr){
-//     $output = "<div class=\"galeria\">";
-//     $posts = get_posts(array('include' => $attr['ids'],'post_type' => 'attachment'));
-
-//     foreach($posts as $imagePost){
-//         $output .= "<a href='".wp_get_attachment_image_src($imagePost->ID, 'large')[0]."' rel='galeria'><img src='".wp_get_attachment_image_src($imagePost->ID)[0]."'></a>";
-//     }
-
-//     $output .= "</div>";
-//     return $output;
-// }
-
-remove_shortcode( "gallery" );
-add_shortcode( "gallery" , "my_own_gallary" );
-function my_own_gallary( $attr ) {
-global $post;
-static $instance = 0;
-$instance++;
-$output = apply_filters('post_gallery', '', $attr);
-if ( $output != '' ) {
-    return $output;
+add_filter( 'gallery_style', 'my_gallery_style', 99 );
+function my_gallery_style() {
+  return "<div class='galeria-foto'></div>";
 }
-if ( isset( $attr['orderby'] ) ) {
-    $attr['orderby'] = sanitize_sql_orderby( $attr['orderby'] );
-    if ( !$attr['orderby'] )
-        unset( $attr['orderby'] );
-}
-extract(shortcode_atts(array(
-    'order'      => 'ASC',
-    'orderby'    => 'menu_order ID',
-    'id'         => $post->ID,
-    'itemtag'    => 'dl',
-    'icontag'    => 'dt',
-    'captiontag' => 'dd',
-    'columns'    => 3,
-    'size'       => 'thumbnail',
-    'include'    => '',
-    'exclude'    => ''
-), $attr));
-$id = intval($id);
-if ( 'RAND' == $order ) {
-    $orderby = 'none';
- }
-if ( !empty($include) ) {
-$include = preg_replace( '/[^0-9,]+/', '', $include );
-$_attachments = get_posts( array('include' => $include, 'post_status' => 'inherit', 'post_type' => 'attachment', 'post_mime_type' => 'image', 'order' => $order, 'orderby' => $orderby) );
-    $attachments = array();
-    foreach ( $_attachments as $key => $val ) {
-        $attachments[$val->ID] = $_attachments[$key];
+add_filter( 'use_default_gallery_style', '__return_false' );
+
+add_filter('post_gallery','customFormatGallery',10,2);
+function customFormatGallery($string,$attr){
+    $output = "<div class=\"galeria\">";
+    $posts = get_posts(array('include' => $attr['ids'],'post_type' => 'attachment'));
+
+    foreach($posts as $imagePost){
+        $output .= "<a href='".wp_get_attachment_image_src($imagePost->ID, 'large')[0]."' rel='galeria'><img src='".wp_get_attachment_image_src($imagePost->ID)[0]."'></a>";
     }
-} elseif ( !empty($exclude) ) {
-    $exclude = preg_replace( '/[^0-9,]+/', '', $exclude );
-    $attachments = get_children( array('post_parent' => $id, 'exclude' => $exclude, 'post_status' => 'inherit', 'post_type' => 'attachment', 'post_mime_type' => 'image', 'order' => $order, 'orderby' => $orderby) );
-} else {
-    $attachments = get_children( array('post_parent' => $id, 'post_status' => 'inherit', 'post_type' => 'attachment', 'post_mime_type' => 'image', 'order' => $order, 'orderby' => $orderby) );
-}
-if ( empty($attachments) ) {
-    return '';
-}
-if ( is_feed() ) {
-    $output = "\n";
-    foreach ( $attachments as $att_id => $attachment )
-        $output .= wp_get_attachment_link($att_id, $size, true) . "\n";
+
+    $output .= "</div>";
     return $output;
-}
-$itemtag = tag_escape($itemtag);
-$captiontag = tag_escape($captiontag);
-$columns = intval($columns);
-$itemwidth = $columns > 0 ? floor(100/$columns) : 100;
-$float = is_rtl() ? 'right' : 'left';
-$selector = "gallery-".$instance;
-$gallery_style = $gallery_div = '';
-if ( apply_filters( 'use_default_gallery_style', true ) )
-    // $gallery_style = "
-    // <style type='text/css'>
-    //     #".$selector." .gallery-item {
-    //         width: ".$itemwidth."%;
-    //     }
-    // </style>";
-$size_class = sanitize_html_class( $size );
-$gallery_div = "<div id='$selector' class='galeria galleryid-".$id." gallery-columns-".$columns." gallery-size-".$size_class."'>";
-$output = apply_filters( 'gallery_style', $gallery_style . "\n\t\t" . $gallery_div );
-$i = 0;
-foreach ( $attachments as $id => $attachment ) {
-// $link = isset($attr['link']) && 'file' == $attr['link'] ? wp_get_attachment_link($id, $size, false, false) : wp_get_attachment_link($id, $size, true, false);
-// $output .= "<".$itemtag." class='gallery-item'>";
-// $output .= "
-//         <".$icontag." class='gallery-icon'>
-//             $link
-//         </".$icontag.">";
-$output .= "".wp_get_attachment_link($id, $size, false, $text)."";        
-/* added the <dd> here to fix validation error */
-    // if ( $captiontag && trim($attachment->post_excerpt) ) {
-    //     $output .= "
-    //         <".$captiontag." class='wp-caption-text gallery-caption'>
-    //         " . wptexturize($attachment->post_excerpt) . "
-    //         </".$captiontag.">";
-    // } else {
-    //     $output .= "
-    //         <".$captiontag." class='wp-caption-text gallery-caption' style='display:none;'></".$captiontag.">";
-    // }
-    // $output .= "</".$itemtag.">";
-    if ( $columns > 0 && ++$i % $columns == 0 )
-        $output .= '';
-}
-
-$output .= "
-        <div style='clear:both;'></div>
-    </div>\n";
-
-return $output;
 }
 
 // ========================================//
