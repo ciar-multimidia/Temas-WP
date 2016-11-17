@@ -185,7 +185,7 @@ nav#menu-site {
 
 div#intro {
   width: 100%;
-  height: calc(100vh - 150px);
+  height: calc(100vh - 270px);
   margin: 0;
   padding: 0;
   position: relative;
@@ -334,10 +334,10 @@ div#intro {
     -ms-transform: translate(0, -50%);
     -o-transform: translate(0, -50%);
     transform: translate(0, -50%);
-    width: 25%;
+    width: 30%;
     height: auto; }
     div#intro div#logointro h3 {
-      padding-left: 7vw;
+      padding-left: 7.6vw;
       font-family: "Raleway", Verdana, sans-serif;
       font-weight: 200;
       font-size: 1.3vw;
@@ -441,8 +441,6 @@ div#sobre {
   width: 100%;
   display: block;
   margin-bottom: 100px; }
-  div#sobre > div.flexbox {
-    display: flex; }
   div#sobre div.texto {
     display: block; }
     div#sobre div.texto h2 {
@@ -467,35 +465,37 @@ div#sobre {
           content: '\2937';
           position: absolute;
           left: 0; }
-  div#sobre div.bloco1 {
-    width: 72%; }
-    @media screen and (min-width: 1600px) {
-      div#sobre div.bloco1 {
-        width: 50%; } }
+  div#sobre > div.flexbox {
+    display: flex; }
+    div#sobre > div.flexbox.parte-um > div.bloco1 {
+      margin-right: 40px;
+      flex-grow: 1;
+      flex-basis: 75%; }
+    div#sobre > div.flexbox.parte-um > div.info-pontual {
+      flex-basis: 25%;
+      padding: 30px;
+      background-color: #1a0023;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between; }
+      div#sobre > div.flexbox.parte-um > div.info-pontual > div {
+        width: 100%;
+        display: flex; }
+        div#sobre > div.flexbox.parte-um > div.info-pontual > div svg {
+          flex-basis: 50px;
+          height: auto;
+          margin-right: 15px; }
+          div#sobre > div.flexbox.parte-um > div.info-pontual > div svg * {
+            fill: #f68e2f; }
+        div#sobre > div.flexbox.parte-um > div.info-pontual > div div {
+          flex-basis: auto; }
+          div#sobre > div.flexbox.parte-um > div.info-pontual > div div h3 {
+            font-size: 1.6em; }
+          div#sobre > div.flexbox.parte-um > div.info-pontual > div div p {
+            color: #ffd185; }
   div#sobre div.bloco2 {
     width: 60%;
     margin-left: auto; }
-  div#sobre .info-pontual {
-    margin: 50px 0 80px;
-    width: 100%;
-    display: block;
-    padding: 40px 0 50px;
-    background-color: #1a0023; }
-    div#sobre .info-pontual .pontuais {
-      display: flex;
-      justify-content: space-between; }
-      div#sobre .info-pontual .pontuais > div {
-        width: 33%;
-        text-align: center; }
-        div#sobre .info-pontual .pontuais > div svg {
-          width: 20%;
-          height: auto; }
-          div#sobre .info-pontual .pontuais > div svg * {
-            fill: #f68e2f; }
-        div#sobre .info-pontual .pontuais > div h3 {
-          font-size: 1.6em; }
-        div#sobre .info-pontual .pontuais > div p {
-          color: #ffd185; }
 
 div#equipe {
   width: 100%;
@@ -755,10 +755,10 @@ footer#contato {
       margin-right: 30px; }
       footer#contato > div.flexbox div h3 {
         font-size: 2em;
-        text-align: center; }
+        text-align: left; }
       footer#contato > div.flexbox div p {
         color: #ffd185;
-        text-align: center; }
+        text-align: left; }
       footer#contato > div.flexbox div svg path, footer#contato > div.flexbox div svg polygon {
         fill: #f68e2f; }
       footer#contato > div.flexbox div:last-child {
