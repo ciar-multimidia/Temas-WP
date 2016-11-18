@@ -6,6 +6,7 @@ div.galeria {
 			flex-direction: row;
 			flex-wrap: wrap;
 			justify-content: space-between;
+			
 			&.grid-1 .galeria-item {max-width: calc(100% - 6px);}
 			&.grid-2 .galeria-item {max-width: calc(50% - 6px);}
 			&.grid-3 .galeria-item {max-width: calc(33.33% - 6px);}
