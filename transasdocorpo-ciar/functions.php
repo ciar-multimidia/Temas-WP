@@ -188,35 +188,138 @@ if ( ! isset( $content_width ) ) {
 // ========================================//
 // GALERIA WP
 // ========================================//
-add_filter( 'gallery_style', 'my_gallery_style', 99 );
-function my_gallery_style() {
-  return "<div class='galeria-foto'></div>";
-}
-add_filter( 'use_default_gallery_style', '__return_false' );
+// add_filter( 'gallery_style', 'my_gallery_style', 99 );
+// function my_gallery_style() {
+//   return "<div class='galeria-foto'></div>";
+// }
+// add_filter( 'use_default_gallery_style', '__return_false' );
 
-add_filter('post_gallery','customFormatGallery',10,2);
-function customFormatGallery($string,$attr){
-    $output = "<div class=\"galeria\">";
-    $posts = get_posts(array(
-            'include' => $attr['ids'],
-            'post_type' => 'attachment',
-            'order' => ASC,
-            'alt' => get_post_meta( $imagePost->ID, '_wp_attachment_image_alt', true ),
-            'caption' => $imagePost->post_excerpt,
-            'description' => $imagePost->post_content,
-            'href' => get_permalink( $imagePost->ID )           
+// add_filter('post_gallery','customFormatGallery',10,2);
+// function customFormatGallery($string,$attr){
+//     $output = "<div class=\"galeria\">";
+//     $posts = get_posts(array(
+//             'include' => $attr['ids'],
+//             'post_type' => 'attachment',
+//             'order' => ASC,
+//             'alt' => get_post_meta( $imagePost->ID, '_wp_attachment_image_alt', true ),
+//             'caption' => $imagePost->post_excerpt,
+//             'description' => $imagePost->post_content,
+//             'href' => get_permalink( $imagePost->ID )           
 
-    ));
-    $legenda = get_the_title($imagePost->ID);
+//     ));
+//     $legenda = get_the_title($imagePost->ID);
 
-    foreach($posts as $imagePost){
-        $output .= "<a href='".wp_get_attachment_image_src($imagePost->ID, 'large')[0]."' rel='galeria' title='".$imagePost->post_excerpt."'><img src='".wp_get_attachment_image_src($imagePost->ID)[0]."' alt='".$imagePost->post_excerpt."'></a>";
+//     foreach($posts as $imagePost){
+//         $output .= "<a href='".wp_get_attachment_image_src($imagePost->ID, 'large')[0]."' rel='galeria' title='".$imagePost->post_excerpt."'><img src='".wp_get_attachment_image_src($imagePost->ID)[0]."' alt='".$imagePost->post_excerpt."'></a>";
+//     }
+
+
+//     $output .= "</div>";
+//     return $output;
+// }
+
+
+// referencia: http://wordpress.stackexchange.com/questions/115368/overide-gallery-default-link-to-settings/169491#169491
+add_filter( 'post_gallery', 'galeria_custom', 10, 2 );
+function galeria_custom( $output, $attr ) {
+    $post = get_post();
+
+    static $instance = 0;
+    $instance++;
+
+    // override default link settings
+    if ( empty(  $attr['link'] ) ) {
+        $attr['link'] = 'none'; // set your default value here
     }
 
+    if ( !empty( $attr['ids'] ) ) {
+        // 'ids' is explicitly ordered, unless you specify otherwise.
+        if ( empty( $attr['orderby'] ) )
+            $attr['orderby'] = 'post__in';
+        $attr['include'] = $attr['ids'];
+    }
 
-    $output .= "</div>";
+    // We're trusting author input, so let's at least make sure it looks like a valid orderby statement
+    if ( isset( $attr['orderby'] ) ) {
+        $attr['orderby'] = sanitize_sql_orderby( $attr['orderby'] );
+        if ( !$attr['orderby'] )
+            unset( $attr['orderby'] );
+    }
+
+    extract(shortcode_atts(array(
+        'order'      => 'ASC',
+        'orderby'    => 'menu_order ID',
+        'id'         => $post ? $post->ID : 0,
+        'itemtag'    => 'dl',
+        'icontag'    => 'dt',
+        'captiontag' => 'dd',
+        'columns'    => 3,
+        'size'       => 'thumbnail',
+        'include'    => '',
+        'post_type' => 'attachment',
+        'exclude'    => ''
+    ), $attr, 'gallery'));
+
+    $id = intval($id);
+    if ( 'RAND' == $order )
+        $orderby = 'none';
+
+    if ( !empty($include) ) {
+        $_attachments = get_posts( array('include' => $include, 'post_status' => 'inherit', 'post_type' => 'attachment', 'post_mime_type' => 'image', 'order' => $order, 'orderby' => $orderby) );
+
+        $attachments = array();
+        foreach ( $_attachments as $key => $val ) {
+            $attachments[$val->ID] = $_attachments[$key];
+        }
+    } elseif ( !empty($exclude) ) {
+        $attachments = get_children( array('post_parent' => $id, 'exclude' => $exclude, 'post_status' => 'inherit', 'post_type' => 'attachment', 'post_mime_type' => 'image', 'order' => $order, 'orderby' => $orderby) );
+    } else {
+        $attachments = get_children( array('post_parent' => $id, 'post_status' => 'inherit', 'post_type' => 'attachment', 'post_mime_type' => 'image', 'order' => $order, 'orderby' => $orderby) );
+    }
+
+    if ( empty($attachments) )
+        return '';
+
+    if ( is_feed() ) {
+        $output = "\n";
+        foreach ( $attachments as $att_id => $attachment )
+            $output .= wp_get_attachment_link($att_id, $size, true) . "\n";
+        return $output;
+    }
+
+    $columns = intval($columns);
+    $selector = "postgaleria-{$instance}";
+
+    $gallery_style = $gallery_div = '';
+    if ( apply_filters( 'use_default_gallery_style', true ) )
+        $gallery_style = "";
+    $size_class = sanitize_html_class( $size );
+
+    $gallery_div = "<div id='$selector' class='galeria-{$id} grid-{$columns}'>\n\n<div class='linha'>";
+    $output = apply_filters( 'gallery_style', $gallery_style . "\n\t\t" . $gallery_div );
+
+    $i = 0;
+    foreach ( $attachments as $id => $attachment ) {
+        $imagemfull = wp_get_attachment_image_src($id, 'full', false, false);
+        $imagemtmedium = wp_get_attachment_image_src($id, 'medium', false, false);
+
+        
+
+        $output .= "<div class='galeria-item'>\n";
+            $output .= "<div class='galeria-imagem'>\n<a href='".$imagemfull[0]."' class='fancyitem' rel='postgaleria-".$instance."' title='".wptexturize($attachment->post_excerpt)."'><img src='".$imagemtmedium[0]."' alt='".wptexturize($attachment->post_excerpt)."'></a>\n</div>";
+        $output .= "\n</div>\n\n\n";
+
+
+       if ( $columns > 0 && ++$i % $columns == 0) {$output .= "</div>\n<div class='linha'>";}
+            
+    }
+
+    $output .= "</div>\n</div>\n";
+
     return $output;
 }
+
+
 
 // ========================================//
 // MENSAGEM SUPORTE / REMOVE WIDGETS DA DASHBOARD
