@@ -210,9 +210,7 @@ function customFormatGallery($string,$attr){
     $legenda = get_the_title($imagePost->ID);
 
     foreach($posts as $imagePost){
-        $output .= "
-        <a href='".wp_get_attachment_image_src($imagePost->ID, 'large')[0]."' rel='galeria' title='".$imagePost->post_excerpt."'><img src='".wp_get_attachment_image_src($imagePost->ID)[0]."'></a>
-        ";
+        $output .= "<a href='".wp_get_attachment_image_src($imagePost->ID, 'large')[0]."' rel='galeria' title='".$imagePost->post_excerpt."'><img src='".wp_get_attachment_image_src($imagePost->ID)[0]."' alt='".$imagePost->post_excerpt."'></a>";
     }
 
 

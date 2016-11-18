@@ -94,7 +94,8 @@ article {
   justify-content: flex-start; }
   .galeria a {
     flex-basis: 14.2857142857%;
-    padding: 10px; }
+    font-size: 0;
+    display: block; }
     .galeria a img {
       width: 100%;
       height: auto; }
