@@ -295,7 +295,7 @@ function galeria_custom( $output, $attr ) {
         $gallery_style = "";
     $size_class = sanitize_html_class( $size );
 
-    $gallery_div = "<div id='$selector' class='galeria-{$id} grid-{$columns}'>\n\n<div class='linha'>";
+    $gallery_div = "<div id='$selector' class='galeria galeria-{$id} grid-{$columns}' data-colunas='{$columns}'>\n\n<div class='linha'>";
     $output = apply_filters( 'gallery_style', $gallery_style . "\n\t\t" . $gallery_div );
 
     $i = 0;

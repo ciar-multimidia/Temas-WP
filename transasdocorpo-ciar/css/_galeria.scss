@@ -1,4 +1,4 @@
-div[class^="galeria-"] {
+div.galeria {
 	width: 100%;
 
 		.linha { 
@@ -6,6 +6,15 @@ div[class^="galeria-"] {
 			flex-direction: row;
 			flex-wrap: wrap;
 			justify-content: space-between;
+			&.grid-1 .galeria-item {max-width: calc(100% - 6px);}
+			&.grid-2 .galeria-item {max-width: calc(50% - 6px);}
+			&.grid-3 .galeria-item {max-width: calc(33.33% - 6px);}
+			&.grid-4 .galeria-item {max-width: calc(25% - 6px);}
+			&.grid-5 .galeria-item {max-width: calc(20% - 6px);}
+			&.grid-6 .galeria-item {max-width: calc(16.6666% - 6px);}
+			&.grid-7 .galeria-item {max-width: calc(14.2857142857% - 6px);}
+			&.grid-8 .galeria-item {max-width: calc(12.5% - 6px);}
+			&.grid-9 .galeria-item {max-width: calc(11.1111111111% - 6px);}
 
 			.galeria-item {
 				margin-top: 8px;
@@ -39,13 +48,13 @@ div[class^="galeria-"] {
 			}
 		}
 
-		&.grid-1 .linha .galeria-item {max-width: calc(100% - 6px);}
-		&.grid-2 .linha .galeria-item {max-width: calc(50% - 6px);}
-		&.grid-3 .linha .galeria-item {max-width: calc(33.33% - 6px);}
-		&.grid-4 .linha .galeria-item {max-width: calc(25% - 6px);}
-		&.grid-5 .linha .galeria-item {max-width: calc(20% - 6px);}
-		&.grid-6 .linha .galeria-item {max-width: calc(16.6666% - 6px);}
-		&.grid-7 .linha .galeria-item {max-width: calc(14.2857142857% - 6px);}
-		&.grid-8 .linha .galeria-item {max-width: calc(12.5% - 6px);}
-		&.grid-9 .linha .galeria-item {max-width: calc(11.1111111111% - 6px);}
+		&.grid-1  .galeria-item {max-width: calc(100% - 6px);}
+		&.grid-2  .galeria-item {max-width: calc(50% - 6px);}
+		&.grid-3  .galeria-item {max-width: calc(33.33% - 6px);}
+		&.grid-4  .galeria-item {max-width: calc(25% - 6px);}
+		&.grid-5  .galeria-item {max-width: calc(20% - 6px);}
+		&.grid-6  .galeria-item {max-width: calc(16.6666% - 6px);}
+		&.grid-7  .galeria-item {max-width: calc(14.2857142857% - 6px);}
+		&.grid-8  .galeria-item {max-width: calc(12.5% - 6px);}
+		&.grid-9  .galeria-item {max-width: calc(11.1111111111% - 6px);}
 }
