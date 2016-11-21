@@ -27,7 +27,6 @@
 		</div>
 	</div>
 	<div id="logointro">
-		<h3>Curso de Especialização</h3>
 		<?php get_template_part('img/svg_marca'); ?>
 	</div>
 </div>

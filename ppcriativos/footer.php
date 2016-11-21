@@ -3,7 +3,7 @@
 <footer id="contato">
 	<div class="container flexbox">
 		<div class="logo">
-			<?php get_template_part('img/svg_marca'); ?>
+			<img src="<?php bloginfo('template_url'); ?>/img/logo.svg" alt="">
 		</div>
 		<div class="info-contatos">
 			<h3>Contato</h3>
@@ -18,8 +18,8 @@
 		<div class="realizacao">
 			<h3>Realização</h3>
 			<div class="flexbox">
-				<a href="http://fav.ufg.br/" target="blank"> <?php get_template_part('img/svg-fav'); ?></a>
-				<a href="http://www.ciar.ufg.br/" target="blank"> <?php get_template_part('img/svg-ciar-ufg'); ?></a>
+				<a href="http://fav.ufg.br/" target="blank"> <img src="<?php bloginfo('template_url'); ?>/img/logo-fav.svg" alt=""></a>
+				<a href="http://www.ciar.ufg.br/" target="blank"> <img src="<?php bloginfo('template_url'); ?>/img/logo-ciar-ufg.svg" alt=""></a>
 			</div>
 			
 		</div>

@@ -138,8 +138,8 @@ nav#menu-site{
 		width: 100%;
 		position: fixed;
 		background-color: $roxo-escuro;
-		display: flex;
-		justify-content: center;
+		@include display(flex);
+		 @include justify-content(center);
 		@include transform(translateY(-100%));
 		&.transition{
 			@include transition(transform 0.2s ease-out);		
@@ -159,7 +159,10 @@ nav#menu-site{
 
 div#intro{
 	width: 100%;
-	height: calc(100vh - 270px);
+	height: calc(100vh - 250px);
+	@media (max-width: 1024px) and (orientation: portrait){
+		height: 500px;
+	}
 	margin: 0;
 	padding: 0;
 	position: relative;
@@ -171,7 +174,11 @@ div#intro{
 		right: 0;
 		top: 0;
 		width: 50vw;
+		display: none;	
 		height: 32vw;
+		@media (min-width: 1024px){
+			display: block;
+		}
 		
 		div.posrel{
 			@include perspective(25px);
@@ -219,15 +226,14 @@ div#intro{
 		left: 100px;
 		@include transform(translate(0,-50%));
 		width: 30%;
-		height: auto;
-		h3{
-			padding-left: 7.6vw;
-			font-family: $fonte-titulo;
-			font-weight: 200;
-			font-size: 1.3vw;
-			opacity: 1;
-			
+		@media (max-width: 768px) and (orientation: portrait){
+			left: 50%;
+			@include transform(translate(-50%,-50%));
+			width: calc(100% - 50px);
+			max-width: 450px;
 		}
+		height: auto;
+		
 		svg{
 			width: 100%;
 			height: auto;
@@ -286,9 +292,9 @@ div#noticias{
 		
 
 		div.ultimasnoticias{
-			display: flex;
-			justify-content: flex-start;
-			flex-wrap: wrap;
+			@include display(flex);
+			 @include justify-content(flex-start);
+			@include flex-wrap(wrap);
 			margin-left: -10px;
 
 
@@ -296,6 +302,9 @@ div#noticias{
 			div.noticia{
 
 				width: calc(33.333333% - 20px);
+				@media (max-width: 1024px) {
+					width: calc(50% - 20px);
+				}
 				margin: 10px;
 				padding: 20px 16px 40px;
 				background-color: $branco-roxo;
@@ -359,7 +368,7 @@ div#sobre{
 			font-weight: 600;
 		}
 		h3{
-			font-size: 2.4em;
+			font-size: 1.8em;
 		}
 		p{
 			font-size: 1.15em;
@@ -368,6 +377,11 @@ div#sobre{
 			& + p{
 				margin-top: 12px;
 			}
+			@media screen and (max-width: 640px) {
+				font-size: 1em;
+				
+			}
+
 		}
 
 		ul{
@@ -389,28 +403,72 @@ div#sobre{
 
 
 	& > div.flexbox{
-		display: flex;
+		@include display(flex);
 		&.parte-um{
+			margin-bottom: 40px;
+			@media screen and (max-width: 1024px) {
+				@include align-items(flex-start);
+			}
+			@media screen and (max-width: 640px) {
+				@include flex-wrap(wrap);
+				@include flex-direction(column);
+				@include align-items(center);
+
+			}
+
+			
 			& > div.bloco1{
 				margin-right: 40px;
-				flex-grow: 1;
-				flex-basis: 75%;
+				@include flex-basis(70%);
+				@media screen and (max-width: 1600px) {
+					@include flex-basis(65%);
+				}
+
+				@media screen and (max-width: 640px) {
+					@include flex-basis(100%);
+					margin-right: 0;
+					margin-bottom: 40px;
+
+				}
 			}
 
 			& > div.info-pontual{
-				flex-basis: 25%;
-				padding: 30px;
+				@include flex-basis(30%);
+				@media screen and (max-width: 1600px) {
+					@include flex-basis(35%);
+				}
+
+				@media screen and (max-width: 1024px) {
+					padding: 40px 20px;
+				}
+				
+
+				@media screen and (max-width: 640px) {
+					@include flex-basis(auto);
+					width: 100%;
+					max-width: 300px;
+				}
+				padding: 70px 30px;
 				background-color: $roxo-escuro;
 
-				display: flex;
-				flex-direction: column;
-				justify-content: space-between;
+				@include display(flex);
+				@include flex-direction(column);
+				@include justify-content(space-between);
 				& > div{
 					width: 100%;
-					display: flex;
+					@include flex-grow(0);
+					@include display(flex);
+					@include align-items(flex-start);
+
+					@media screen and (max-width: 1024px) {
+					 	margin-bottom: 60px;
+					 	&:last-child{
+					 		margin-bottom: 0;
+					 	}
+					}
 
 					svg{
-						flex-basis: 50px;
+						@include flex-basis(25%);
 						height: auto;
 						*{
 							fill: $laranja;
@@ -418,9 +476,11 @@ div#sobre{
 						margin-right: 15px;
 					}
 					div{
-						flex-basis: auto;
+						@include flex-basis(75%);
 						h3{
 							font-size: 1.6em;
+							line-height: 1;
+							margin-bottom: 10px;
 						}
 						p{
 							color: $laranja-claro;
@@ -431,49 +491,81 @@ div#sobre{
 			}
 
 		}
+
+		&.parte-dois{
+			
+			& > div.bloco2{
+				width: 70%;
+				@media screen and (max-width: 1600px) {
+					width: 65%;
+				}
+
+				@media screen and (max-width: 640px) {
+					width: 100%;
+				}
+			}
+		}
+
+
 	}
 	
-
-	div.bloco1{
-		
-	}
-
-	div.bloco2{
-		width: 60%;
-		margin-left: auto;
-	}
-
-	.info-pontual{
-		
-	}
 }
 
 div#equipe{
 	width: 100%;
 	display: block;
 	padding-bottom: 200px;
+
+	@media screen and (max-width: 768px) {
+			padding-bottom: 100px;
+		}
 	h2{
 		font-size: 3.6em;
 		font-weight: 600;
 		text-align: center;
 		margin-bottom: 100px;
+		line-height: 1.1;
+		@media screen and (max-width: 768px) {
+			font-size: 3em;
+			margin-bottom: 75px;
+		}
 	}
 	div.cont-equipes{
-		display: flex;
-		align-items: flex-start;
-		flex-wrap: wrap;
-		justify-content: flex-start;
+		@include display(flex);
+		@include align-items(flex-start);
+		@include flex-wrap(wrap);
+		@include justify-content(flex-start);
 		@include perspective(600px);
 		@include perspective-origin(50% 50%);
+		@media screen and (max-width: 768px) {
+			@include perspective(0);
+			@include flex-direction(column);
+			@include align-items(center);
+			@include flex-wrap(nowrap);
+		}
 
 		&>div{
 			width: calc(33.333% - 60px);
 			margin: 30px;
 			min-height: 150px;
-			
 			position: relative;
+			@media screen and (max-width: 768px) {
+				width: 100%;
+				max-width: 500px;
+				margin: 0 0 30px;
+				min-height: 100px;
+
+			}
 			& > div{
 				position: absolute;
+				@media screen and (max-width: 768px) {
+					width: 100%;
+					max-width: 500px;
+					margin: 0 0 30px;
+					min-height: 100px;
+					bottom: 0;
+
+				}
 				h3{
 					font-size: 2em;
 					color: $laranja-claro;
@@ -485,40 +577,53 @@ div#equipe{
 				}
 			}
 
-			&:nth-child(3n+2) > div{
-					bottom: 0;
+			@media screen and (min-width: 768px) {
+				&:nth-child(3n+2) > div{
+				bottom: 0;
 				}
+				&:nth-child(n+4) > div{
+						text-align: right;
+						right: 0;
+						left: auto;
 
-			&:nth-child(n+4) > div{
+					}
+
+				&:nth-child(n+7) > div{
+						text-align: left;
+						right: auto;
+						left: 0;
+					}
+
+				&:nth-child(n+10) > div{
+						text-align: right;
+						right: 0;
+						left: auto;
+					}
+
+				&:nth-child(n+13) > div{
+						text-align: left;
+						right: auto;
+						left: 0;
+					}
+
+				&:nth-child(n+16) > div{
+						text-align: right;
+						right: 0;
+						left: auto;
+					}
+			}
+
+			@media screen and (max-width: 767px) {
+				&:nth-child(odd) > div{
 					text-align: right;
 					right: 0;
-					left: auto;
-
 				}
 
-			&:nth-child(n+7) > div{
-					text-align: left;
-					right: auto;
-					left: 0;
-				}
+			}
 
-			&:nth-child(n+10) > div{
-					text-align: right;
-					right: 0;
-					left: auto;
-				}
+			
 
-			&:nth-child(n+13) > div{
-					text-align: left;
-					right: auto;
-					left: 0;
-				}
-
-			&:nth-child(n+16) > div{
-					text-align: right;
-					right: 0;
-					left: auto;
-				}
+			
 			&:hover{
 				cursor: pointer;
 				& > div{
@@ -549,9 +654,9 @@ div#modais{
 		display: block;
 	}
 	div.flexbox{
-		display: flex;
-		justify-content: center;
-		align-items: center;
+		@include display(flex);
+		 @include justify-content(center);
+		 @include align-items(center);
 
 		div.darken-overlay{
 			position: absolute;
@@ -759,74 +864,111 @@ footer#contato{
 	background-color: $roxo-escuro;
 	& > div.flexbox{
 		padding: 70px 0;
-		display: flex;
-		justify-content: space-between;
+		@include display(flex);
+		@include justify-content(space-between);
+		@media (max-width: 1024px) {
+			@include justify-content(space-around);
+			padding: 70px 20px;
+
+		}
+
+		@media (max-width: 768px) {
+			@include flex-direction(column);
+			@include justify-content(center);
+			@include align-content(center);
+			padding: 40px 20px;
+
+		}
+
+
 		div{
-			margin-right: 30px;
+			margin-right: 40px;
+			@media (max-width: 768px) {
+				margin-right: 0;
+				margin-bottom: 40px;
+			}
 			h3{
 				font-size: 2em;
 				text-align: left;
+				@media (max-width: 768px) {
+					text-align: center;
+				}
 			}
 			p{
 				color: $laranja-claro;
 				text-align: left;
+				@media (max-width: 768px) {
+					text-align: center;
+				}
 				
 			}
 
-			svg{
-				path, polygon{
-					fill: $laranja;
-				}
-			}
 			&:last-child{
-				margin-right: 0;
+				margin: 0;
 			}
-		}
-		div.logo{
 
-			svg{
-				height: 150px;
-				width: auto;
-			}
-		}
+			&.logo{
+				@include display(flex);
+				@media (max-width: 768px){
+					@include justify-content(center);
+					
+				}
 
-		div.info-contatos{
-			
-		}
-
-		div.realizacao{
-			
-			& > div.flexbox{
-				display: flex;
-				justify-content: space-between;
-				align-items: center;
-				width: 100%;
-				max-width: none;
-				a{
-			
-					margin-right: 35px;
-					&:nth-child(1){
-						width: 70px;
+				img{
+					height: 150px;
+					width: auto;
+					@media (min-width: 768px) and (max-width: 1024px) {
+						height: 14.64vw;
 					}
-					&:nth-child(2){
-						width: 230px;
-					}
-					&:last-child{
-						margin-right: 0;
-					}
-					svg{
-						width: 100%;
-						height: auto;
-						path,polygon{
-							fill: $laranja-claro;
-						}
-
-					}
+					
 				}
 			}
-			
-			
+
+			&.info-contatos{
+				
+			}
+
+			&.realizacao{
+				
+				& > div.flexbox{
+					@include display(flex);
+					@include justify-content(space-between);
+					@include align-items(center);
+					@media (max-width: 768px){
+						@include justify-content(center);
+					}
+					width: 100%;
+					max-width: none;
+					a{
+				
+						margin-right: 35px;
+						&:nth-child(1){
+							width: 70px;
+							@media (min-width: 768px) and (max-width: 1024px) {
+								width: 22%;
+							}
+						}
+						&:nth-child(2){
+							width: 230px;
+							@media (min-width: 768px) and (max-width: 1024px) {
+								height: 78%;
+							}
+						}
+						&:last-child{
+							margin-right: 0;
+						}
+						img{
+							width: 100%;
+							height: auto;
+
+						}
+					}
+				}
+				
+				
+			}
 		}
+		
 	}
 }
 

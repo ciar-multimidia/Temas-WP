@@ -38,7 +38,7 @@
 
 
 
-	<div class="container flexbox">
+	<div class="container flexbox parte-dois">
 		<div class="texto bloco2">
 			<h3>O que o curso oferece?</h3>
 			<ul>

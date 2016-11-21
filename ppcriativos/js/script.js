@@ -26,7 +26,9 @@ jQuery(document).ready(function() {
 		modaisBtFechar = contModais.find('.fechar-modal'),
 		modaisNoticias = contModais.find('.modais.m-noticias'),
 		modaisEquipe = contModais.find('.modais.m-equipe'),
-		modalAberto = false;
+		modalAberto = false,
+		ehTouch = (('ontouchstart' in window) || (navigator.msMaxTouchPoints > 0));
+
 
 
 	// atualizando os valores de width e height do container dos grafismos
@@ -35,58 +37,70 @@ jQuery(document).ready(function() {
 		heightCont = contGrafismo.height();
 	});
 	
-	// Animação ao mover o cursor sobre o intro
-	contIntro.on('mousemove', function(event) {
-		var qtdeMov = (event.pageX+event.pageY)/(widthCont+heightCont);
 
-		
-		grafismos.each(function(index, el) {
-			var valoresMov = jQuery(el).attr('data-mov').split(' ');
-			var multiplicadorFinal = qtdeMov-( parseInt(valoresMov[0])/100 );
-			if (index % 2 == 0) {
-				multiplicadorFinal = multiplicadorFinal*(-1);
-			}
-			var qtdeFinalZ = parseInt(valoresMov[1])*multiplicadorFinal;
-			var qtdeFinalR = parseInt(valoresMov[2])*multiplicadorFinal;
-
-
-			if (qtdeFinalZ > 0) {
-				jQuery(el).css('z-index', '1');
-			} else if (qtdeFinalZ < 0) {
-				jQuery(el).css('z-index', '-1');
-
-			}
-			jQuery(el).css('transform', ('rotateZ(' + qtdeFinalR +'deg)'+' translateZ('+qtdeFinalZ+'px)' ) );
-			
-
-		});	
-	});
-	// Animação ao mover o cursor sobre a parte da equipe
 	var corpo = jQuery('body');
-	corpo.on('mousemove', function(event) {
-		if (scrollTopAtual > contEquipe.offset().top - jQuery(window).height()) {
-			var xcursor = event.pageX;
-			var ycursor = event.pageY - contEquipe.offset().top;
 
-			var qtdeX = 50+(equipeMargemPerspec*(Math.round( (xcursor/jQuery(this).width()*2-1)*100)/100) ) ;
-			var qtdeY = 50+(equipeMargemPerspec*(Math.round( (ycursor/jQuery(this).height()*2-1)*100)/100) );
+	if (ehTouch == false) {
 
-			// console.log(qtdeX, qtdeY);
-			wrapEquipe.css('perspective-origin', qtdeX+'% '+qtdeY+'%');
+		// Animação ao mover o cursor sobre o intro
+		
+		contIntro.on('mousemove', function(event) {
+			var qtdeMov = (event.pageX+event.pageY)/(widthCont+heightCont);
 
-			divsEquipe.each(function(index, el) {
-				var xel = Math.round( jQuery(el).offset().left + (jQuery(el).width()/2) );
-				var yel = Math.round( jQuery(el).offset().top + (jQuery(el).height()/2)  - contEquipe.offset().top );
+			
+			grafismos.each(function(index, el) {
+				var valoresMov = jQuery(el).attr('data-mov').split(' ');
+				var multiplicadorFinal = qtdeMov-( parseInt(valoresMov[0])/100 );
+				if (index % 2 == 0) {
+					multiplicadorFinal = multiplicadorFinal*(-1);
+				}
+				var qtdeFinalZ = parseInt(valoresMov[1])*multiplicadorFinal;
+				var qtdeFinalR = parseInt(valoresMov[2])*multiplicadorFinal;
+
+
+				if (qtdeFinalZ > 0) {
+					jQuery(el).css('z-index', '1');
+				} else if (qtdeFinalZ < 0) {
+					jQuery(el).css('z-index', '-1');
+
+				}
+				jQuery(el).css('transform', ('rotateZ(' + qtdeFinalR +'deg)'+' translateZ('+qtdeFinalZ+'px)' ) );
 				
 
-				var qtde_transZ =equipeMargemZ - equipeMargemZ*( ( Math.sqrt( (xcursor-xel)*(xcursor-xel) + (ycursor-yel)*(ycursor-yel) ) ) / (Math.sqrt( contEquipe.width()*contEquipe.width() + contEquipe.height()*contEquipe.height() ) ) );
-			
+			});	
+		});
 
-				jQuery(el).css('transform', 'translateZ('+qtde_transZ+'px)');
-			});
-		}
-		
-	});
+		// Animação ao mover o cursor sobre a parte da equipe
+
+		corpo.on('mousemove', function(event) {
+			if (scrollTopAtual > contEquipe.offset().top - jQuery(window).height()) {
+				var xcursor = event.pageX;
+				var ycursor = event.pageY - contEquipe.offset().top;
+
+				var qtdeX = 50+(equipeMargemPerspec*(Math.round( (xcursor/jQuery(this).width()*2-1)*100)/100) ) ;
+				var qtdeY = 50+(equipeMargemPerspec*(Math.round( (ycursor/jQuery(this).height()*2-1)*100)/100) );
+
+				// console.log(qtdeX, qtdeY);
+				wrapEquipe.css('perspective-origin', qtdeX+'% '+qtdeY+'%');
+
+				divsEquipe.each(function(index, el) {
+					var xel = Math.round( jQuery(el).offset().left + (jQuery(el).width()/2) );
+					var yel = Math.round( jQuery(el).offset().top + (jQuery(el).height()/2)  - contEquipe.offset().top );
+					
+
+					var qtde_transZ =equipeMargemZ - equipeMargemZ*( ( Math.sqrt( (xcursor-xel)*(xcursor-xel) + (ycursor-yel)*(ycursor-yel) ) ) / (Math.sqrt( contEquipe.width()*contEquipe.width() + contEquipe.height()*contEquipe.height() ) ) );
+				
+
+					jQuery(el).css('transform', 'translateZ('+qtde_transZ+'px)');
+				});
+			}
+			
+		});
+	}
+	
+
+	
+	
 
 
 	// Se existem mais de 3 noticias, o botao de revelar mais noticias existe. Caso contrário, remova-o.

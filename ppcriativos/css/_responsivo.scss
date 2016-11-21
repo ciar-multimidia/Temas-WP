@@ -11,15 +11,15 @@
 		width: 100%;
 	}
 	
-	div#equipe div.cont-equipes {
-		justify-content: space-between;
+	// div#equipe div.cont-equipes {
+	// 	justify-content: space-between;
 
-		& > div {
-		    width: calc(50% - 60px);
-		    min-height: 100px;
-		    margin: 20px 15px;
-		}
-	}
+	// 	& > div {
+	// 	    width: calc(50% - 60px);
+	// 	    min-height: 100px;
+	// 	    margin: 20px 15px;
+	// 	}
+	// }
 
 	footer#contato > div.flexbox {
 		// flex-direction: column;
@@ -45,9 +45,9 @@
 	}
 
 
-	div#equipe div.cont-equipes > div {
-		width: 100%;
-	}
+	// div#equipe div.cont-equipes > div {
+	// 	width: 100%;
+	// }
 
 	footer#contato > div.flexbox {
 		div {
