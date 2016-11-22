@@ -40,7 +40,9 @@
 				</div>
 
 				<?php if ( get_field('video_apresentacao') ) { ?>
-					<iframe class='video_youtube' src=""></iframe>
+					<div class="video_youtube">
+						<iframe src=""></iframe>
+					</div>
 					<span class="link_video_youtube"><?php the_field('video_apresentacao')?></span>
 				<?php } ?>
 				<p><?php the_content(); ?></p>

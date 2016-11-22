@@ -136,7 +136,7 @@ jQuery(document).ready(function() {
 		contModais.addClass('db');
 		if (tipo == 'equipe') {			
 			modaisEquipe.addClass('db');
-			var iframe_yt = jQuery(modal).find('iframe.video_youtube');
+			var iframe_yt = jQuery(modal).find('div.video_youtube > iframe');
 			if (iframe_yt.length > 0) {	
 				var regexYt = /^.*(?:(?:youtu\.be\/|v\/|vi\/|u\/\w\/|embed\/)|(?:(?:watch)?\?v(?:i)?=|\&v(?:i)?=))([^#\&\?]*).*/; //http://stackoverflow.com/questions/3452546/javascript-regex-how-to-get-youtube-video-id-from-url/
 				var linkYoutube = jQuery(modal).find('span.link_video_youtube').text();
@@ -172,7 +172,7 @@ jQuery(document).ready(function() {
 			conjModais.removeClass('db');
 			contModais.removeClass('db');
 			conjModais.children('div').removeClass('db');
-			modaisEquipe.find('iframe.video_youtube').attr('src', '');
+			modaisEquipe.find('div.video_youtube > iframe').attr('src', '');
 		}, 250);
 		modalAberto = false;
 	}
@@ -215,6 +215,7 @@ jQuery(document).ready(function() {
 	// Eventos ao rolar a página
 	var scrollTopAtual = jQuery(window).scrollTop();
 	var menuGlobal = jQuery('#menu-site');
+	var globalSecoes = menuGlobal.find('ul > li').not('.especial');
 	jQuery(window).on('scroll', function(event) {
 		var novoScrollTop = jQuery(this).scrollTop();
 		if (novoScrollTop >= heightCont) {
@@ -231,12 +232,37 @@ jQuery(document).ready(function() {
 
 			}
 		}
+
+		var secaoAtual;
+		var margemNovaSecao = jQuery(window).height()*0.3;
+		globalSecoes.each(function(index, el) {
+			if (novoScrollTop > jQuery( jQuery(el).find('a').attr('href') ).offset().top - margemNovaSecao ) {
+				secaoAtual = jQuery(el);
+			}
+		});
+
+		
+
+		if (secaoAtual) {
+			if (secaoAtual.find('a').attr('href') == globalSecoes.filter('.secao-atual').eq(0).find('a').attr('href') ) {
+
+			} else{
+				globalSecoes.filter('.secao-atual').removeClass('secao-atual');
+				secaoAtual.addClass('secao-atual');
+				menuGlobal.stop().animate(
+					{scrollLeft:
+						secaoAtual.position().left+(secaoAtual.width()/2)- (menuGlobal.width()/2)
+					}, 100);	
+			}
+		}
+
+
 		scrollTopAtual = novoScrollTop;
 
 	});
 
 	// Eventos ao clicar nos botões do menu global
-	menuGlobal.children('ul').children('li').children('a').not('.especial').on('click', function(event) {
+	globalSecoes.find('a').on('click', function(event) {
 		event.preventDefault();
 		var destino = jQuery(this).attr('href');
 		var elDestino = jQuery(destino);

@@ -42,7 +42,7 @@ div.posrel{
 
 div.container{
 	margin: 0 auto;
-	padding: 0 20px;
+	padding: 0 15px;
 	display: block;
 	width: 100%;
 	@media screen and (min-width: 1024px) {
@@ -97,24 +97,55 @@ nav#menu-site{
 	left: 0;
 	padding: 15px;
 	z-index: 2;
+	@media screen and (max-width: 768px) {
+	    width: 100%;
+	    overflow: scroll;
+		background-color: $roxo-escuro;
+		padding: 0px;
+
+	}
 	ul{
 		padding: 0;
 		position: relative;
+		@media screen and (max-width: 768px) {
+		    white-space: nowrap;
+		}
 		li{
 			display: inline-block;
 			margin: 0 0.4vw;
 			padding: 0.3vw 0.6vw;
 			font-size: calc(7px + 0.7vw);
 			font-family: $fonte-titulo;
+			@media screen and (max-width: 768px) {
+				font-size: 15px;
+				margin: 0;
+				padding: 12px 18px;
+				&:first-child{
+					padding-left: 22px;
+				}
+			}
 			a{
 				color: $laranja;
 				@include transition(color 0.1s linear);
 			}
-			&:hover{
-				a{
-					cursor: pointer;
-					color: $laranja-claro;
+			@media screen and (min-width: 768px) {
+				&:hover{
+					a{
+						cursor: pointer;
+						color: $laranja-claro;
+					}
 				}
+			}
+			
+
+			@media screen and (max-width: 768px) {
+				&.secao-atual{
+					border-bottom: 3px solid $laranja-claro;
+					a{
+						color: $laranja-claro;
+					}
+				}
+				
 			}
 			&.especial{
 				background-color: $laranja;
@@ -126,6 +157,14 @@ nav#menu-site{
 					color: $roxo;
 
 					}
+				}
+
+				@media screen and (max-width: 768px) {
+					@include transform(skew(0deg));
+					div{
+						@include transform(skew(0deg));
+					}
+					
 				}
 				&:hover{
 					background-color: $laranja-claro;
@@ -139,7 +178,11 @@ nav#menu-site{
 		position: fixed;
 		background-color: $roxo-escuro;
 		@include display(flex);
-		 @include justify-content(center);
+		@include justify-content(center);
+		@media screen and (max-width: 768px) {
+			display: block;
+
+		}
 		@include transform(translateY(-100%));
 		&.transition{
 			@include transition(transform 0.2s ease-out);		
@@ -166,7 +209,7 @@ div#intro{
 	margin: 0;
 	padding: 0;
 	position: relative;
-	overflow: hidden;
+	// overflow: hidden;
 
 	
 	div.grafismointro{
@@ -222,10 +265,14 @@ div#intro{
 
 	div#logointro{
 		position: absolute;
-		top: 50%;
+		top: calc(50% + 30px);	
 		left: 100px;
 		@include transform(translate(0,-50%));
 		width: 30%;
+
+		@media (min-width: 1024px) and (max-height: 768px){
+			width: 25%;	
+		}
 		@media (max-width: 768px) and (orientation: portrait){
 			left: 50%;
 			@include transform(translate(-50%,-50%));
@@ -296,6 +343,12 @@ div#noticias{
 			 @include justify-content(flex-start);
 			@include flex-wrap(wrap);
 			margin-left: -10px;
+			width: calc(100% + 10px);
+			@media (max-width: 640px) {
+				margin-left: 0;
+				width: auto;
+
+			}
 
 
 
@@ -304,6 +357,11 @@ div#noticias{
 				width: calc(33.333333% - 20px);
 				@media (max-width: 1024px) {
 					width: calc(50% - 20px);
+				}
+				@media (max-width: 640px) {
+					margin: 7px 0;
+					width: 100%;
+					padding: 20px 16px 40px;
 				}
 				margin: 10px;
 				padding: 20px 16px 40px;
@@ -324,6 +382,9 @@ div#noticias{
 				}
 				p{
 					color: black;
+					@media screen and (max-width: 768px) {
+						line-height: 1.4;
+					}
 				}
 				a.saibamais{
 					padding-bottom: 10px;
@@ -517,7 +578,7 @@ div#equipe{
 	padding-bottom: 200px;
 
 	@media screen and (max-width: 768px) {
-			padding-bottom: 100px;
+			padding-bottom: 60px;
 		}
 	h2{
 		font-size: 3.6em;
@@ -655,8 +716,8 @@ div#modais{
 	}
 	div.flexbox{
 		@include display(flex);
-		 @include justify-content(center);
-		 @include align-items(center);
+		@include justify-content(center);
+		@include align-items(center);
 
 		div.darken-overlay{
 			position: absolute;
@@ -665,7 +726,7 @@ div#modais{
 			width: 100%;
 			height: 100%;
 			opacity: 0;
-			z-index: 0;
+			// z-index: 0;
 			background-color: transparentize($roxo-escuro, 0.1);
 
 			@include transition(opacity 0.2s linear);
@@ -679,10 +740,16 @@ div#modais{
 			top: 0;
 			right: 0;
 			opacity: 0;
-			z-index: 1;
+			// z-index: 1;
 			margin: 5px 5px;
 			width: 60px;
 			height: 60px;
+			@media screen and (max-width: 1024px) {
+				width: 35px;
+				height: 35px;
+				margin: 10px;
+
+			}
 			@include transition(opacity 0.2s linear);
 			&.visivel{
 				opacity: 1;
@@ -707,11 +774,16 @@ div#modais{
 		}
 
 		div.modais{
-			z-index: 3;
+			// z-index: 3;
 			overflow-y: scroll;
 			display: none;
 			margin: 50px 0;
 			max-height: calc(100% - 100px);
+			@media screen and (max-width: 1024px) {
+				margin: 45px 15px 15px;
+				max-height: calc(100% - 60px);
+
+			}
 
 			&.db{
 				display: block;
@@ -737,6 +809,13 @@ div#modais{
 				& > div{
 					background-color: $branco-roxo;
 					padding: 60px 100px 80px;
+					@media screen and (max-width: 768px) {
+						padding: 30px 50px 40px;
+					}
+
+					@media screen and (max-width: 480px) {
+						padding: 15px 20px;
+					}
 					h4{
 						font-size: 1em;
 						color: rgba(0,0,0,0.6);
@@ -750,14 +829,20 @@ div#modais{
 					}
 					p, ol, ul, li{
 						color: black;
+						// font-size: 0.95em;
+						@media screen and (max-width: 768px) {
+							line-height: 1.4;
+						}
 					}
 					p{
 						margin-bottom: 15px;
+						word-wrap: break-word;
 					}
 
 					a{
 						color: $roxo;
 						font-weight: bold;
+						word-break: break-all;
 						&:hover{
 							cursor: pointer;
 							text-decoration: underline;
@@ -779,6 +864,10 @@ div#modais{
 						width: calc( 100% - 40px );
 						margin: 15px auto;
 						height: auto;
+
+						@media screen and (max-width: 768px) {
+							width: 100%;
+						}
 					}
 				}
 			}
@@ -788,6 +877,10 @@ div#modais{
 				& > div{
 					background-color: $roxo;
 					padding: 30px 24px 42px;
+
+					@media screen and (max-width: 768px) {
+						padding: 20px 20px 30px;
+					}
 					color: $laranja;
 					div.nome-e-lattes{
 							vertical-align: baseline;
@@ -801,6 +894,11 @@ div#modais{
 							margin-right: 20px;
 							display: inline-block;
 							vertical-align: baseline;
+							@media screen and (max-width: 768px) {
+								display: block;
+								margin-right: 0;
+								margin-bottom: 10px;
+							}
 
 							
 
@@ -813,6 +911,10 @@ div#modais{
 							color: $laranja;
 							display: inline-block;
 							vertical-align: baseline;
+							@media screen and (max-width: 768px) {
+								height: 30px;
+								
+							}
 
 							
 							a{
@@ -831,15 +933,34 @@ div#modais{
 						}
 						
 					}
-					iframe.video_youtube{
+					div.video_youtube{
 						position: relative;
 						overflow: hidden;
 						width: 450px;
-						height: 260px;
 						display: inline-block;
 						vertical-align: top;
 						margin-right: 15px;
 						float: left;
+						&:before {
+						  padding-top: 56.25%;
+						  display: block;
+						  content: "";
+						  width: 100%;
+						}
+						> iframe {
+						  position: absolute;
+						  top: 0;
+						  left: 0;
+						  width: 100%;
+						  height: 100%;
+						  margin: 0;
+						  padding: 0;
+						}
+						@media screen and (max-width: 768px) {
+							width: 100%;
+							margin-right: 0;
+							margin-bottom: 15px;		
+						}
 					}
 					
 					p{
