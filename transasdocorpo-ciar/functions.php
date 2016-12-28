@@ -24,8 +24,6 @@ require_once(get_template_directory().'/func/post_type_ocupamadalena.php' );
 require_once(get_template_directory().'/func/post_type_duvidas.php' );
 
 
-
-
 // ========================================//
 // OUTRAS FUNCOES
 // ========================================// 
@@ -33,6 +31,7 @@ require_once(get_template_directory().'/func/opcoes_layout.php' );
 require_once(get_template_directory().'/func/scripts.php' );
 require_once(get_template_directory().'/func/paginacao.php' );
 require_once(get_template_directory().'/func/shortcodes.php' );
+require_once(get_template_directory().'/func/widgets_dashboard.php' );
 
 // require_once(get_template_directory().'/func/campos_personalizados.php' );
 
@@ -41,29 +40,30 @@ require_once(get_template_directory().'/func/shortcodes.php' );
 // REMOVER E ADICIONAR ITENS MENU LATERAL
 // ========================================// 
 function manipula_menus(){
-  // remove_menu_page( 'index.php' );                  //Dashboard
-  remove_menu_page( 'edit.php' );                   //Posts
-  remove_menu_page( 'upload.php' );                 //Media
-  remove_menu_page( 'edit.php?post_type=page' );    //Pages
-  remove_menu_page( 'edit-comments.php' );          //Comments
-  remove_menu_page( 'themes.php' );                 //Appearance
-  remove_menu_page( 'plugins.php' );                //Plugins
-  // remove_menu_page( 'users.php' );                  //Users
-  remove_menu_page( 'tools.php' );                  //Tools
-  remove_menu_page( 'link-manager.php' );                  //Links
-  remove_menu_page( 'options-general.php' );        //Settings
-  remove_menu_page( 'edit.php?post_type=acf' );  // Advance custom fields 
-  remove_menu_page( 'wpcf7' );   // Contact Form 7 
 
+  $user_id = get_current_user_id();
+  if ($user_id !== 1) {
+    // remove_menu_page( 'index.php' );
+    remove_menu_page( 'edit.php' );
+    remove_menu_page( 'upload.php' );
+    remove_menu_page( 'edit.php?post_type=page' );
+    remove_menu_page( 'edit-comments.php' );
+    remove_menu_page( 'themes.php' );
+    remove_menu_page( 'plugins.php' );
+    // remove_menu_page( 'users.php' );
+    remove_menu_page( 'tools.php' );
+    remove_menu_page( 'link-manager.php' );
+    remove_menu_page( 'options-general.php' );
+    remove_menu_page( 'edit.php?post_type=acf' );
+    remove_menu_page( 'wpcf7' );
 
-  $customize_url = add_query_arg( 'return', urlencode( wp_unslash( $_SERVER['REQUEST_URI'] ) ), 'customize.php' );
-  remove_submenu_page('themes.php',$customize_url);
-  remove_submenu_page('themes.php','customize.php'); 
-  remove_submenu_page('themes.php','nav-menus.php'); 
-  remove_submenu_page('themes.php','theme-editor.php'); 
-
-
-  remove_submenu_page('options-general.php','rs-advanced-search'); 
+    $customize_url = add_query_arg( 'return', urlencode( wp_unslash( $_SERVER['REQUEST_URI'] ) ), 'customize.php' );
+    remove_submenu_page('themes.php',$customize_url);
+    remove_submenu_page('themes.php','customize.php'); 
+    remove_submenu_page('themes.php','nav-menus.php'); 
+    remove_submenu_page('themes.php','theme-editor.php'); 
+    remove_submenu_page('options-general.php','rs-advanced-search'); 
+  }
 
 
   // adicionar/remover submenus a: acoes
@@ -124,21 +124,25 @@ add_action( 'admin_menu', 'edit_admin_menus', 999 );
 // ========================================//
 function my_admin_bar_render() {
     global $wp_admin_bar;
-    $wp_admin_bar->remove_menu('wp-logo');       
-    $wp_admin_bar->remove_menu('about');         
-    $wp_admin_bar->remove_menu('wporg');         
-    $wp_admin_bar->remove_menu('documentation'); 
-    $wp_admin_bar->remove_menu('support-forums');
-    $wp_admin_bar->remove_menu('feedback');      
-    // $wp_admin_bar->remove_menu('site-name');  
-    // $wp_admin_bar->remove_menu('view-site');     
-    // $wp_admin_bar->remove_menu('updates');       
-    $wp_admin_bar->remove_menu('comments');   
-    $wp_admin_bar->remove_menu('customize');   
-    $wp_admin_bar->remove_menu('new-content');   
-    $wp_admin_bar->remove_menu('w3tc');          
-    // $wp_admin_bar->remove_menu('jetpack');       
-    // $wp_admin_bar->remove_menu('my-account'); 
+
+    $user_id = get_current_user_id();
+    if ($user_id !== 1) {
+      $wp_admin_bar->remove_menu('wp-logo');       
+      $wp_admin_bar->remove_menu('about');         
+      $wp_admin_bar->remove_menu('wporg');         
+      $wp_admin_bar->remove_menu('documentation'); 
+      $wp_admin_bar->remove_menu('support-forums');
+      $wp_admin_bar->remove_menu('feedback');      
+      // $wp_admin_bar->remove_menu('site-name');  
+      // $wp_admin_bar->remove_menu('view-site');     
+      // $wp_admin_bar->remove_menu('updates');       
+      $wp_admin_bar->remove_menu('comments');   
+      $wp_admin_bar->remove_menu('customize');   
+      $wp_admin_bar->remove_menu('new-content');   
+      $wp_admin_bar->remove_menu('w3tc');          
+      // $wp_admin_bar->remove_menu('jetpack');       
+      // $wp_admin_bar->remove_menu('my-account'); 
+    }
 }
 add_action( 'wp_before_admin_bar_render', 'my_admin_bar_render', 999 );
 
@@ -185,6 +189,7 @@ add_theme_support( 'post-thumbnails' );
 // HABILITAR LINKS
 // ========================================//
 add_filter( 'pre_option_link_manager_enabled', '__return_true' );
+
 
 
 // ========================================//
@@ -318,26 +323,29 @@ function galeria_custom( $output, $attr ) {
 }
 
 
-
 // ========================================//
-// MENSAGEM SUPORTE / REMOVE WIDGETS DA DASHBOARD
+// DASHBOARD
 // ========================================//
-add_action('wp_dashboard_setup', 'dashboard_custom_painel');
-function dashboard_custom_painel() {
-  global $wp_meta_boxes;
-  wp_add_dashboard_widget('custom_help_widget', 'Suporte', 'dashboard_custom_painel_texto');
-}
+// add_action('wp_dashboard_setup', 'dashboard_custom_painel2');
+// function dashboard_custom_painel2() {
+//   global $wp_meta_boxes;
+//   $user_id = get_current_user_id();
+//   if ($user_id == 1) { wp_add_dashboard_widget('custom_help_widget2', 'Área admin', 'dashboard_custom_painel_texto2'); }
+// }
 
-function dashboard_custom_painel_texto() {
-  echo '
-    <p>Qualquer dúvida entre em contato conosco pelo e-mail <a href="mailto:multimidia@ciar.ufg.br">multimidia@ciar.ufg.br</a>. Tratar com Ana Cador ou Victor Godoi.</p>
-  ';
-}
+// function dashboard_custom_painel_texto2() {
+//   $user_id = get_current_user_id();
+//   if ($user_id == 1) { echo '
+//     <p>Qualquer dúvida entre em contato conosco pelo e-mail <a href="mailto:multimidia@ciar.ufg.br">multimidia@ciar.ufg.br</a>. Tratar com Ana Cador ou Victor Godoi.</p>
+//   '; }
+// }
+
 
 
 // Remove dashboard widgets
 function remove_dashboard_meta() {
-  // if ( ! current_user_can( 'manage_options' ) ) {
+  $user_id = get_current_user_id();
+  if ($user_id !== 1) {
     remove_meta_box( 'dashboard_incoming_links', 'dashboard', 'normal' );
     remove_meta_box( 'dashboard_plugins', 'dashboard', 'normal' );
     remove_meta_box( 'dashboard_primary', 'dashboard', 'normal' );
@@ -347,7 +355,7 @@ function remove_dashboard_meta() {
     remove_meta_box( 'dashboard_recent_comments', 'dashboard', 'normal' );
     remove_meta_box( 'dashboard_right_now', 'dashboard', 'normal' );
     remove_meta_box( 'dashboard_activity', 'dashboard', 'normal');
-  // }
+  }
 }
 add_action( 'admin_init', 'remove_dashboard_meta' ); 
 

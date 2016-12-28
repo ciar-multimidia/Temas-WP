@@ -419,67 +419,7 @@ function askme_pagination($pages = '', $range = 5)
 // ========================================//
 // ESTATISTICAS NO PAINEL
 // ========================================// 
-add_action('wp_dashboard_setup', 'painel_de_duvidas');
-function painel_de_duvidas() {
-  global $wp_meta_boxes;
-  wp_add_dashboard_widget('painel_de_duvidas', 'Painel de dúvidas', 'mostra_painel_de_duvidas');
-}
 
-function mostra_painel_de_duvidas() {
-?>
-    <div id="dashboard_right_now">
-    <ul>
-        <li class="post-count">
-            <?php
-            $type = 'askme';
-            $args = array(
-                'post_type' => $type,
-                'post_status' => 'publish',
-                'posts_per_page' => -1);
-
-            $my_query = query_posts( $args );
-            ?>
-            
-            <?php if(count($my_query) == 1) {
-                echo "<a href='edit.php?post_type=askme&post_status=publish'>";
-                echo count($my_query);
-                echo " dúvida respondida</a>";
-            } ?>
-
-            <?php if(count($my_query) > 1) {
-                echo "<a href='edit.php?post_type=askme&post_status=publish'>";
-                echo count($my_query);
-                echo " dúvidas respondidas</a>";
-            } ?>
-        </li>
-        <li class="comment-count">
-            <?php
-            $args = array(
-                'post_type' => $type,
-                'post_status' => 'draft',
-                'posts_per_page' => -1);
-
-            $my_query = query_posts( $args );
-            ?>
-
-            <?php if(count($my_query) == 1) {
-                echo "<a href='edit.php?post_type=askme&post_status=draft'>";
-                echo count($my_query);
-                echo " dúvida aguardando</a>";
-            } ?>
-
-            <?php if(count($my_query) > 1) {
-                echo "<a href='edit.php?post_type=askme&post_status=draft'>";
-                echo count($my_query);
-                echo " dúvidas aguardando</a>";
-            } ?>
-        </li>
-    </ul>
-    <!-- <a href="edit.php?post_type=askme&post_status=publish" class="button">Ver todas</a> -->
-    <a href="edit.php?post_type=askme&post_status=draft" class="button">Responder dúvidas pendentes</a>
-    </div>
-<?php wp_reset_query();
-}
 
 
 // function askme_stats() {
