@@ -8,7 +8,7 @@ function add_opcoes_layout_init() {
 } 
 function add_opcoes_layout_add_page() {
     // add_theme_page( __( 'Opções do tema' ), __( 'Opções do tema' ), 'edit_theme_options', 'opcoes_layout', 'add_opcoes_layout_do_page' );
-    add_submenu_page( 'options-general.php', 'Opções do tema', 'Opções do tema',
+    add_submenu_page( 'index.php', 'Informações do site', 'Informações do site',
     'edit_theme_options', 'opcoes_layout', 'add_opcoes_layout_do_page');
 }
 function add_opcoes_layout_do_page() {
@@ -21,10 +21,10 @@ function add_opcoes_layout_do_page() {
     ?>
     
 
-    <div class="painel-opcoes-tema">
+    <div class="wrap painel-opcoes-tema">
 
         <link rel="stylesheet" href="<?php bloginfo('template_url'); ?>/func/css/painel.css" TYPE="text/css" MEDIA="screen">
-        <h1>Opções do tema</h1>
+        <h1 class="wp-heading-inline">Informações do site</h1>
     
     <?php //if ( false !== $_REQUEST['settings-updated'] ) : echo '<p>&nbsp;</p><div id="message" class="updated"><p><strong>Pronto!</strong> Tudo salvo.</p></div>'; endif; ?> 
 
@@ -57,6 +57,6 @@ function add_opcoes_layout_do_page() {
  
 <?php } 
     // ========================================//
-    // INICIO INTERFACE OPCOES 
+    // FIM INTERFACE OPCOES 
     // ========================================// 
 ?>

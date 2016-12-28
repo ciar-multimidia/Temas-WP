@@ -3,7 +3,7 @@ add_action( 'init', 'post_type_informativos' );
 function post_type_informativos() {
 
   $labels = array(
-      'name' => _x('Informativos', 'post type general name'),
+      'name' => _x('Biblioteca - Informativos', 'post type general name'),
       'singular_name' => _x('Informativos', 'post type singular name'),
       'add_new' => _x('Adicionar informativo', 'noticias'),
       'add_new_item' => __('Adicionar informativo'),

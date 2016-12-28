@@ -4,23 +4,26 @@
 // POST TYPES
 // ========================================// 
 
-require_once(get_template_directory().'/func/post_type_noticias.php' );
-require_once(get_template_directory().'/func/post_type_artigos.php' );
-require_once(get_template_directory().'/func/post_type_eventos.php' );
-
 require_once(get_template_directory().'/func/post_type_institucional.php' );
 require_once(get_template_directory().'/func/post_type_institucional_equipe.php' );
 
-require_once(get_template_directory().'/func/post_type_videos.php' );
-require_once(get_template_directory().'/func/post_type_galeria.php' );
+require_once(get_template_directory().'/func/post_type_biblioteca.php' );
+require_once(get_template_directory().'/func/post_type_biblioteca_artigos.php' );
+require_once(get_template_directory().'/func/post_type_biblioteca_informativos.php' );
+require_once(get_template_directory().'/func/post_type_biblioteca_publicacoes.php' );
+
+require_once(get_template_directory().'/func/post_type_noticias.php' );
+require_once(get_template_directory().'/func/post_type_noticias_eventos.php' );
+
+require_once(get_template_directory().'/func/post_type_acoes.php' );
+require_once(get_template_directory().'/func/post_type_acoes_producoes.php' );
+require_once(get_template_directory().'/func/post_type_acoes_pesquisas.php' );
+
+require_once(get_template_directory().'/func/post_type_multimidia.php' );
+require_once(get_template_directory().'/func/post_type_ocupamadalena.php' );
 require_once(get_template_directory().'/func/post_type_duvidas.php' );
 
-require_once(get_template_directory().'/func/post_type_oferecemos.php' );
-require_once(get_template_directory().'/func/post_type_oferecemos_producoes.php' );
-require_once(get_template_directory().'/func/post_type_oferecemos_pesquisas.php' );
-require_once(get_template_directory().'/func/post_type_oferecemos_publicacoes.php' );
-require_once(get_template_directory().'/func/post_type_oferecemos_informativos.php' );
-require_once(get_template_directory().'/func/post_type_oferecemos_filmes.php' );
+
 
 
 // ========================================//
@@ -41,14 +44,15 @@ function manipula_menus(){
   // remove_menu_page( 'index.php' );                  //Dashboard
   remove_menu_page( 'edit.php' );                   //Posts
   remove_menu_page( 'upload.php' );                 //Media
-  // remove_menu_page( 'edit.php?post_type=page' );    //Pages
+  remove_menu_page( 'edit.php?post_type=page' );    //Pages
   remove_menu_page( 'edit-comments.php' );          //Comments
   remove_menu_page( 'themes.php' );                 //Appearance
-  // remove_menu_page( 'plugins.php' );                //Plugins
-  remove_menu_page( 'users.php' );                  //Users
+  remove_menu_page( 'plugins.php' );                //Plugins
+  // remove_menu_page( 'users.php' );                  //Users
   remove_menu_page( 'tools.php' );                  //Tools
-  // remove_menu_page( 'options-general.php' );        //Settings
-  // remove_menu_page( 'edit.php?post_type=acf' );  // Advance custom fields 
+  remove_menu_page( 'link-manager.php' );                  //Links
+  remove_menu_page( 'options-general.php' );        //Settings
+  remove_menu_page( 'edit.php?post_type=acf' );  // Advance custom fields 
   remove_menu_page( 'wpcf7' );   // Contact Form 7 
 
 
@@ -62,21 +66,39 @@ function manipula_menus(){
   remove_submenu_page('options-general.php','rs-advanced-search'); 
 
 
-  // adicionar submenus a: oferecemos
-  add_submenu_page( 'edit.php?post_type=oferecemos', 'Produções', 'Produções',
+  // adicionar/remover submenus a: acoes
+  remove_submenu_page('edit.php?post_type=acoes','post-new.php?post_type=acoes');
+  add_submenu_page( 'edit.php?post_type=acoes', 'Produções', 'Produções',
     'manage_options', 'edit.php?post_type=producoes');
-  add_submenu_page( 'edit.php?post_type=oferecemos', 'Pesquisas', 'Pesquisas',
+  add_submenu_page( 'edit.php?post_type=acoes', 'Pesquisas', 'Pesquisas',
     'manage_options', 'edit.php?post_type=pesquisas');
-  add_submenu_page( 'edit.php?post_type=oferecemos', 'Publicações', 'Publicações',
-    'manage_options', 'edit.php?post_type=publicacoes');
-  add_submenu_page( 'edit.php?post_type=oferecemos', 'Informativos', 'Informativos',
-    'manage_options', 'edit.php?post_type=informativos');
-  add_submenu_page( 'edit.php?post_type=oferecemos', 'Filmes', 'Filmes',
-    'manage_options', 'edit.php?post_type=filmes');
+  add_submenu_page( 'edit.php?post_type=acoes', 'Responder dúvida', 'Responder dúvida',
+    'manage_options', 'edit.php?post_type=askme');
 
-  // adicionar submenu a: institucional
+  // adicionar/remover submenus a: biblioteca  
+  remove_submenu_page('edit.php?post_type=biblioteca','post-new.php?post_type=biblioteca'); 
+  add_submenu_page( 'edit.php?post_type=biblioteca', 'Artigos', 'Artigos',
+    'manage_options', 'edit.php?post_type=artigos');
+  add_submenu_page( 'edit.php?post_type=biblioteca', 'Publicações', 'Publicações',
+    'manage_options', 'edit.php?post_type=publicacoes');
+  add_submenu_page( 'edit.php?post_type=biblioteca', 'Informativos', 'Informativos',
+    'manage_options', 'edit.php?post_type=informativos');
+
+
+  // adicionar/remover submenu a: institucional
+  remove_submenu_page('edit.php?post_type=institucional','post-new.php?post_type=institucional');
   add_submenu_page( 'edit.php?post_type=institucional', 'Equipe', 'Equipe',
     'manage_options', 'edit.php?post_type=equipe');
+  add_submenu_page( 'edit.php?post_type=institucional', 'Links', 'Links',
+    'manage_options', 'link-manager.php');
+
+
+  // adicionar/remover submenu a: noticias
+  add_submenu_page( 'edit.php?post_type=noticias', 'Eventos', 'Eventos',
+    'manage_options', 'edit.php?post_type=eventos');
+  add_submenu_page( 'edit.php?post_type=noticias', 'Adicionar evento', 'Adicionar evento',
+    'manage_options', 'post-new.php?post_type=eventos');
+
 }
 add_action( 'admin_menu', 'manipula_menus', 999 );
 
@@ -85,16 +107,16 @@ add_action( 'admin_menu', 'manipula_menus', 999 );
 // ========================================//
 // EDITAR NOMES MENU LATERAL
 // ========================================//
-// function edit_admin_menus() {
-//     global $menu;
-//     global $submenu;
+function edit_admin_menus() {
+    global $menu;
+    global $submenu;
     
-//     $menu[60][0] = 'Layout'; 
-//     $submenu['themes.php'][5][0] = 'Escolher tema';
+    $menu[2][0] = 'Administração'; 
+    $submenu['index.php'][0][0] = 'Painel inicial';
+    $submenu['index.php'][10][0] = 'Atualizações do sistema';
      
-// }
-// add_action( 'admin_menu', 'edit_admin_menus', 999 );
-
+}
+add_action( 'admin_menu', 'edit_admin_menus', 999 );
 
 
 // ========================================//
@@ -109,12 +131,13 @@ function my_admin_bar_render() {
     $wp_admin_bar->remove_menu('support-forums');
     $wp_admin_bar->remove_menu('feedback');      
     // $wp_admin_bar->remove_menu('site-name');  
-    $wp_admin_bar->remove_menu('view-site');     
+    // $wp_admin_bar->remove_menu('view-site');     
     // $wp_admin_bar->remove_menu('updates');       
     $wp_admin_bar->remove_menu('comments');   
+    $wp_admin_bar->remove_menu('customize');   
     $wp_admin_bar->remove_menu('new-content');   
     $wp_admin_bar->remove_menu('w3tc');          
-    $wp_admin_bar->remove_menu('jetpack');       
+    // $wp_admin_bar->remove_menu('jetpack');       
     // $wp_admin_bar->remove_menu('my-account'); 
 }
 add_action( 'wp_before_admin_bar_render', 'my_admin_bar_render', 999 );
@@ -126,18 +149,23 @@ add_action( 'wp_before_admin_bar_render', 'my_admin_bar_render', 999 );
 function replace_admin_menu_icons_css() {
     ?>
     <style>
+       #adminmenu .dashicons-dashboard:before {content: "\f107";}
        #adminmenu .dashicons-admin-comments:before {content: "\f125";}
        #adminmenu .dashicons-admin-post:before {content: "\f227";}
-       /*#adminmenu .dashicons-admin-appearance:before {content: "\f116";}*/
-       /*#adminmenu #toplevel_page_jetpack {display: none !important;}*/
+       #adminmenu .dashicons-admin-users:before {content: "\f307";}
 
-       #adminmenu, #adminmenu .wp-submenu, #adminmenuback, #adminmenuwrap {width: 190px;}
-       #wpcontent, #wpfooter {margin-left: 190px;}
-       #adminmenu .wp-not-current-submenu .wp-submenu, .folded #adminmenu .wp-has-current-submenu .wp-submenu {min-width: 190px;}
-       #adminmenu .wp-submenu {left: 190px;}
+       .wp-admin #wpadminbar #wp-admin-bar-site-name > .ab-item:before {content: "\f472";}
+
+       #adminmenu, #adminmenu .wp-submenu, #adminmenuback, #adminmenuwrap {width: 210px;}
+       #wpcontent, #wpfooter {margin-left: 210px;}
+       #adminmenu .wp-not-current-submenu .wp-submenu, .folded #adminmenu .wp-has-current-submenu .wp-submenu {min-width: 210px;}
+       #adminmenu .wp-submenu {left: 210px;}
 
        /*customizando colunas */
        .manage-column.column-fotogaleria {width: 150px}
+
+       /*remover painel welcome*/
+       #welcome-panel.welcome-panel, label[for=wp_welcome_panel-hide] {display: none;}
     </style>
     <?php
 }
@@ -178,48 +206,18 @@ add_filter( 'script_loader_src', 'scripts_remove_versao', 9999 );
 
 
 // ========================================//
-// LARGURA COLUNA PRINCIPAL
+// MELHORIA NA NAVEGACAO - TITLE DA PAGINA NO PAINEL
 // ========================================//
-if ( ! isset( $content_width ) ) {
-    $content_width = 940;
+add_filter('admin_title', 'my_admin_title', 10, 2);
+function my_admin_title($admin_title, $title) {
+    return $title.' &bull; '.get_bloginfo('name');
 }
 
 
+
 // ========================================//
-// GALERIA WP
+// GALERIA WP // referencia: http://wordpress.stackexchange.com/questions/115368/overide-gallery-default-link-to-settings/169491#169491
 // ========================================//
-// add_filter( 'gallery_style', 'my_gallery_style', 99 );
-// function my_gallery_style() {
-//   return "<div class='galeria-foto'></div>";
-// }
-// add_filter( 'use_default_gallery_style', '__return_false' );
-
-// add_filter('post_gallery','customFormatGallery',10,2);
-// function customFormatGallery($string,$attr){
-//     $output = "<div class=\"galeria\">";
-//     $posts = get_posts(array(
-//             'include' => $attr['ids'],
-//             'post_type' => 'attachment',
-//             'order' => ASC,
-//             'alt' => get_post_meta( $imagePost->ID, '_wp_attachment_image_alt', true ),
-//             'caption' => $imagePost->post_excerpt,
-//             'description' => $imagePost->post_content,
-//             'href' => get_permalink( $imagePost->ID )           
-
-//     ));
-//     $legenda = get_the_title($imagePost->ID);
-
-//     foreach($posts as $imagePost){
-//         $output .= "<a href='".wp_get_attachment_image_src($imagePost->ID, 'large')[0]."' rel='galeria' title='".$imagePost->post_excerpt."'><img src='".wp_get_attachment_image_src($imagePost->ID)[0]."' alt='".$imagePost->post_excerpt."'></a>";
-//     }
-
-
-//     $output .= "</div>";
-//     return $output;
-// }
-
-
-// referencia: http://wordpress.stackexchange.com/questions/115368/overide-gallery-default-link-to-settings/169491#169491
 add_filter( 'post_gallery', 'galeria_custom', 10, 2 );
 function galeria_custom( $output, $attr ) {
     $post = get_post();
@@ -324,17 +322,18 @@ function galeria_custom( $output, $attr ) {
 // ========================================//
 // MENSAGEM SUPORTE / REMOVE WIDGETS DA DASHBOARD
 // ========================================//
-// add_action('wp_dashboard_setup', 'dashboard_custom_painel');
-// function dashboard_custom_painel() {
-//   global $wp_meta_boxes;
-//   wp_add_dashboard_widget('custom_help_widget', 'Contato', 'dashboard_custom_painel_texto');
-// }
+add_action('wp_dashboard_setup', 'dashboard_custom_painel');
+function dashboard_custom_painel() {
+  global $wp_meta_boxes;
+  wp_add_dashboard_widget('custom_help_widget', 'Suporte', 'dashboard_custom_painel_texto');
+}
 
-// function dashboard_custom_painel_texto() {
-//   echo '
-    
-//   ';
-// }
+function dashboard_custom_painel_texto() {
+  echo '
+    <p>Qualquer dúvida entre em contato conosco pelo e-mail <a href="mailto:multimidia@ciar.ufg.br">multimidia@ciar.ufg.br</a>. Tratar com Ana Cador ou Victor Godoi.</p>
+  ';
+}
+
 
 // Remove dashboard widgets
 function remove_dashboard_meta() {
@@ -346,10 +345,26 @@ function remove_dashboard_meta() {
     remove_meta_box( 'dashboard_quick_press', 'dashboard', 'side' );
     remove_meta_box( 'dashboard_recent_drafts', 'dashboard', 'side' );
     remove_meta_box( 'dashboard_recent_comments', 'dashboard', 'normal' );
-    // remove_meta_box( 'dashboard_right_now', 'dashboard', 'normal' );
+    remove_meta_box( 'dashboard_right_now', 'dashboard', 'normal' );
     remove_meta_box( 'dashboard_activity', 'dashboard', 'normal');
   // }
 }
 add_action( 'admin_init', 'remove_dashboard_meta' ); 
+
+// remover welcome painel
+add_action( 'load-index.php', 'hide_welcome_panel' );
+function hide_welcome_panel() {
+    $user_id = get_current_user_id();
+    if ( 0 !== get_user_meta( $user_id, 'show_welcome_panel', true ) )
+        update_user_meta( $user_id, 'show_welcome_panel', 0 );
+}
+
+
+// mensagem rodape admin
+function remove_footer_admin () {
+  echo 'Projetado por <a href="http://ciar.ufg.br">Ciar UFG</a> através da plataforma <a href="http://www.wordpress.org" target="_blank">WordPress</a>.';
+}
+add_filter('admin_footer_text', 'remove_footer_admin');
+
 
 ?>

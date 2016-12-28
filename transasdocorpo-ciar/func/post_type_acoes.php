@@ -1,39 +1,41 @@
 <?php
-add_action( 'init', 'post_type_institucional' );
-function post_type_institucional() {
+add_action( 'init', 'post_type_acoes' );
+function post_type_acoes() {
 
   $labels = array(
-      'name' => _x('Institucional'),
-      'singular_name' => _x('Institucional'),
-      'add_new' => _x('Adicionar página', 'institucional'),
+      'name' => _x('Ações'),
+      'singular_name' => _x('Ações'),
+      'add_new' => _x('Adicionar item', 'acoes'),
       'add_new_item' => __('Adicionar item'),
       'edit_item' => __('Editar'),
       'new_item' => __('Novo item'),
-      'all_items' => __('Informações'),
+      'all_items' => __('Outras Ações'),
       'view_item' => __('Ver item'),
       'search_items' => __('Buscar item'),
       'not_found' =>  __('Nenhum item encontrado'),
       'not_found_in_trash' => __('Nenhum item encontrado'),
       'parent_item_colon' => '',
-      'menu_name' => 'Institucional'
+      'menu_name' => 'Ações'
   );
   
-  register_post_type( 'institucional', array(
+  register_post_type( 'acoes', array(
       'labels' => $labels,
       'public' => true,
       'publicly_queryable' => true,
       'show_ui' => true,
       'show_in_menu' => true,
-      'menu_icon' => 'dashicons-admin-home',
+      'has_archive' => 'acoes',
+      // 'menu_icon' => get_bloginfo('template_directory') . '/img/post-type_star.png',  // Icon Path
+      'menu_icon' => 'dashicons-megaphone',
       'rewrite' => array(
-       'slug' => 'institucional',
+       'slug' => 'acoes',
        'with_front' => false,
       ),
-      'capability_type' => 'post',
+      'capability_type' => 'page',
       'has_archive' => true,
-      'hierarchical' => true,
+      'hierarchical' => false,
       'menu_position' => 5,
-      'register_meta_box_cb' => 'institucional_meta_box',  
+      'register_meta_box_cb' => 'oferecemos_meta_box',  
       'supports' => array('title', 'editor')
       )
   );

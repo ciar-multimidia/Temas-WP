@@ -27,14 +27,15 @@ function create_askme_postype() {
         'public' => false,
         'can_export' => true,
         'show_ui' => true,
-        'menu_position'     => 32,
+        'menu_position' => 5,
         '_builtin' => false,
         'capability_type' => 'post',
-        'menu_icon'         => 'dashicons-format-chat',
+        'menu_icon' => 'dashicons-format-chat',
         'hierarchical' => false,
         'rewrite' => array( "slug" => "askme" ),
         'supports'=> array('title', 'editor'),
-        'show_in_nav_menus' => true
+        'show_in_nav_menus' => true,
+        'show_in_menu' => false
     );
 
     register_post_type( 'askme', $args);
@@ -418,12 +419,17 @@ function askme_pagination($pages = '', $range = 5)
 // ========================================//
 // ESTATISTICAS NO PAINEL
 // ========================================// 
-function askme_stats() {
+add_action('wp_dashboard_setup', 'painel_de_duvidas');
+function painel_de_duvidas() {
+  global $wp_meta_boxes;
+  wp_add_dashboard_widget('painel_de_duvidas', 'Painel de dúvidas', 'mostra_painel_de_duvidas');
+}
+
+function mostra_painel_de_duvidas() {
 ?>
-    <h4>Transas responde</h4>
-    <br />
+    <div id="dashboard_right_now">
     <ul>
-        <li class="comment-count">
+        <li class="post-count">
             <?php
             $type = 'askme';
             $args = array(
@@ -433,10 +439,20 @@ function askme_stats() {
 
             $my_query = query_posts( $args );
             ?>
+            
+            <?php if(count($my_query) == 1) {
+                echo "<a href='edit.php?post_type=askme&post_status=publish'>";
+                echo count($my_query);
+                echo " dúvida respondida</a>";
+            } ?>
 
-            <a href="edit.php?post_type=askme&post_status=publish"><?php echo count($my_query); ?> <?php _e('respondida(s)'); ?></a>
+            <?php if(count($my_query) > 1) {
+                echo "<a href='edit.php?post_type=askme&post_status=publish'>";
+                echo count($my_query);
+                echo " dúvidas respondidas</a>";
+            } ?>
         </li>
-        <li class="post-count">
+        <li class="comment-count">
             <?php
             $args = array(
                 'post_type' => $type,
@@ -445,15 +461,81 @@ function askme_stats() {
 
             $my_query = query_posts( $args );
             ?>
-            <a href="edit.php?post_type=askme&post_status=draft"><?php echo count($my_query); ?> <?php _e('aguardando'); ?></a>
 
+            <?php if(count($my_query) == 1) {
+                echo "<a href='edit.php?post_type=askme&post_status=draft'>";
+                echo count($my_query);
+                echo " dúvida aguardando</a>";
+            } ?>
+
+            <?php if(count($my_query) > 1) {
+                echo "<a href='edit.php?post_type=askme&post_status=draft'>";
+                echo count($my_query);
+                echo " dúvidas aguardando</a>";
+            } ?>
+        </li>
+    </ul>
+    <!-- <a href="edit.php?post_type=askme&post_status=publish" class="button">Ver todas</a> -->
+    <a href="edit.php?post_type=askme&post_status=draft" class="button">Responder dúvidas pendentes</a>
+    </div>
+<?php wp_reset_query();
+}
+
+
+// function askme_stats() {
+/* ?>
+    <h4><span class="dashicons dashicons-editor-help" style="display: inline-block; font-size: 19px; line-height: 18px; height: auto; padding: 0; "></span> <strong>Painel de dúvidas</strong></h4>
+    <ul>
+        <li class="post-count">
+            <?php
+            $type = 'askme';
+            $args = array(
+                'post_type' => $type,
+                'post_status' => 'publish',
+                'posts_per_page' => -1);
+
+            $my_query = query_posts( $args );
+            ?>
+            
+            <?php if(count($my_query) == 1) {
+                echo "<a href='edit.php?post_type=askme&post_status=publish'>";
+                echo count($my_query);
+                echo " dúvida respondida</a>";
+            } ?>
+
+            <?php if(count($my_query) > 1) {
+                echo "<a href='edit.php?post_type=askme&post_status=publish'>";
+                echo count($my_query);
+                echo " dúvidas respondidas</a>";
+            } ?>
+        </li>
+        <li class="comment-count">
+            <?php
+            $args = array(
+                'post_type' => $type,
+                'post_status' => 'draft',
+                'posts_per_page' => -1);
+
+            $my_query = query_posts( $args );
+            ?>
+
+            <?php if(count($my_query) == 1) {
+                echo "<a href='edit.php?post_type=askme&post_status=draft'>";
+                echo count($my_query);
+                echo " dúvida aguardando</a>";
+            } ?>
+
+            <?php if(count($my_query) > 1) {
+                echo "<a href='edit.php?post_type=askme&post_status=draft'>";
+                echo count($my_query);
+                echo " dúvidas aguardando</a>";
+            } ?>
         </li>
     </ul>
 <?php
-    wp_reset_query();
-}
-
-add_action('activity_box_end', 'askme_stats');
+    wp_reset_query(); */
+// }
+// add_action('activity_box_end', 'askme_stats');
 
 
 
@@ -528,7 +610,7 @@ function add_user_menu_bubble() {
     global $menu;
 
     foreach ( $menu as $key => $value ) {
-        if ( $menu[$key][2] == 'edit.php?post_type=askme' ) {
+        if ( $menu[$key][2] == 'edit.php?post_type=acoes' ) {
 
             $type = 'askme';
             $args = array(
@@ -537,9 +619,13 @@ function add_user_menu_bubble() {
                 'posts_per_page' => -1);
 
             $my_query = query_posts( $args );
-            if(count($my_query) > 0)
+            if(count($my_query) == 1)
             {
-                $menu[$key][0] .= '    <span class="update-plugins"><span class="plugin-count">' . count($my_query) . '</span></span> ';
+                $menu[$key][0] .= ' <span class="update-plugins"><span class="plugin-count"><!-- <span class="dashicons dashicons-editor-help" style="display: inline-block; font-size: 13px; line-height: 17px; width: 15px; height: auto; padding: 0; "></span>-->' . count($my_query) . ' DÚVIDA</span></span> ';
+            }
+            if(count($my_query) > 1)
+            {
+                $menu[$key][0] .= ' <span class="update-plugins"><span class="plugin-count"><!-- <span class="dashicons dashicons-editor-help" style="display: inline-block; font-size: 13px; line-height: 17px; width: 15px; height: auto; padding: 0; "></span>-->' . count($my_query) . ' DÚVIDAS</span></span> ';
             }
             wp_reset_query();
             return;

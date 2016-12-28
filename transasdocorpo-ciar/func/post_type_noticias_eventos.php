@@ -3,8 +3,8 @@ add_action( 'init', 'post_type_eventos' );
 function post_type_eventos() {
 
   $labels = array(
-      'name' => _x('Eventos', 'post type general name'),
-      'singular_name' => _x('Eventos', 'post type singular name'),
+      'name' => _x('Notícias - Eventos'),
+      'singular_name' => _x('Eventos'),
       'add_new' => _x('Adicionar evento', 'eventos'),
       'add_new_item' => __('Adicionar evento'),
       'edit_item' => __('Editar'),
@@ -23,7 +23,7 @@ function post_type_eventos() {
       'public' => true,
       'publicly_queryable' => true,
       'show_ui' => true,
-      'show_in_menu' => true,
+      'show_in_menu' => false,
       'has_archive' => 'eventos',
       'menu_icon' => 'dashicons-calendar-alt',
       'rewrite' => array(

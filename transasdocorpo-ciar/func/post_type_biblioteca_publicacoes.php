@@ -3,7 +3,7 @@ add_action( 'init', 'post_type_publicacoes' );
 function post_type_publicacoes() {
 
   $labels = array(
-      'name' => _x('Publicações', 'post type general name'),
+      'name' => _x('Biblioteca - Publicações', 'post type general name'),
       'singular_name' => _x('Publicações', 'post type singular name'),
       'add_new' => _x('Adicionar publicação', 'noticias'),
       'add_new_item' => __('Adicionar publicação'),

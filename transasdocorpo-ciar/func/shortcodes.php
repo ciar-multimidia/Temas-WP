@@ -1,5 +1,6 @@
 <?php 
 
+// mostra equipe
 function shortcode_mostra_equipe($atts) {
     extract( shortcode_atts( array(
         'type' => 'equipe',
@@ -40,5 +41,30 @@ function shortcode_mostra_equipe($atts) {
     return $output;
 }
 add_shortcode('mostra-equipe','shortcode_mostra_equipe');
+
+
+
+// lista de links
+function shortcode_mostra_links($atts, $content = null) {
+	$links = get_bookmarks( array(
+	'orderby' => 'name',
+	'order' => 'ASC'
+	));
+
+    ob_start();
+
+    echo "<p>";
+    foreach ( $links as $link ) {
+    	echo '<br><a href="'.$link->link_url.'" target="_blank">';
+			echo $link->link_name;
+		echo '</a>: ';
+			echo $link->link_description;
+    }
+    echo "</p>";
+
+    $output = ob_get_clean();
+    return $output;
+}
+add_shortcode('mostra-links','shortcode_mostra_links');
 
 ?>
