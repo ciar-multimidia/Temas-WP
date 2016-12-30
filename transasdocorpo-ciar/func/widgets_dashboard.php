@@ -3,14 +3,14 @@
 // ========================================//
 // WIDGETS DE DASHBOARD
 // ========================================//
-// add_action('wp_dashboard_setup', 'painel_de_duvidas');
-// function painel_de_duvidas() {
-//   global $wp_meta_boxes;
-//   wp_add_dashboard_widget('painel_de_duvidas', 'Painel de dúvidas', 'mostra_painel_de_duvidas');
-// }
+add_action('wp_dashboard_setup', 'painel_de_duvidas');
+function painel_de_duvidas() {
+  global $wp_meta_boxes;
+  wp_add_dashboard_widget('painel_de_duvidas', 'Painel de dúvidas', 'mostra_painel_de_duvidas');
+}
 
-// function mostra_painel_de_duvidas() {
-/*?>
+function mostra_painel_de_duvidas() {
+?>
     <div id="dashboard_right_now">
     <ul>
         <li class="post-count">
@@ -62,21 +62,21 @@
     <!-- <a href="edit.php?post_type=askme&post_status=publish" class="button">Ver todas</a> -->
     <a href="edit.php?post_type=askme&post_status=draft" class="button">Responder dúvidas pendentes</a>
     </div>
-<?php wp_reset_query();*/
-// }
+<?php wp_reset_query();
+}
 
 
 /////////////////////////////////
 
 
-add_action('wp_dashboard_setup', 'dashwidget_institucional');
-function dashwidget_institucional() {
-  global $wp_meta_boxes;
-  wp_add_dashboard_widget('dashwidget_institucional', 'Institucional', 'dashwidget_institucional_texto');
-}
+// add_action('wp_dashboard_setup', 'dashwidget_institucional');
+// function dashwidget_institucional() {
+//   global $wp_meta_boxes;
+//   wp_add_dashboard_widget('dashwidget_institucional', 'Institucional', 'dashwidget_institucional_texto');
+// }
 
-function dashwidget_institucional_texto() {
-?>
+// function dashwidget_institucional_texto() { 
+/* ?>
     <div id="dashboard_right_now">
     <ul>
         <li class="post-count">
@@ -441,7 +441,7 @@ function dashwidget_acoes_texto() {
 	    </ul>
 
     </div>
-<?php wp_reset_query();
-}
+<?php wp_reset_query(); */
+// }
 
 ?>

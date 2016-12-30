@@ -11,7 +11,16 @@
 
 <header class="topo">
 	<nav>
-		<?php wp_nav_menu ( array( 'theme_location' => 'menu-topo', 'menu' => 'menu-topo', 'container' => '', 'container_class' => '', 'container_id' => '', 'menu_class' => '', 'menu_id' => '', 'echo' => true, 'fallback_cb' => 'wp_page_menu', 'before' => '', 'after' => '', 'link_before' => '<span>', 'link_after' => '</span>', 'items_wrap' => '<ul>%3$s</ul>', 'depth' => 0, 'walker' => '' )); ?>
+		<ul>
+			<li><a href="<?php bloginfo('url'); ?>">Index</a></li>
+			<li><a href="<?php bloginfo('url'); ?>/institucional">Institucional</a></li>
+			<li><a href="<?php bloginfo('url'); ?>/biblioteca">Biblioteca</a></li>
+			<li><a href="<?php bloginfo('url'); ?>/noticias">Notícias</a></li>
+			<li><a href="<?php bloginfo('url'); ?>/acoes">Ações</a></li>
+			<li><a href="<?php bloginfo('url'); ?>/multimidia">Multimídia</a></li>
+			<li><a href="<?php bloginfo('url'); ?>/ocupa-madalena">Ocupa Madalena</a></li>
+			
+		</ul>
 	</nav>
 </header>
 

@@ -15,8 +15,8 @@ function shortcode_mostra_equipe($atts) {
 	        'posts_per_page' => $perpage,
 	        'sort_column'   => 'menu_order'
 	    );
-	    $andrew_query = new  WP_Query( $args );
-	    while ( $andrew_query->have_posts() ) : $andrew_query->the_post();
+	    $my_query = new  WP_Query( $args );
+	    while ( $my_query->have_posts() ) : $my_query->the_post();
 	        $output .= '<div id="membro">';
 	        $output .= ''.get_the_title().'';
 	        if (get_field('membro_curriculo')) {
@@ -36,7 +36,7 @@ function shortcode_mostra_equipe($atts) {
 	    endwhile;
 	    wp_reset_query();
 
-    $output .= '</div>';
+    $output .= '';
 
     return $output;
 }
