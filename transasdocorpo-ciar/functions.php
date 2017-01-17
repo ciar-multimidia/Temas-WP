@@ -42,7 +42,7 @@ require_once(get_template_directory().'/func/widgets_dashboard.php' );
 function manipula_menus(){
 
   $user_id = get_current_user_id();
-  if ($user_id !== 1) {
+  if ($user_id > 2) {
     // remove_menu_page( 'index.php' );
     remove_menu_page( 'edit.php' );
     remove_menu_page( 'upload.php' );
@@ -126,7 +126,7 @@ function my_admin_bar_render() {
     global $wp_admin_bar;
 
     $user_id = get_current_user_id();
-    if ($user_id !== 1) {
+    if ($user_id > 2) {
       $wp_admin_bar->remove_menu('wp-logo');       
       $wp_admin_bar->remove_menu('about');         
       $wp_admin_bar->remove_menu('wporg');         
@@ -330,12 +330,12 @@ function galeria_custom( $output, $attr ) {
 // function dashboard_custom_painel2() {
 //   global $wp_meta_boxes;
 //   $user_id = get_current_user_id();
-//   if ($user_id == 1) { wp_add_dashboard_widget('custom_help_widget2', 'Área admin', 'dashboard_custom_painel_texto2'); }
+//   if ($user_id > 2) { wp_add_dashboard_widget('custom_help_widget2', 'Área admin', 'dashboard_custom_painel_texto2'); }
 // }
 
 // function dashboard_custom_painel_texto2() {
 //   $user_id = get_current_user_id();
-//   if ($user_id == 1) { echo '
+//   if ($user_id > 2) { echo '
 //     <p>Qualquer dúvida entre em contato conosco pelo e-mail <a href="mailto:multimidia@ciar.ufg.br">multimidia@ciar.ufg.br</a>. Tratar com Ana Cador ou Victor Godoi.</p>
 //   '; }
 // }
@@ -345,7 +345,7 @@ function galeria_custom( $output, $attr ) {
 // Remove dashboard widgets
 function remove_dashboard_meta() {
   $user_id = get_current_user_id();
-  if ($user_id !== 1) {
+  if ($user_id > 2) {
     remove_meta_box( 'dashboard_incoming_links', 'dashboard', 'normal' );
     remove_meta_box( 'dashboard_plugins', 'dashboard', 'normal' );
     remove_meta_box( 'dashboard_primary', 'dashboard', 'normal' );
