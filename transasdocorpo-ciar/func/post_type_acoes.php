@@ -36,7 +36,7 @@ function post_type_acoes() {
       'hierarchical' => false,
       'menu_position' => 5,
       'register_meta_box_cb' => 'oferecemos_meta_box',  
-      'supports' => array('title', 'editor')
+      'supports' => array('title', 'editor', 'thumbnail')
       )
   );
 }

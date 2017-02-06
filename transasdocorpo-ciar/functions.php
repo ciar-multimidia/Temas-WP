@@ -16,6 +16,8 @@ require_once(get_template_directory().'/func/post_type_noticias.php' );
 require_once(get_template_directory().'/func/post_type_noticias_eventos.php' );
 
 require_once(get_template_directory().'/func/post_type_acoes.php' );
+require_once(get_template_directory().'/func/post_type_acoes_filmes.php' );
+require_once(get_template_directory().'/func/post_type_acoes_ongs.php' );
 require_once(get_template_directory().'/func/post_type_acoes_producoes.php' );
 require_once(get_template_directory().'/func/post_type_acoes_pesquisas.php' );
 
@@ -72,6 +74,10 @@ function manipula_menus(){
     'manage_options', 'edit.php?post_type=producoes');
   add_submenu_page( 'edit.php?post_type=acoes', 'Pesquisas', 'Pesquisas',
     'manage_options', 'edit.php?post_type=pesquisas');
+  add_submenu_page( 'edit.php?post_type=acoes', 'Filmes', 'Filmes',
+    'manage_options', 'edit.php?post_type=filmes');
+  add_submenu_page( 'edit.php?post_type=acoes', 'Mapeamento de ONGs', 'Mapeamento de ONGs',
+    'manage_options', 'edit.php?post_type=ongs');
   add_submenu_page( 'edit.php?post_type=acoes', 'Responder dúvida', 'Responder dúvida',
     'manage_options', 'edit.php?post_type=askme');
 
