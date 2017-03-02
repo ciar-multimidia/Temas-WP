@@ -2,6 +2,7 @@
    v2.0 | 20110126
    License: none (public domain)
 */
+@import url("//fonts.googleapis.com/css?family=Nunito:400,700|PT+Sans:400,400i,700,700i");
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -19,8 +20,7 @@ time, mark, audio, video {
   padding: 0;
   border: 0;
   font-size: 100%;
-  font: inherit;
-  vertical-align: baseline; }
+  font: inherit; }
 
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure,
@@ -49,42 +49,9 @@ table {
   box-sizing: border-box; }
 
 body {
-  background: #f0f0f0;
-  font-family: 'Lucida Sans Unicode';
-  line-height: 1.2em; }
-
-.container {
-  max-width: 98%;
-  width: 1000px;
-  padding: 0;
-  margin: 20px auto;
-  background: #fff; }
-
-.topo {
-  width: 100%;
-  background: #444; }
-  .topo nav ul {
-    text-align: center; }
-    .topo nav ul li {
-      display: inline-block;
-      padding: 10px 15px;
-      border-left: 1px solid #000; }
-      .topo nav ul li:nth-of-type(1) {
-        border: 0; }
-      .topo nav ul li a {
-        color: #FFF;
-        text-decoration: none;
-        text-transform: uppercase;
-        font-size: 0.7em; }
-
-article {
-  padding: 30px; }
-  article h1 {
-    font-size: 1.6em;
-    font-weight: bold;
-    margin: 0 0 20px; }
-  article p {
-    margin: 20px 0; }
+  background: #FFF;
+  font-size: 16px;
+  line-height: 1.6; }
 
 div.galeria {
   width: 100%; }

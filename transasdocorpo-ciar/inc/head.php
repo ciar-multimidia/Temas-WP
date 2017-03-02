@@ -32,7 +32,7 @@
 
 <?php  } else { ?>
 
-        <meta name="keywords" content="feminismo, grupo transas do corpo, transas, corpo, mulher, empoderamento feminino, ocupa madalena, tramas e redes" />
+        <meta name="keywords" content="feminismo, grupo transas do corpo, transas, corpo, mulher, empoderamento feminino, ocupa madalena, tramando redes" />
         <meta name="description" content="<?php bloginfo('description'); ?>" />
 
         <meta property="og:type" content="website" />
