@@ -1,9 +1,14 @@
 $fundo: #FFF;
 
+$cor1: #FFF;
+$cor2: #888;
+$cor3: #EBAF4F;
+
 @import 'bourbon/bourbon';
 @import 'reset';
 @import 'padrao';
-
+@import 'galeria';
+@import 'fancybox';
 
 body {
 	background: $fundo;
@@ -12,7 +17,8 @@ body {
 	@extend %fonte-normal;
 }
 
+@import 'lay-topo';
+
+@import 'responsivo';
 
 
-@import 'galeria';
-@import 'fancybox';

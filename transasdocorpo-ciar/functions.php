@@ -59,10 +59,10 @@ function manipula_menus(){
     remove_menu_page( 'edit.php?post_type=acf' );
     remove_menu_page( 'wpcf7' );
 
-    $customize_url = add_query_arg( 'return', urlencode( wp_unslash( $_SERVER['REQUEST_URI'] ) ), 'customize.php' );
-    remove_submenu_page('themes.php',$customize_url);
-    remove_submenu_page('themes.php','customize.php'); 
-    remove_submenu_page('themes.php','nav-menus.php'); 
+    // $customize_url = add_query_arg( 'return', urlencode( wp_unslash( $_SERVER['REQUEST_URI'] ) ), 'customize.php' );
+    // remove_submenu_page('themes.php',$customize_url);
+    // remove_submenu_page('themes.php','customize.php'); 
+    // remove_submenu_page('themes.php','nav-menus.php'); 
     remove_submenu_page('themes.php','theme-editor.php'); 
     remove_submenu_page('options-general.php','rs-advanced-search'); 
   }
@@ -182,6 +182,11 @@ function replace_admin_menu_icons_css() {
 
 add_action( 'admin_head', 'replace_admin_menu_icons_css' );
 
+
+// ========================================//
+// MENU
+// ========================================//
+register_nav_menus();
 
 
 // ========================================//

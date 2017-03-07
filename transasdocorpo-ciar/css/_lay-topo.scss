@@ -1,0 +1,219 @@
+.topo-site {
+	width: 100%; float: left; clear: both;	
+	height: 0;
+	padding: 0 0 40%;
+	color: $cor1;
+	background: #000;
+	overflow: hidden;
+	@extend %posrel;
+
+	.imagem-fundo {
+		width: 100%;
+		height: 100%;
+		max-width: 1100px;
+		z-index: 0;
+		@extend %posabs;
+		top: 0;
+		left: 50%;
+		@include transform(translateX(-50%));
+
+		&:after {
+			content: "";
+			background: url('../img/mascara-topo.png') no-repeat center / cover;
+			width: 100%;
+			height: 100%;
+			@extend %posabs;
+			top: 0;
+			left: 0;
+		}
+	}
+
+	.mascara {
+		width: 100%;
+		height: 100%;
+		@include background(linear-gradient(#000, #9e1f61) left repeat);
+		opacity: 0.5;
+		z-index: 1;
+		@extend %posabs;
+	}
+
+	.area-topo {z-index: 2;}
+
+	&:after {
+		content: "";
+		bottom: -1px;
+		left: -1px;
+		z-index: 3;
+		width: calc(100% + 2px);
+	    height: 0;
+	    padding-bottom: 3.16%;
+		background: url('../img/borda1.png') no-repeat center / contain;
+		@extend %posabs;
+	}
+}
+
+
+// area topo util
+.area-topo {
+	margin-top: 10px;
+
+	.menu-busca {
+		@include display(flex);
+		@include flex-direction(norow);
+		@include flex-wrap(nowrap);
+		@include justify-content(space-between);
+		@extend %fonte-destaque, %uppercase;
+
+		nav {
+			@include flex-basis(calc(100% - 200px));
+			position: relative;
+
+	        span {
+	            display:none;
+	            @extend %fonte-destaque, %uppercase;
+	            color: $cor1;
+	            padding: 6px 0;
+	            font-size: 14px;
+	            width: 100%;
+	            text-align: left;
+	            cursor: pointer;
+
+	            &:before {
+	                content: "\f0c9";
+	                margin-right: 12px;
+	                @extend %fonte-icones;
+	            }
+	        }
+
+	        & > ul {
+	            z-index: 500;
+	            @extend %posrel, %transicao;
+
+	            & > li {
+	                display: inline-block;
+	                font-size: 13px;
+	                border-bottom: 2px solid transparent;
+	                @extend %posrel, %transicao, %fonte-destaque;
+
+	                a {
+	                	color: $cor1;
+	                    padding: 15px;
+	                    display: inline-block;
+	                    @extend %uppercase;
+	                }
+
+	                &:hover {
+	                	border-color: $cor1;
+
+	                    & > ul {
+	                        left: auto;
+	                        top: 50px;
+	                        width: auto;
+	                        opacity: 1;
+	                    }
+
+	                    a {color: $cor1;}
+	                } 
+	                &.current-menu-item, &.current_page_item {
+	                	border-color: $cor1;
+	                }
+	            }
+	        }
+
+	        // segundo nivel
+	        ul ul {
+	            position: absolute;
+	            left: -9999px;
+	            top: 60px;
+	            background: $cor1;
+	            border: none;
+	            text-align: left;
+	            opacity: 0;
+	            padding: 0;
+	            @include transition(opacity 0.5s ease, top 0.5s ease);
+	            @extend %posrel;
+	            z-index: 1000; 
+
+	            &:after {
+	                content: '';
+	                border-style: solid;
+	                border-width: 0 10px 10px;
+	                width: 0;
+	                @extend %posabs;
+	                border-color: $cor1 transparent;
+	                z-index: 1;
+	                margin-left: -10px;
+	                top: -9px;
+	                left: 15%;
+	            }
+
+	            li {
+	                position: relative;
+
+	                &:hover {
+	                    // item de terceiro nivel
+	                    & > ul {
+	                        left: 165px;
+	                        top: 0;
+	                        opacity: 1;
+	                    }
+	                    // link de segundo nivel
+	                    a {
+	                    	color: $cor2;
+	                        background: lighten($cor2, 40%);
+	                    }
+	                }
+	                a {
+	                	color: $cor2 !important;
+	                	font-size: 0.9em;
+	                    width: 195px;
+	                    padding: 10px 12px;
+	                    @extend %uppercase;
+	                    display: block;
+	                    font-weight: bold;
+	                }
+	            }
+	            
+	            // terceiro nivel
+	            ul {display:none}
+            }
+		}
+
+		.busca {
+			@include flex-basis(200px);
+
+			form input[type=search] {border: 1px solid transparentize($cor1,0.8)}
+		}
+	}
+
+	.marca {
+		width: 100%;
+		margin: 30px 0;
+		text-align: center;
+
+		svg {
+			width: 70%;
+			max-width: 275px;
+			display: block;
+			margin: 0 auto;
+		   	-webkit-filter: drop-shadow( 1px 1px 1px #000 );
+            filter: drop-shadow( 1px 1px 1px #000 );
+		}
+
+		h2 {
+			margin-top: 20px;
+			font-size: 11px;
+			@extend %uppercase;
+			letter-spacing: 0.1em;
+			color: $cor3;
+			display: block;
+
+		}
+
+		&.clara {
+			h2 {
+				text-shadow: 1px 1px 1px #000;
+			}
+		}
+	}
+}

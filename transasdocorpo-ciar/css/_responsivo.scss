@@ -1,0 +1,38 @@
+@media (min-width: 1440px) {
+}
+
+@media (min-width: 1101px) {
+	.container {width: 1100px;}
+}
+
+@media (max-width: 1100px) {
+	.container {
+		width: 100%;
+	}
+}
+
+
+@media (max-width: 1000px) {
+	.area-topo .menu-busca nav {
+		span {display: block;}
+		ul {display: none;}
+	}
+}
+
+@media (max-width: 768px) {
+
+}
+
+
+@media (max-width: 640px) {
+	.topo-site {padding-bottom: 65%;}
+}
+
+
+@media (max-width: 480px) {
+	
+}
+
+@media (max-width: 370px) {
+	.topo-site {padding-bottom: 75%;}
+}

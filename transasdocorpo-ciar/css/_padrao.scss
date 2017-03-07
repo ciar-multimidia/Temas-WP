@@ -1,4 +1,132 @@
 @import url('//fonts.googleapis.com/css?family=Nunito:400,700|PT+Sans:400,400i,700,700i');
+@import url('//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
 
+// formatacao
+a {
+	&:link, &:visited, &:active, &:focus {
+		// color: $cor4;
+		outline: 0;
+		text-decoration:none;
+	}
+	article &:hover {
+		text-decoration: underline;
+	}
+}
+b, strong {
+	font-weight: bold;
+}
+u {
+	text-decoration: underline;
+}
+i, em {
+	font-style: italic;
+}
+s {
+	text-decoration: line-through;
+}
+// item de delete
+del {
+	display: none
+}
+// paragrafos
+p {
+	margin: 30px 0 0 0;
+}
+
+h2 + p, h3 + p, h4 + p, h5 + p {
+	margin-top: 3px;
+}
+
+small {
+	font-size: 80%;
+}
+
+center {
+	text-align: center;
+}
+
+// FORMULARIOS
+input, select, textarea {
+	width: 100%;
+	vertical-align:middle;
+	white-space:normal;
+	background:none;
+	line-height:1;
+	display: block;
+	height: 35px;
+	padding: 8px 12px;
+	outline: 0;
+	font-style: normal;
+	font-size: 0.9em;
+	border: 0;
+	border-radius: 0;
+	-webkit-border-radius: 0;
+	-webkit-appearance: none;
+	color: $cor2;
+	@extend %fonte-normal;
+
+	&:focus {
+		outline:0;
+	}
+	&[type=submit] {
+		cursor: pointer;
+	}
+}
+
+input[type=checkbox] {
+	width: 20px;
+	padding: 0;
+	margin: 0;
+	display: inline-block;
+	vertical-align: middle;
+}
+
+textarea {
+	height: 200px;
+}
+
+// BUSCA 
+.busca form {
+	@extend %posrel;
+
+	input[type=search] {padding-right: 40px}
+
+	&:after {
+		content: "\f002";
+		@extend %fonte-icones, %posabs;
+		top: 5px;
+	    right: 12px;
+	}
+}
+
+// esconder
+.hidden {display: none;}
+
+// classes padrao
 %fonte-normal {font-family:'PT Sans',sans-serif}
 %fonte-destaque {font-family:'Nunito',sans-serif}
+%fonte-icones {font-family:'FontAwesome'}
+
+.container {
+	margin: 0 auto;
+	padding: 0 10px;
+	display: block;
+	@extend %posrel;
+}
+
+%posabs {position: absolute;}
+%posrel {position: relative;}
+%posfix {position: fixed;}
+
+%transicao {@include transition(all 0.32s ease-in-out);}
+
+%letterspacing {letter-spacing: 0.1em;}
+%uppercase {text-transform: uppercase;}
+
+%fix {
+    &:before, &:after {
+    content: "";
+    display: table;
+    }
+    &:after {clear: both;}
+}
