@@ -4,13 +4,13 @@
 	<title><?php wp_title('&#9666; ', true, 'right'); ?><?php bloginfo('name'); ?></title>
 	<?php get_template_part('inc/head'); ?>
 </head>
-<body>
+<body <?php body_class(); ?>>
 
 
 <main>
 
 <header class="topo-site">
-	<div class="imagem-fundo" style="background: url('<?php bloginfo('template_url'); ?>/img/topo.jpg') no-repeat center center / cover;"></div>
+	<div class="imagem-fundo" style="background-image: url('<?php bloginfo('template_url'); ?>/img/topo.jpg')"></div>
 	<div class="mascara"></div>
 
 	<div class="container area-topo">
@@ -23,9 +23,9 @@
 			<?php get_search_form(); ?>
 		</div>
 
-		<div class="marca clara">
+		<div class="marca amarela">
 			<?php get_template_part('img/marca'); ?>
-
+			<h1 class="hidden"><?php bloginfo('name'); ?></h1>
 			<h2>Ações educativas em gênero, <br> saúde e sexualidade</h2>
 		</div>
 	</div>

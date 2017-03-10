@@ -1,14 +1,15 @@
-@import url('//fonts.googleapis.com/css?family=Nunito:400,700|PT+Sans:400,400i,700,700i');
+@import url('//fonts.googleapis.com/css?family=Nunito:400,700|Open+Sans:400,400i,600,600i,700,700i');
 @import url('//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
 
 // formatacao
 a {
 	&:link, &:visited, &:active, &:focus {
-		// color: $cor4;
+		color: $cor4;
 		outline: 0;
 		text-decoration:none;
+		@extend %transicao;
 	}
-	article &:hover {
+	&:hover {
 		text-decoration: underline;
 	}
 }
@@ -43,6 +44,22 @@ small {
 
 center {
 	text-align: center;
+}
+
+// titulos
+h1 {font-size: 1.8em;}
+h2 {font-size: 1.5em;}
+h3 {font-size: 1.3em;}
+h4 {font-size: 1.1em;}
+h5 {font-size: 1em;}
+
+h1, h2, h3, h4, h5, h6 {
+	&.block {
+		display: block;
+		width: 100%; float: left; clear: both;
+		font-weight: 600;
+		margin-bottom: 25px;
+	}
 }
 
 // FORMULARIOS
@@ -102,8 +119,62 @@ textarea {
 // esconder
 .hidden {display: none;}
 
+// botao grande
+a.btn-block {
+	width: 100%; float: left; clear: both;
+	text-align: center; display: block;
+	font-size: 0.9em;
+	font-weight: bold;
+	overflow: hidden;
+	color: $cor2;
+
+	span {
+		display: inline-block;
+		padding: 10px 20px;
+		border: 2px solid $cor3;
+		border-radius: 8px;
+		@extend %posrel, %transicao;
+
+		&:before, &:after {
+			content: "";
+			width: 600px;
+			height: 2px;
+			background: lighten($cor2, 50%);
+			@extend %posabs;
+			top: calc(50% - 1px);
+		}
+
+		&:before {left: -620px;}
+		&:after {right: -620px;}
+
+		&:hover {
+			color: $fundo;
+			background: $cor3;
+		}
+	}
+}
+
+a.btn {
+	display: inline-block;
+	padding: 7px 14px;
+	border: 2px solid $cor3;
+	border-radius: 8px;
+	color: $cor2;
+
+	&:hover {
+		color: $fundo;
+		background: $cor3;
+		text-decoration: none;
+	}
+
+	&.small {
+		font-size: 0.8em;
+	}
+}
+
+
 // classes padrao
-%fonte-normal {font-family:'PT Sans',sans-serif}
+%fonte-normal {font-family:'Open Sans',sans-serif}
 %fonte-destaque {font-family:'Nunito',sans-serif}
 %fonte-icones {font-family:'FontAwesome'}
 

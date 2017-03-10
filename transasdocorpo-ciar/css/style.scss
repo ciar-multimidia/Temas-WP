@@ -1,8 +1,15 @@
 $fundo: #FFF;
 
 $cor1: #FFF;
-$cor2: #888;
+$cor2: #666;
 $cor3: #EBAF4F;
+$cor4: #70164A;
+
+$cor5: #748c64;
+$cor6: #586893;
+$cor7: #579191;
+$cor8: #916a57;
+$cor9: #9e4949;
 
 @import 'bourbon/bourbon';
 @import 'reset';
@@ -14,11 +21,12 @@ body {
 	background: $fundo;
 	font-size: 16px;
 	line-height: 1.6;
+	color: $cor2;
 	@extend %fonte-normal;
+	min-height: 300vh;
 }
 
 @import 'lay-topo';
-
+@import 'lay-home-noticias';
+@import 'lay-home-chamadas';
 @import 'responsivo';
-
-

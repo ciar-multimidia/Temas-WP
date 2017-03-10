@@ -1,0 +1,69 @@
+.area-noticias {
+	width: 100%; float: left; clear: both;
+	margin: 30px 0;
+    @include display(flex);
+    @include flex-direction(row);
+    @include flex-wrap(wrap);
+    @include justify-content(space-between);   
+
+    [class*=post-] {
+    	margin: 0 0 30px;
+    	padding-bottom: 35px;
+		@include flex-basis(calc(33.333% - 10px));
+		@extend %posrel;
+
+		a {color: inherit;}
+
+		header {
+			width: 100%; display: block;
+			// letter-spacing: 0.06em;
+
+			.tag {
+				display: block;
+				font-size: 0.9em;
+				font-weight: 600;
+				@extend %posrel;
+
+				&:before {
+					content: "\f068";
+					@extend %fonte-icones;
+					margin-right: 10px;
+					vertical-align: middle;
+					font-size: 25px;
+				    line-height: 0;
+				}
+			}
+
+			h3 {
+			    font-size: 1em;
+			    line-height: 1.5em;
+			    font-weight: 600;
+			}
+
+			time {
+				font-size: 10px;
+			    opacity: 0.8;
+			    font-weight: bold;
+			    letter-spacing: 0.05em;
+				@extend %uppercase, %fonte-destaque;
+			}
+		}
+
+
+		article {font-size: 0.85em; margin: 15px 0 0 0;}
+
+		footer {
+			@extend %posabs, %uppercase;
+			bottom: 0;
+			left: 0;
+			font-size: 12px;
+			line-height: 1.5em;
+		    font-weight: bold;
+			a {color: lighten($cor4, 15%)}
+		}
+
+
+		&.type-noticias .tag:before {color: $cor4}
+		&.type-eventos .tag:before {color: $cor3}
+    }
+}

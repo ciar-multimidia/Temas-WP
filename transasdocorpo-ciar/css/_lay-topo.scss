@@ -1,32 +1,11 @@
 .topo-site {
 	width: 100%; float: left; clear: both;	
-	height: 0;
-	padding: 0 0 40%;
+	padding: 0;
+	height: 270px;
 	color: $cor1;
 	background: #000;
 	overflow: hidden;
 	@extend %posrel;
-
-	.imagem-fundo {
-		width: 100%;
-		height: 100%;
-		max-width: 1100px;
-		z-index: 0;
-		@extend %posabs;
-		top: 0;
-		left: 50%;
-		@include transform(translateX(-50%));
-
-		&:after {
-			content: "";
-			background: url('../img/mascara-topo.png') no-repeat center / cover;
-			width: 100%;
-			height: 100%;
-			@extend %posabs;
-			top: 0;
-			left: 0;
-		}
-	}
 
 	.mascara {
 		width: 100%;
@@ -49,6 +28,36 @@
 	    padding-bottom: 3.16%;
 		background: url('../img/borda1.png') no-repeat center / contain;
 		@extend %posabs;
+	}
+
+
+	body.home & {
+		height: 0;
+		padding: 0 0 40%;
+
+		.imagem-fundo {
+			width: 100%;
+			height: 100%;
+			max-width: 1100px;
+			z-index: 0;
+			background-repeat: no-repeat;
+			background-position: center center;
+			background-size: cover;
+			@extend %posabs;
+			top: 0;
+			left: 50%;
+			@include transform(translateX(-50%));
+
+			&:after {
+				content: "";
+				background: url('../img/mascara-topo.png') no-repeat center / cover;
+				width: 100%;
+				height: 100%;
+				@extend %posabs;
+				top: 0;
+				left: 0;
+			}
+		}
 	}
 }
 
@@ -196,23 +205,59 @@
 			max-width: 275px;
 			display: block;
 			margin: 0 auto;
-		   	-webkit-filter: drop-shadow( 1px 1px 1px #000 );
-            filter: drop-shadow( 1px 1px 1px #000 );
 		}
 
 		h2 {
 			margin-top: 20px;
 			font-size: 11px;
-			@extend %uppercase;
+			@extend %uppercase, %fonte-destaque;
 			letter-spacing: 0.1em;
-			color: $cor3;
+			font-weight: bold;
 			display: block;
 
 		}
 
-		&.clara {
+		&.amarela {
 			h2 {
 				text-shadow: 1px 1px 1px #000;
+				color: $cor3;
+			}
+
+			svg {
+			   	-webkit-filter: drop-shadow( 1px 1px 1px #000 );
+	            filter: drop-shadow( 1px 1px 1px #000 );
+
+	            path, g path { fill: $cor3;}
+			}
+
+		}
+
+		&.roxa {
+			h2 {
+				color: darken($cor4,10%);
+				text-shadow: 0 0 10px transparentize($cor1,0.6), 1px 1px 1px transparentize($cor1,0.8);
+			}
+
+			svg {
+			   	-webkit-filter: drop-shadow( 0 0 10px transparentize($cor1,0.6));
+	            filter: drop-shadow( 0 0 10px transparentize($cor1,0.6));
+
+
+	            path, g path { fill: darken($cor4,10%);}
+			}
+		}
+
+		&.branca {
+			h2 {
+				color: $cor1;
+				text-shadow: 0 0 10px transparentize(#000,0.6), 1px 1px 1px transparentize(#000,0.8);
+			}
+
+			svg {
+			   	-webkit-filter: drop-shadow( 0 0 10px transparentize(#000,0.6));
+	            filter: drop-shadow( 0 0 10px transparentize(#000,0.6));
+
+	            path, g path { fill: $cor1;}
 			}
 		}
 	}
