@@ -1,4 +1,4 @@
-.area-noticias {
+.area-conteudo {
 	width: 100%; float: left; clear: both;
 	margin: 30px 0;
     @include display(flex);
@@ -65,5 +65,14 @@
 
 		&.type-noticias .tag:before {color: $cor4}
 		&.type-eventos .tag:before {color: $cor3}
+
+		&.type-publicacoes .tag:before {color: $cor5}
+		&.type-informativos .tag:before {color: $cor6}
+		&.type-artigos .tag:before {color: $cor7}
+		&.type-biblioteca .tag:before {color: $cor8}
+		&.type-acoes .tag:before {color: $cor9}
+		&.type-pesquisas .tag:before {color: $cor10}
+		&.type-ocupa-madalena .tag:before {color: $cor11}
+
     }
 }

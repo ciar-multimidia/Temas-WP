@@ -10,6 +10,8 @@ $cor6: #586893;
 $cor7: #579191;
 $cor8: #916a57;
 $cor9: #9e4949;
+$cor10: #8E6389;
+$cor11: #8E4D5A;
 
 @import 'bourbon/bourbon';
 @import 'reset';
@@ -23,10 +25,10 @@ body {
 	line-height: 1.6;
 	color: $cor2;
 	@extend %fonte-normal;
-	min-height: 300vh;
 }
 
 @import 'lay-topo';
-@import 'lay-home-noticias';
+@import 'lay-home-conteudo';
 @import 'lay-home-chamadas';
+@import 'lay-rodape';
 @import 'responsivo';

@@ -1,4 +1,4 @@
-<div class="area-noticias">
+<div class="area-conteudo">
 	<h3 class="block">Nosso conteúdo</h3>
 	<?php $args = array( 'post_parent' => $parent, 'post_type' => array('publicacoes', 'informativos', 'artigos', 'biblioteca', 'acoes', 'pesquisas', 'ocupa-madalena'), 'posts_per_page' => 3, 'orderby' => 'rand'); $my_query = new  WP_Query( $args ); while ( $my_query->have_posts() ) : $my_query->the_post(); ?>
 

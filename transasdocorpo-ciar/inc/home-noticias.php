@@ -1,4 +1,4 @@
-<div class="area-noticias">
+<div class="area-conteudo">
 	<?php $args = array( 'post_parent' => $parent, 'post_type' => array('noticias', 'eventos'), 'posts_per_page' => 3); $my_query = new  WP_Query( $args ); while ( $my_query->have_posts() ) : $my_query->the_post(); ?>
 
 		<div id="post-<?php the_ID(); ?>" <?php post_class(); ?>>

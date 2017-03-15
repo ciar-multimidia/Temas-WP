@@ -1,0 +1,109 @@
+.rodape {
+	width: 100%; float: left; clear: both;
+	color: $cor1;
+	background: #000;
+	overflow: hidden;
+	@extend %posrel;
+
+	.mascara {
+		width: 100%;
+		height: 100%;
+		@include background(linear-gradient(#000, #9e1f61) left repeat);
+		opacity: 0.5;
+		z-index: 1;
+		@extend %posabs;
+	}
+
+	&:before {
+		content: "";
+		top: -1px;
+		left: -1px;
+		z-index: 3;
+		width: calc(100% + 2px);
+	    height: 0;
+	    padding-bottom: 3.16%;
+		background: url('../img/borda2.png') no-repeat center / contain;
+		@extend %posabs;
+	}
+
+	.area-rodape {
+		z-index: 2; padding: 50px 10px 0;
+		@include display(flex);
+		@include flex-direction(norow);
+		@include flex-wrap(wrap);
+		@include justify-content(space-between);
+		@extend %posrel;
+
+		a {color: $cor1;}
+
+		.grafismo {
+			@include flex-basis(100%);
+			@extend %posabs;
+			left: 0;
+			bottom: 0;
+			@include transform(translate(10%,40%));
+			opacity: 0.08;
+		}
+
+		.navegacao {
+			@include flex-basis(calc(100% - 340px));
+
+			& > ul {
+				width: 100%;
+				@include display(flex);
+				@include flex-direction(norow);
+				@include flex-wrap(wrap);
+				@include justify-content(space-between);
+
+				& > li {
+					display: inline-block;
+					vertical-align: top;
+					margin: 0 0 25px;
+				    padding: 0 20px 0 0;
+				    font-size: 0.9em;
+				    font-weight: 600;
+					
+					&:first-of-type{display: none;}
+
+					ul {
+						margin-top: 10px; 
+
+						li {
+							font-size: 0.85em;
+							font-weight: normal;
+						}
+					}
+				}
+			}
+		}
+
+		.marca {
+			@include flex-basis(300px);
+			margin: 0 0 25px;
+			svg {
+				width: 100%;
+				max-width: 300px;
+				margin: 0 auto;
+				text-align: center;
+				display: block;
+			   	-webkit-filter: drop-shadow( 1px 1px 1px #000 );
+	            filter: drop-shadow( 1px 1px 1px #000 );
+
+	            path, g path {fill: $cor3;}
+			}
+		}
+
+		.copyright {
+			margin: 35px 0 20px;
+			@include flex-basis(100%);
+			@include display(flex);
+			@include flex-direction(norow);
+			@include flex-wrap(wrap);
+			@include justify-content(space-between);	
+
+			font-size: 9px;
+		    letter-spacing: 0.06em;
+			@extend %uppercase;		
+		}
+	}
+}
