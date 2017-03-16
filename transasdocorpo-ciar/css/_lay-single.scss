@@ -1,0 +1,71 @@
+.col-conteudo [class*=post-] {
+	// border-radius: 0 10px 10px 0;
+	// border: 2px solid $cor3;
+	// border-left: 0;
+	// padding: 20px 20px 20px 0; 
+
+	header {
+		// background: lighten($cor2,55%);
+		padding: 0 0 20px;
+		border-bottom: 2px solid lighten($cor2,55%);
+		display: block;
+		border-radius: 5px;
+
+		h2 {
+			font-size: 11px;
+			@extend %uppercase;
+			font-weight: bold;
+			margin: 0 0 10px;
+
+			span {
+				background: $cor3;
+				padding: 3px 10px;
+				display: inline-block;
+				vertical-align: baseline;
+				margin: 0 5px 0 0; 
+				border-radius: 5px;
+				font-weight: 600;
+				color: $fundo;
+				text-shadow: 1px 1px 0 rgba(0,0,0,0.3);
+			}
+		}
+
+		h1 {
+			font-weight: 600;
+			line-height: 1.4;
+		}
+	}
+
+	&.type-noticias header h2 span {background: $cor4}
+	&.type-eventos header h2 span {background: $cor3}
+	&.type-publicacoes header h2 span {background: $cor5}
+	&.type-informativos header h2 span {background: $cor6}
+	&.type-artigos header h2 span {background: $cor7}
+	&.type-biblioteca header h2 span {background: $cor8}
+	&.type-acoes header h2 span {background: $cor9}
+	&.type-pesquisas header h2 span {background: $cor10}
+	&.type-ocupa-madalena header h2 span {background: $cor11}	
+}
+
+.box {
+	// border-radius: 10px 0 0 10px;
+	// border: 2px solid $cor3;
+	// border-right: 0;
+	// padding: 20px 0 20px 20px; 
+
+	img {
+		max-width: 100%;
+		height: auto;
+	}
+
+
+	label {
+		width: 100%;
+		display: block;
+		border-top: 1px solid transparentize($cor2, 0.7);
+		padding: 10px 0;
+
+		&:first-of-type {border: none; padding-top: 0}
+		&:last-of-type {padding-bottom: 0}
+	}
+}

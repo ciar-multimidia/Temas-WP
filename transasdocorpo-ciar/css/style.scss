@@ -1,7 +1,7 @@
-$fundo: #FFF;
+$fundo: #FFFFFF;
 
-$cor1: #FFF;
-$cor2: #666;
+$cor1: #FFFFFF;
+$cor2: #666666;
 $cor3: #EBAF4F;
 $cor4: #70164A;
 
@@ -30,5 +30,7 @@ body {
 @import 'lay-topo';
 @import 'lay-home-conteudo';
 @import 'lay-home-chamadas';
+@import 'lay-colunas';
+@import 'lay-single';
 @import 'lay-rodape';
 @import 'responsivo';

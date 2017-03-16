@@ -36,6 +36,16 @@
 		&:nth-of-type(1) {@include flex-basis(100%);}
 	}
 
+	.col-conteudo {
+		width: 100%; max-width: 100%; float: none;
+	}
+
+	.col-aside {
+		float: none;
+		margin: 45px auto 0;
+		clear: both;
+	}
+
 	.rodape .area-rodape .navegacao {
 		& > ul{
 			@include justify-content(center);
@@ -45,7 +55,7 @@
 				ul {display: none;}
 			}
 		}
-	}
+	}	
 }
 
 

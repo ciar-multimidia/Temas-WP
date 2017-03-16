@@ -122,7 +122,7 @@ input, select, textarea {
   border-radius: 0;
   -webkit-border-radius: 0;
   -webkit-appearance: none;
-  color: #666; }
+  color: #666666; }
   input:focus, select:focus, textarea:focus {
     outline: 0; }
   input[type=submit], select[type=submit], textarea[type=submit] {
@@ -157,7 +157,7 @@ a.btn-block {
   font-size: 0.9em;
   font-weight: bold;
   overflow: hidden;
-  color: #666; }
+  color: #666666; }
   a.btn-block span {
     display: inline-block;
     padding: 10px 20px;
@@ -174,7 +174,7 @@ a.btn-block {
     a.btn-block span:after {
       right: -620px; }
     a.btn-block span:hover {
-      color: #FFF;
+      color: #FFFFFF;
       background: #EBAF4F; }
 
 a.btn {
@@ -182,9 +182,9 @@ a.btn {
   padding: 7px 14px;
   border: 2px solid #EBAF4F;
   border-radius: 8px;
-  color: #666; }
+  color: #666666; }
   a.btn:hover {
-    color: #FFF;
+    color: #FFFFFF;
     background: #EBAF4F;
     text-decoration: none; }
   a.btn.small {
@@ -215,8 +215,14 @@ a:link, a:visited, a:active, a:focus, a.btn-block span, .area-topo .menu-busca n
   -moz-transition: all 0.32s ease-in-out;
   transition: all 0.32s ease-in-out; }
 
-.area-topo .menu-busca, .area-topo .menu-busca nav span, .area-topo .menu-busca nav > ul > li a, .area-topo .menu-busca nav ul ul li a, .area-topo .marca h2, .area-conteudo [class*=post-] header time, .area-conteudo [class*=post-] footer, .rodape .area-rodape .copyright {
+.area-topo .menu-busca, .area-topo .menu-busca nav span, .area-topo .menu-busca nav > ul > li a, .area-topo .menu-busca nav ul ul li a, .area-topo .marca h2, .area-conteudo [class*=post-] header time, .area-conteudo [class*=post-] footer, .col-conteudo [class*=post-] header h2, .rodape .area-rodape .copyright {
   text-transform: uppercase; }
+
+.fix:before, .fix:after {
+  content: "";
+  display: table; }
+.fix:after {
+  clear: both; }
 
 div.galeria {
   width: 100%; }
@@ -523,10 +529,10 @@ div.galeria {
     background-size: 24px 24px;
     /*The size of the normal image, half the size of the hi-res image*/ } }
 body {
-  background: #FFF;
+  background: #FFFFFF;
   font-size: 16px;
   line-height: 1.6;
-  color: #666; }
+  color: #666666; }
 
 .topo-site {
   width: 100%;
@@ -534,7 +540,7 @@ body {
   clear: both;
   padding: 0;
   height: 270px;
-  color: #FFF;
+  color: #FFFFFF;
   background: #000;
   overflow: hidden; }
   .topo-site .mascara {
@@ -625,7 +631,7 @@ body {
       position: relative; }
       .area-topo .menu-busca nav span {
         display: none;
-        color: #FFF;
+        color: #FFFFFF;
         padding: 6px 0;
         font-size: 14px;
         width: 100%;
@@ -641,25 +647,25 @@ body {
           font-size: 13px;
           border-bottom: 2px solid transparent; }
           .area-topo .menu-busca nav > ul > li a {
-            color: #FFF;
+            color: #FFFFFF;
             padding: 15px;
             display: inline-block; }
           .area-topo .menu-busca nav > ul > li:hover {
-            border-color: #FFF; }
+            border-color: #FFFFFF; }
             .area-topo .menu-busca nav > ul > li:hover > ul {
               left: auto;
               top: 50px;
               width: auto;
               opacity: 1; }
             .area-topo .menu-busca nav > ul > li:hover a {
-              color: #FFF; }
+              color: #FFFFFF; }
           .area-topo .menu-busca nav > ul > li.current-menu-item, .area-topo .menu-busca nav > ul > li.current_page_item {
-            border-color: #FFF; }
+            border-color: #FFFFFF; }
       .area-topo .menu-busca nav ul ul {
         position: absolute;
         left: -9999px;
         top: 60px;
-        background: #FFF;
+        background: #FFFFFF;
         border: none;
         text-align: left;
         opacity: 0;
@@ -673,7 +679,7 @@ body {
           border-style: solid;
           border-width: 0 10px 10px;
           width: 0;
-          border-color: #FFF transparent;
+          border-color: #FFFFFF transparent;
           z-index: 1;
           margin-left: -10px;
           top: -9px;
@@ -685,10 +691,10 @@ body {
             top: 0;
             opacity: 1; }
           .area-topo .menu-busca nav ul ul li:hover a {
-            color: #666;
+            color: #666666;
             background: #cccccc; }
           .area-topo .menu-busca nav ul ul li a {
-            color: #666 !important;
+            color: #666666 !important;
             font-size: 0.9em;
             width: 195px;
             padding: 10px 12px;
@@ -735,13 +741,13 @@ body {
       .area-topo .marca.roxa svg path, .area-topo .marca.roxa svg g path {
         fill: #450e2e; }
     .area-topo .marca.branca h2 {
-      color: #FFF;
+      color: #FFFFFF;
       text-shadow: 0 0 10px rgba(0, 0, 0, 0.4), 1px 1px 1px rgba(0, 0, 0, 0.2); }
     .area-topo .marca.branca svg {
       -webkit-filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.4));
       filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.4)); }
       .area-topo .marca.branca svg path, .area-topo .marca.branca svg g path {
-        fill: #FFF; }
+        fill: #FFFFFF; }
 
 .area-conteudo {
   width: 100%;
@@ -846,7 +852,7 @@ body {
   width: 100%;
   float: left;
   clear: both;
-  color: #FFF;
+  color: #FFFFFF;
   background: #000;
   overflow: hidden; }
   .area-chamadas .mascara {
@@ -942,13 +948,83 @@ body {
         font-size: 0.9em;
         margin: 15px 0; }
       .area-chamadas .area-chamadas-interna > div a.btn {
-        color: #FFF; }
+        color: #FFFFFF; }
+
+.col-conteudo {
+  width: 100%;
+  max-width: calc(100% - 350px);
+  float: right; }
+
+.col-aside {
+  width: 290px;
+  float: left; }
+
+.area-textos {
+  margin: 45px 0;
+  width: 100%;
+  float: left;
+  clear: both; }
+
+.col-conteudo [class*=post-] header {
+  padding: 0 0 20px;
+  border-bottom: 2px solid #f2f2f2;
+  display: block;
+  border-radius: 5px; }
+  .col-conteudo [class*=post-] header h2 {
+    font-size: 11px;
+    font-weight: bold;
+    margin: 0 0 10px; }
+    .col-conteudo [class*=post-] header h2 span {
+      background: #EBAF4F;
+      padding: 3px 10px;
+      display: inline-block;
+      vertical-align: baseline;
+      margin: 0 5px 0 0;
+      border-radius: 5px;
+      font-weight: 600;
+      color: #FFFFFF;
+      text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.3); }
+  .col-conteudo [class*=post-] header h1 {
+    font-weight: 600;
+    line-height: 1.4; }
+.col-conteudo [class*=post-].type-noticias header h2 span {
+  background: #70164A; }
+.col-conteudo [class*=post-].type-eventos header h2 span {
+  background: #EBAF4F; }
+.col-conteudo [class*=post-].type-publicacoes header h2 span {
+  background: #748c64; }
+.col-conteudo [class*=post-].type-informativos header h2 span {
+  background: #586893; }
+.col-conteudo [class*=post-].type-artigos header h2 span {
+  background: #579191; }
+.col-conteudo [class*=post-].type-biblioteca header h2 span {
+  background: #916a57; }
+.col-conteudo [class*=post-].type-acoes header h2 span {
+  background: #9e4949; }
+.col-conteudo [class*=post-].type-pesquisas header h2 span {
+  background: #8E6389; }
+.col-conteudo [class*=post-].type-ocupa-madalena header h2 span {
+  background: #8E4D5A; }
+
+.box img {
+  max-width: 100%;
+  height: auto; }
+.box label {
+  width: 100%;
+  display: block;
+  border-top: 1px solid rgba(102, 102, 102, 0.3);
+  padding: 10px 0; }
+  .box label:first-of-type {
+    border: none;
+    padding-top: 0; }
+  .box label:last-of-type {
+    padding-bottom: 0; }
 
 .rodape {
   width: 100%;
   float: left;
   clear: both;
-  color: #FFF;
+  color: #FFFFFF;
   background: #000;
   overflow: hidden; }
   .rodape .mascara {
@@ -1004,7 +1080,7 @@ body {
     justify-content: space-between;
     -ms-flex-pack: justify; }
     .rodape .area-rodape a {
-      color: #FFF; }
+      color: #FFFFFF; }
     .rodape .area-rodape .grafismo {
       -webkit-flex-basis: 100%;
       -moz-flex-basis: 100%;
@@ -1182,6 +1258,16 @@ body {
       -moz-flex-basis: 100%;
       flex-basis: 100%;
       -ms-flex-preferred-size: 100%; }
+
+  .col-conteudo {
+    width: 100%;
+    max-width: 100%;
+    float: none; }
+
+  .col-aside {
+    float: none;
+    margin: 45px auto 0;
+    clear: both; }
 
   .rodape .area-rodape .navegacao > ul {
     -webkit-box-pack: center;
