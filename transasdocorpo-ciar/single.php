@@ -13,9 +13,9 @@
 								<h1><a href="<?php the_permalink(); ?>"><?php the_title(''); ?></a></h1>
 							</header>
 							
-							<?php if ( is_singular('artigos') ) : ?>
+							<?php if ( !is_singular('publicacoes') ) : ?>
 								<?php the_content(); ?>
-							<?php elseif ( is_singular('publicacoes') ) : ?>
+							<?php else : ?>
 								<?php if ( get_field('publicacao_resumo') ) { echo '<p>'; the_field('publicacao_resumo'); echo '</p>'; } ?>	
 							<?php endif; ?>	
 						</article>

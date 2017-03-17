@@ -43,8 +43,8 @@ require_once(get_template_directory().'/func/widgets_dashboard.php' );
 // ========================================// 
 function manipula_menus(){
 
-  $user_id = get_current_user_id();
-  if ($user_id > 2) {
+  // $user_id = get_current_user_id();
+  // if ($user_id > 2) {
     // remove_menu_page( 'index.php' );
     remove_menu_page( 'edit.php' );
     remove_menu_page( 'upload.php' );
@@ -65,7 +65,7 @@ function manipula_menus(){
     // remove_submenu_page('themes.php','nav-menus.php'); 
     remove_submenu_page('themes.php','theme-editor.php'); 
     remove_submenu_page('options-general.php','rs-advanced-search'); 
-  }
+  // }
 
 
   // adicionar/remover submenus a: acoes

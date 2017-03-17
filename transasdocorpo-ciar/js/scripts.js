@@ -1,5 +1,5 @@
 jQuery(document).ready(function() {
-	jQuery(".galeria-imagem a").fancybox({
+	jQuery(".galeria-imagem a, .fancybox").fancybox({
 		openEffect	: 'none',
 		closeEffect	: 'none',
 		helpers	: {
